@@ -58,8 +58,8 @@ Le système comprend actuellement :
 
 Le détail des évolutions est disponible dans :
 
-- [Patch Notes](Fading-Suns-4e-PATCH-NOTES.md)
-- [Roadmap](Fading-Suns-4e-ROADMAP.md)
+- [Patch Notes](Fading-Suns-4e-PATCH-NOTES.fr.md)
+- [Roadmap](Fading-Suns-4e-ROADMAP.fr.md)
 
 La documentation technique et les audits sont disponibles dans le dossier [docs/](docs/).
 
@@ -216,7 +216,7 @@ Parmi les chantiers prévus ou encore incomplets :
 - migrations de données ;
 - packaging et distribution du système.
 
-Voir la [Roadmap](Fading-Suns-4e-ROADMAP.md) pour le suivi détaillé.
+Voir la [Roadmap](Fading-Suns-4e-ROADMAP.fr.md) pour le suivi détaillé.
 
 ## Langues
 

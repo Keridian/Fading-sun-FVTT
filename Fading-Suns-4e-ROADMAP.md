@@ -31,7 +31,7 @@ English | [Français](Fading-Suns-4e-ROADMAP.fr.md)
 - Attack Properties.
 - Target binding.
 - Energy Shields.
-- Burnout.
+- Burn-Out.
 - Distortion.
 - GM Tools.
 - Simplified player UX with collapsible `Details` sections.
@@ -46,8 +46,8 @@ English | [Français](Fading-Suns-4e-ROADMAP.fr.md)
 - Short, Long, Extreme, and Beyond ranges.
 - Weapon Capabilities through canonical keys.
 - `legacy`, `finite`, `unlimited`, and `none` ammunition.
-- Three-round burst.
-- Structured rate of fire with legacy compatibility.
+- Three-round Burst.
+- Structured Rate of Fire with legacy compatibility.
 - Official interactive initiative.
 - Alternative d20 initiative.
 - Combat Tracker adapted to both methods.
@@ -105,17 +105,17 @@ Runtime validation of this method remains to be completed.
 
 ## Latest runtime-validated version
 
-### 0.18.0 - Three-round burst and structured rate of fire
+### 0.18.0 - Three-round Burst and structured Rate of Fire
 
 Delivered:
 
-- Three-round burst on burst-capable Weapons;
+- Three-round Burst on burst-capable Weapons;
 - cost of 3 ammunition;
 - unchanged Goal;
 - bonus of 1 damage;
 - one target;
 - finite, insufficient, and unlimited ammunition handled;
-- rate of fire configured through a numeric value and dedicated checkbox;
+- Rate of Fire configured through a numeric value and dedicated checkbox;
 - legacy `3 (r)` and `3 (b)` notations preserved without destructive migration;
 - full workflow validated through Vitality;
 - 506 automated tests passed.
@@ -137,7 +137,7 @@ Deferred because rules or architecture remain insufficient:
 4. **0.16.0**: Attack Properties audit and Shock / metal correction.
 5. **0.16.1**: multiple Attack Properties with controlled mechanical rejection.
 6. **0.17.0**: ranged Weapon workflow and structured ammunition management.
-7. **0.18.0**: Three-round burst and structured rate of fire.
+7. **0.18.0**: Three-round Burst and structured Rate of Fire.
 8. **0.19.0**: interactive and alternative d20 initiative, undergoing runtime validation.
 
 ---
@@ -177,7 +177,7 @@ This phase is complete. Compact cards, `Details` sections, the sidebar, and the 
 
 # Phase 2 - Energy Shield completion
 
-## Complete Burnout / Distortion runtime validation
+## Complete Burn-Out / Distortion runtime validation
 
 **Status: completed**
 
@@ -185,13 +185,13 @@ Validated in a real Foundry runtime:
 
 - the first five activations;
 - the sixth activation;
-- successful Burnout;
-- failed Burnout;
+- successful Burn-Out;
+- failed Burn-Out;
 - special trigger;
 - counter reset when the round changes;
 - Distortion at Short, Long, and Extreme range;
 - Distortion expiration;
-- actual Burnout duration.
+- actual Burn-Out duration.
 
 Version 0.12.1 is now considered validated in a real runtime.
 
@@ -205,7 +205,7 @@ Delivered:
 - Flame Bleedthrough;
 - interaction with thresholds, Hits, Armor, and penetrating damage.
 
-Native Foundry Rolls, maximum-threshold overflow, and interactions with Burnout and Distortion have been validated.
+Native Foundry Rolls, maximum-threshold overflow, and interactions with Burn-Out and Distortion have been validated.
 
 ## Restraint
 
@@ -218,7 +218,7 @@ Native Foundry Rolls, maximum-threshold overflow, and interactions with Burnout 
 
 ## Later
 
-- automatic Burnout triggers from Weapon and Maneuver workflows;
+- automatic Burn-Out triggers from Weapon and Maneuver workflows;
 - Shield Dampers if the available rules support them;
 - other official Energy Shield properties.
 
@@ -525,7 +525,7 @@ Deferred while the required rules or architecture remain incomplete:
 - Spread;
 - area attacks;
 - multiple targets;
-- replacement of the manual Burnout triggers associated with these modes.
+- replacement of the manual Burn-Out triggers associated with these modes.
 
 ---
 
@@ -722,7 +722,7 @@ All changes must remain explicit and transactional.
 **Priority: medium**
 
 - quick Damage scenarios;
-- forced Burnout;
+- forced Burn-Out;
 - Attack Properties;
 - other QA tools.
 

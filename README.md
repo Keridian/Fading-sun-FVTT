@@ -52,7 +52,7 @@ The system currently includes:
 - GM tools
 - weapon attack workflow
 - ammunition management
-- Three-round burst
+- Three-round Burst
 - interactive initiative
 - rolled initiative
 

@@ -28,7 +28,7 @@ English | [Français](Fading-Suns-4e-PATCH-NOTES.fr.md)
 | 0.11.0 | Armor / Target Body Resistance | Runtime validated |
 | 0.11.1 | Attack Properties / Armor Proofing | Runtime validated |
 | 0.12.0 | Energy Shields | Runtime validated |
-| 0.12.1 | Burnout / Distortion | Runtime validated |
+| 0.12.1 | Burn-Out / Distortion | Runtime validated |
 | 0.12.2 | GM Tools | Runtime validated |
 | 0.13.0 | Player UX simplification | Runtime validated |
 | 0.14.0 | Rules and French terminology | Runtime validated |
@@ -36,7 +36,7 @@ English | [Français](Fading-Suns-4e-PATCH-NOTES.fr.md)
 | 0.16.0 | Attack Properties / Shock | Runtime validated |
 | 0.16.1 | Multiple Attack Properties | Runtime validated |
 | 0.17.0 | Weapon workflow | Runtime validated |
-| 0.18.0 | Three-round burst / Structured rate of fire | Runtime validated |
+| 0.18.0 | Three-round Burst / Structured Rate of Fire | Runtime validated |
 | 0.19.0 | Interactive initiative / Rolled initiative | Runtime validation in progress |
 
 ---
@@ -164,21 +164,21 @@ Spending from the adversary coffer to help an NPC also remains deferred until it
 - **547 automated tests out of 547**;
 - **41 Initiative cases**;
 - **506 historical cases preserved**;
-- no changes to DataModels, Weapon, Three-round burst, ammunition, Trait Pair, Resistance, Armor, Impact, Energy Shield, Damage, or Vitality.
+- no changes to DataModels, Weapon, Three-round Burst, ammunition, Trait Pair, Resistance, Armor, Impact, Energy Shield, Damage, or Vitality.
 ---
 
-# 0.18.0 - Three-round burst and structured rate of fire
+# 0.18.0 - Three-round Burst and structured Rate of Fire
 **Status: validated in a real runtime**
 
 Delivered scope:
 
-- addition of the `threeRoundBurst` mode, displayed as **Three-round burst**;
-- single shot retained as the default mode;
+- addition of the `threeRoundBurst` mode, displayed as **Three-round Burst**;
+- Single Shot retained as the default mode;
 - new structured `system.rateOfFireConfig` configuration;
 - compatibility retained with the historical `system.rateOfFire` string;
 - no reload, Burst, Empty clip, Spread, area attack, or multi-targeting added without sufficient rules.
 
-Rate of fire:
+Rate of Fire:
 
 - `configured` determines whether the structured configuration takes priority;
 - `value` stores a non-negative integer;
@@ -187,15 +187,15 @@ Rate of fire:
 - users do not need to enter technical `(r)` or `(b)` syntax;
 - the legacy values `3`, `3 (r)`, and `3 (b)` remain supported without destructive migration.
 
-Three-round burst:
+Three-round Burst:
 
 - requires a burst-capable Weapon;
 - consumes exactly 3 finite ammunition units;
 - does not modify Goal;
 - adds 1 to Weapon damage;
 - remains limited to one target;
-- does not trigger a special Burnout test;
-- is rejected before any write if ammunition is insufficient or the rate of fire is incompatible;
+- does not trigger a special Burn-Out test;
+- is rejected before any write if ammunition is insufficient or the Rate of Fire is incompatible;
 - works with unlimited ammunition without modifying `ammo.value`.
 
 Pipeline:
@@ -210,14 +210,14 @@ Weapon
 → Vitality
 ```
 
-The Weapon Source carries the mode, ammunition cost, modifiers, target count, Burnout trigger, attack properties, and effective damage. The Trait Pair, Armor, Impact, Energy Shield, and Damage engines remain unchanged.
+The Weapon Source carries the mode, ammunition cost, modifiers, target count, Burn-Out trigger, attack properties, and effective damage. The Trait Pair, Armor, Impact, Energy Shield, and Damage engines remain unchanged.
 
 Validation:
 
 - **506 automated tests out of 506**;
 - **44 version 0.18.0 cases** and the **462 historical cases** pass;
 - runtime confirmed under Foundry VTT 14.367;
-- Three-round burst validated with a cost of 3, unchanged Goal, damage `7 + 1 = 8`, and one target;
+- Three-round Burst validated with a cost of 3, unchanged Goal, damage `7 + 1 = 8`, and one target;
 - finite ammunition consumption `5 → 2` validated;
 - rejection at 2 ammunition validated;
 - rejection on a Weapon without burst capability validated;
@@ -233,7 +233,7 @@ Validation:
 
 Additions:
 
-- **Attack** action from the Character, NPC, and Creature sheets;
+- **Fire** action from the Character, NPC, and Creature sheets;
 - dedicated Weapon dialog based on ApplicationV2;
 - single-shot workflow with exactly one target;
 - persistent Weapon Source linked to the weapon, attacker, target, and Token when available;
@@ -250,7 +250,7 @@ Additions:
 Ammunition:
 
 - explicit `legacy`, `finite`, `unlimited`, and `none` modes;
-- an accepted single shot consumes one finite ammunition unit before the Roll;
+- an accepted Single Shot consumes one finite ammunition unit before the Roll;
 - the ammunition remains consumed on a Failure or Critical Miss;
 - empty finite magazine blocked before the Roll;
 - local lock against double execution;
@@ -367,7 +367,7 @@ Validation:
 
 - **344 automated tests out of 344**;
 - Restraint, Blaster Bleedthrough, and Flame Bleedthrough validated at runtime;
-- Burnout and Distortion non-regression confirmed.
+- Burn-Out and Distortion non-regression confirmed.
 
 ---
 
@@ -474,7 +474,7 @@ Validation:
 
 ---
 
-# 0.12.1 - Burnout and Distortion
+# 0.12.1 - Burn-Out and Distortion
 **Status: validated in a real runtime**
 
 Burn-Out:
@@ -521,7 +521,7 @@ Validation:
 
 - **273 automated tests out of 273**;
 - all **245 historical tests** still pass;
-- dedicated Burnout and Distortion runtime scenarios were subsequently confirmed under Foundry VTT 14.367.
+- dedicated Burn-Out and Distortion runtime scenarios were subsequently confirmed under Foundry VTT 14.367.
 
 ---
 
