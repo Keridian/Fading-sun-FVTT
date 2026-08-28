@@ -129,7 +129,7 @@ Différé faute de règles ou d'architecture suffisantes :
 - attaques de zone ;
 - multiciblage.
 
-## Jalons validés depuis la rédaction initiale
+## Jalons validés
 
 1. **0.13.0** : simplification UX joueur.
 2. **0.14.0** : audit des règles, terminologie française et valeurs ciblées élevées.

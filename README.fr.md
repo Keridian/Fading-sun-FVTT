@@ -225,7 +225,7 @@ Le système possède actuellement :
 - une localisation française ;
 - une localisation anglaise.
 
-La version française utilise autant que possible la terminologie de l'édition française de Fading Suns 4e.
+La localisation française emploie autant que possible la terminologie de l'édition française de Fading Suns 4e.
 
 ## Contenu protégé
 
