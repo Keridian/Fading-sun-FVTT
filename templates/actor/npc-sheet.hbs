@@ -1,0 +1,323 @@
+<div class="sheet-scroll">
+  <header class="sheet-header" data-tier="{{tier}}">
+    <img class="actor-portrait" src="{{actor.img}}" alt="{{actor.name}}">
+    <div class="header-fields">
+      <div class="name-tier-row">
+        <input
+          class="actor-name"
+          type="text"
+          name="name"
+          value="{{actor.name}}"
+          {{#unless editable}}disabled{{/unless}}
+        >
+        <label class="tier-field">
+          <span>{{localize "FADING_SUNS.Sheet.Npc.Tier"}}</span>
+          <select name="system.tier" {{#unless editable}}disabled{{/unless}}>
+            {{selectOptions tierChoices selected=tier localize=true}}
+          </select>
+        </label>
+      </div>
+      <div class="identity-grid">
+        <label>
+          <span>{{localize "FADING_SUNS_4E.Fields.identity.speciesLabel"}}</span>
+          <input type="text" name="system.identity.speciesLabel" value="{{system.identity.speciesLabel}}" {{#unless editable}}disabled{{/unless}}>
+        </label>
+        <label>
+          <span>{{localize "FADING_SUNS_4E.Fields.identity.rank"}}</span>
+          <input type="text" name="system.identity.rank" value="{{system.identity.rank}}" {{#unless editable}}disabled{{/unless}}>
+        </label>
+        <label>
+          <span>{{localize "FADING_SUNS_4E.Fields.identity.planet"}}</span>
+          <input type="text" name="system.identity.planet" value="{{system.identity.planet}}" {{#unless editable}}disabled{{/unless}}>
+        </label>
+        {{#if hasLevel}}
+          <label>
+            <span>{{localize "FADING_SUNS_4E.Fields.advancement.level"}}</span>
+            <input type="number" name="system.advancement.level" value="{{system.advancement.level}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+          </label>
+        {{/if}}
+        <label>
+          <span>{{localize "FADING_SUNS_4E.Fields.identity.size"}}</span>
+          <input type="number" name="system.identity.size" value="{{system.identity.size}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+        </label>
+        <label>
+          <span>{{localize "FADING_SUNS_4E.Fields.identity.speed"}}</span>
+          <input type="number" name="system.identity.speed" value="{{system.identity.speed}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-section description-section">
+    <h2>{{localize "FADING_SUNS.Sheet.Npc.Description"}}</h2>
+    <textarea name="system.description" rows="5" {{#unless editable}}disabled{{/unless}}>{{system.description}}</textarea>
+  </section>
+
+  <section class="sheet-section resources-section">
+    <h2>{{localize "FADING_SUNS.Sheet.Sections.Resources"}}</h2>
+    <div class="resource-grid">
+      <article class="resource-card vitality-card">
+        <h3>{{localize "FADING_SUNS.Sheet.Resources.Vitality"}}</h3>
+        <div class="paired-values">
+          <label>
+            <span>{{localize "FADING_SUNS.Sheet.Resources.Value"}}</span>
+            <input type="number" name="system.resources.vitality.value" value="{{system.resources.vitality.value}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+          </label>
+          <span class="value-separator">/</span>
+          <label>
+            <span>{{localize "FADING_SUNS.Sheet.Resources.Max"}}</span>
+            <input type="number" value="{{system.resources.vitality.max}}" readonly tabindex="-1">
+          </label>
+        </div>
+      </article>
+
+      {{#if showBank}}
+        <article class="resource-card bank-card">
+          <h3>{{localize "FADING_SUNS.Sheet.Resources.Bank"}}</h3>
+          <div class="resource-fields bank-fields">
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.VP"}}</span><input type="number" name="system.resources.bank.vp" value="{{system.resources.bank.vp}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.WP"}}</span><input type="number" name="system.resources.bank.wp" value="{{system.resources.bank.wp}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Capacity"}}</span><input type="number" value="{{system.resources.bank.capacity}}" readonly tabindex="-1"></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Used"}}</span><input type="number" value="{{system.resources.bank.used}}" readonly tabindex="-1"></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Available"}}</span><input type="number" value="{{system.resources.bank.available}}" readonly tabindex="-1"></label>
+          </div>
+        </article>
+      {{/if}}
+
+      <article class="resource-card cache-card">
+        <h3>{{localize "FADING_SUNS.Sheet.Resources.Cache"}}</h3>
+        <div class="resource-fields">
+          <label><span>{{localize "FADING_SUNS.Sheet.Resources.VP"}}</span><input type="number" name="system.resources.cache.vp" value="{{system.resources.cache.vp}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Resources.WP"}}</span><input type="number" name="system.resources.cache.wp" value="{{system.resources.cache.wp}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        </div>
+      </article>
+
+      {{#if showSurge}}
+        <article class="resource-card surge-card">
+          <h3>{{localize "FADING_SUNS.Sheet.Resources.Surge"}}</h3>
+          <div class="resource-fields">
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Rating"}}</span><input type="number" value="{{system.resources.surge.rating}}" readonly tabindex="-1"></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Current"}}</span><input type="number" name="system.resources.surge.current" value="{{system.resources.surge.current}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Max"}}</span><input type="number" value="{{system.resources.surge.max}}" readonly tabindex="-1"></label>
+          </div>
+        </article>
+      {{/if}}
+
+      {{#if showRevival}}
+        <article class="resource-card revival-card">
+          <h3>{{localize "FADING_SUNS.Sheet.Resources.Revival"}}</h3>
+          <div class="resource-fields">
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Rating"}}</span><input type="number" value="{{system.resources.revival.rating}}" readonly tabindex="-1"></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Current"}}</span><input type="number" name="system.resources.revival.current" value="{{system.resources.revival.current}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Resources.Max"}}</span><input type="number" value="{{system.resources.revival.max}}" readonly tabindex="-1"></label>
+          </div>
+        </article>
+      {{/if}}
+    </div>
+  </section>
+
+  <section class="sheet-section npc-actions-section">
+    <div class="section-heading">
+      <h2>{{localize "FADING_SUNS.Sheet.Npc.Actions"}}</h2>
+      {{#if editable}}
+        <button type="button" data-action="addNpcAction">{{localize "FADING_SUNS.Sheet.Npc.AddAction"}}</button>
+      {{/if}}
+    </div>
+    <div class="action-table-wrap">
+      <table class="npc-action-table">
+        <thead>
+          <tr>
+            <th>{{localize "FADING_SUNS.Sheet.Npc.Action"}}</th>
+            <th>{{localize "FADING_SUNS.Sheet.Npc.Goal"}}</th>
+            <th>{{localize "FADING_SUNS.Sheet.Npc.Impact"}}</th>
+            <th>{{localize "FADING_SUNS.Sheet.Npc.DeleteAction"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each actions}}
+            <tr data-action-index="{{index}}">
+              <td><input type="text" name="system.actions.{{index}}.name" value="{{name}}" {{#unless @root.editable}}disabled{{/unless}}></td>
+              <td><input type="text" name="system.actions.{{index}}.goal" value="{{goal}}" {{#unless @root.editable}}disabled{{/unless}}></td>
+              <td><input type="text" name="system.actions.{{index}}.impact" value="{{impact}}" {{#unless @root.editable}}disabled{{/unless}}></td>
+              <td class="action-delete-cell">
+                {{#if @root.editable}}
+                  <button type="button" data-action="deleteNpcAction">{{localize "FADING_SUNS.Sheet.Actions.Delete"}}</button>
+                {{/if}}
+              </td>
+            </tr>
+          {{else}}
+            <tr><td class="empty-list" colspan="4">{{localize "FADING_SUNS.Sheet.Npc.NoActions"}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="sheet-columns{{#if isExtra}} extra-summary{{/if}}">
+    <div class="primary-column">
+      {{#if showMainTraits}}
+        <section class="sheet-section characteristics-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Characteristics"}}</h2>
+          <div class="characteristic-groups">
+            {{#each characteristicGroups}}
+              <fieldset class="characteristic-group">
+                <legend>{{localize label}}</legend>
+                {{#each characteristics}}
+                  <label>
+                    <span>{{localize label}}</span>
+                    <input type="number" name="{{path}}" value="{{value}}" min="0" step="1" {{#unless @root.editable}}disabled{{/unless}}>
+                  </label>
+                {{/each}}
+              </fieldset>
+            {{/each}}
+          </div>
+        </section>
+
+        <section class="sheet-section skills-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Skills"}}</h2>
+          <div class="skills-grid">
+            {{#each skills}}
+              <div class="skill-row">
+                <button
+                  type="button"
+                  class="skill-roll-button"
+                  data-action="rollSkill"
+                  data-skill-key="{{key}}"
+                  title="{{localize "FADING_SUNS.Roll.RollSkill"}}"
+                  {{#unless @root.editable}}disabled{{/unless}}
+                >{{localize label}}</button>
+                <input type="number" name="{{path}}" value="{{value}}" min="0" step="1" aria-label="{{localize label}}" {{#unless @root.editable}}disabled{{/unless}}>
+              </div>
+            {{/each}}
+          </div>
+        </section>
+      {{/if}}
+    </div>
+
+    <aside class="secondary-column">
+      <section class="sheet-section resistances-section">
+        <h2>{{localize "FADING_SUNS.Sheet.Sections.Resistances"}}</h2>
+        <div class="resistance-list">
+          {{#each resistances}}
+            <article>
+              <h3>{{localize label}}</h3>
+              <div class="paired-values">
+                <label>
+                  <span>{{localize "FADING_SUNS.Sheet.Resistances.Manual"}}</span>
+                  <input type="number" name="{{manualPath}}" value="{{manual}}" min="0" step="1" {{#unless @root.editable}}disabled{{/unless}}>
+                </label>
+                <label>
+                  <span>{{localize "FADING_SUNS.Sheet.Resistances.Total"}}</span>
+                  <input type="number" value="{{total}}" readonly tabindex="-1">
+                </label>
+              </div>
+            </article>
+          {{/each}}
+        </div>
+      </section>
+
+      {{#if showMainTraits}}
+        <section class="sheet-section occult-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Occult"}}</h2>
+          <div class="occult-grid">
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.psi"}}</span><input type="number" name="system.occult.psi" value="{{system.occult.psi}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.urge"}}</span><input type="number" name="system.occult.urge" value="{{system.occult.urge}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.theurgy"}}</span><input type="number" name="system.occult.theurgy" value="{{system.occult.theurgy}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.hubris"}}</span><input type="number" name="system.occult.hubris" value="{{system.occult.hubris}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          </div>
+        </section>
+      {{/if}}
+    </aside>
+  </div>
+
+  {{#if isExtra}}
+    <details class="optional-traits">
+      <summary>{{localize "FADING_SUNS.Sheet.Npc.OptionalTraits"}}</summary>
+      <div class="optional-traits-content">
+        <section class="sheet-section characteristics-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Characteristics"}}</h2>
+          <div class="characteristic-groups">
+            {{#each characteristicGroups}}
+              <fieldset class="characteristic-group">
+                <legend>{{localize label}}</legend>
+                {{#each characteristics}}
+                  <label>
+                    <span>{{localize label}}</span>
+                    <input type="number" name="{{path}}" value="{{value}}" min="0" step="1" {{#unless @root.editable}}disabled{{/unless}}>
+                  </label>
+                {{/each}}
+              </fieldset>
+            {{/each}}
+          </div>
+        </section>
+
+        <section class="sheet-section skills-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Skills"}}</h2>
+          <div class="skills-grid">
+            {{#each skills}}
+              <div class="skill-row">
+                <button
+                  type="button"
+                  class="skill-roll-button"
+                  data-action="rollSkill"
+                  data-skill-key="{{key}}"
+                  title="{{localize "FADING_SUNS.Roll.RollSkill"}}"
+                  {{#unless @root.editable}}disabled{{/unless}}
+                >{{localize label}}</button>
+                <input type="number" name="{{path}}" value="{{value}}" min="0" step="1" aria-label="{{localize label}}" {{#unless @root.editable}}disabled{{/unless}}>
+              </div>
+            {{/each}}
+          </div>
+        </section>
+
+        <section class="sheet-section occult-section">
+          <h2>{{localize "FADING_SUNS.Sheet.Sections.Occult"}}</h2>
+          <div class="occult-grid">
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.psi"}}</span><input type="number" name="system.occult.psi" value="{{system.occult.psi}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.urge"}}</span><input type="number" name="system.occult.urge" value="{{system.occult.urge}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.theurgy"}}</span><input type="number" name="system.occult.theurgy" value="{{system.occult.theurgy}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS_4E.Fields.occult.hubris"}}</span><input type="number" name="system.occult.hubris" value="{{system.occult.hubris}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          </div>
+        </section>
+      </div>
+    </details>
+  {{/if}}
+
+  <section class="sheet-section items-section">
+    <h2>{{localize "FADING_SUNS.Sheet.Sections.Items"}}</h2>
+    <div class="item-groups">
+      {{#each itemSections}}
+        <section class="item-group" data-group="{{key}}">
+          <h3>{{localize label}}</h3>
+          <ol class="item-list">
+            {{#each items}}
+              <li class="item-row draggable" data-item-id="{{id}}">
+                <img class="item-image" src="{{img}}" alt="{{name}}">
+                <div class="item-main">
+                  <strong>{{name}}</strong>
+                  <span class="item-type">{{typeLabel}}</span>
+                  {{#if details.length}}
+                    <div class="item-details">
+                      {{#each details}}
+                        <span><b>{{localize label}}:</b> {{value}}</span>
+                      {{/each}}
+                    </div>
+                  {{/if}}
+                </div>
+                {{#if @root.editable}}
+                  <div class="item-actions">
+                    {{#if isRangedWeapon}}<button type="button" data-action="fireWeapon">{{localize "FADING_SUNS.Roll.Weapon.Fire"}}</button>{{/if}}
+                    <button type="button" data-action="editItem">{{localize "FADING_SUNS.Sheet.Actions.Edit"}}</button>
+                    <button type="button" data-action="deleteItem">{{localize "FADING_SUNS.Sheet.Actions.Delete"}}</button>
+                  </div>
+                {{/if}}
+              </li>
+            {{else}}
+              <li class="empty-list">{{localize "FADING_SUNS.Sheet.Items.None"}}</li>
+            {{/each}}
+          </ol>
+        </section>
+      {{/each}}
+    </div>
+  </section>
+</div>

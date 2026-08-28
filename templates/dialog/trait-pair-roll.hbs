@@ -1,0 +1,41 @@
+<div class="trait-pair-dialog-content">
+  <dl class="trait-pair-dialog-summary">
+    <div>
+      <dt>{{localize "FADING_SUNS.Roll.Actor"}}</dt>
+      <dd>{{actorName}}</dd>
+    </div>
+    <div>
+      <dt>{{localize "FADING_SUNS.Roll.Skill"}}</dt>
+      <dd>{{skillLabel}} ({{skillValue}})</dd>
+    </div>
+  </dl>
+
+  <label>
+    <span>{{localize "FADING_SUNS.Roll.Characteristic"}}</span>
+    <select name="characteristicKey">
+      {{#each characteristics}}
+        <option value="{{key}}" data-characteristic-value="{{value}}">{{label}} ({{value}})</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <label>
+    <span>{{localize "FADING_SUNS.Roll.GoalModifier"}}</span>
+    <input type="number" name="goalModifier" value="0" step="1">
+  </label>
+
+  <div class="trait-pair-goal-preview">
+    <span>{{localize "FADING_SUNS.Roll.Goal"}}</span>
+    <output data-goal-preview>0</output>
+    <small data-goal-formula></small>
+  </div>
+
+  <label>
+    <span>{{localize "FADING_SUNS.Roll.Favorability.Label"}}</span>
+    <select name="favorability">
+      <option value="normal">{{localize "FADING_SUNS.Roll.Favorability.normal"}}</option>
+      <option value="favorable">{{localize "FADING_SUNS.Roll.Favorability.favorable"}}</option>
+      <option value="unfavorable">{{localize "FADING_SUNS.Roll.Favorability.unfavorable"}}</option>
+    </select>
+  </label>
+</div>

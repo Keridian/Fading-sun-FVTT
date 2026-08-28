@@ -1,0 +1,97 @@
+<section class="fs4e-initiative-panel" data-initiative-mode="{{#if isInteractive}}interactive{{else}}rolled{{/if}}">
+  <header class="fs4e-initiative-header">
+    <strong>{{localize "FADING_SUNS.Initiative.Title"}}</strong>
+    <span>{{modeLabel}}</span>
+  </header>
+
+  {{#if modeChangePending}}
+    <p class="fs4e-initiative-notice">
+      {{localize "FADING_SUNS.Initiative.ModeNextRound" mode=configuredModeLabel}}
+    </p>
+  {{/if}}
+
+  {{#if isInteractive}}
+    {{#unless started}}
+      <p>{{localize "FADING_SUNS.Initiative.Status.NotStarted"}}</p>
+    {{else}}
+      <p class="fs4e-initiative-status">{{status}}</p>
+      {{#if canConfigureLeader}}
+        <label class="fs4e-initiative-leader">
+          <span>{{localize "FADING_SUNS.Initiative.TroupeLeader"}}</span>
+          <select data-action="designateInitiativeLeader">
+            <option value="">{{localize "FADING_SUNS.Initiative.SelectLeader"}}</option>
+            {{#each combatants}}
+              <option value="{{id}}" {{#if isLeader}}selected{{/if}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </label>
+      {{/if}}
+
+      {{#if leader}}
+        <p><strong>{{localize "FADING_SUNS.Initiative.TroupeLeader"}}:</strong> {{leader.name}}</p>
+      {{/if}}
+
+      {{#if current}}
+        <p><strong>{{localize "FADING_SUNS.Initiative.Current"}}:</strong> {{current.name}}</p>
+      {{/if}}
+      {{#if chooser}}
+        <p><strong>{{localize "FADING_SUNS.Initiative.Chooser"}}:</strong> {{chooser.name}}</p>
+      {{/if}}
+      {{#if acted}}
+        <p class="fs4e-initiative-roster">
+          <strong>{{localize "FADING_SUNS.Initiative.AlreadyActed"}}:</strong>
+          {{#each acted}}<span>{{name}}</span>{{/each}}
+        </p>
+      {{/if}}
+      {{#if remaining}}
+        <p class="fs4e-initiative-roster">
+          <strong>{{localize "FADING_SUNS.Initiative.StillAvailable"}}:</strong>
+          {{#each remaining}}<span>{{name}}</span>{{/each}}
+        </p>
+      {{/if}}
+      {{#if canChoose}}
+        <div class="fs4e-initiative-choices">
+          <strong>{{localize "FADING_SUNS.Initiative.ChooseNext"}}</strong>
+          {{#each eligible}}
+            <button type="button" data-action="chooseNextCombatant" data-combatant-id="{{id}}">
+              {{name}}
+            </button>
+          {{/each}}
+        </div>
+      {{/if}}
+    {{/unless}}
+  {{else}}
+    {{#unless started}}
+      <p>{{localize "FADING_SUNS.Initiative.ConfigureEdgesBeforeStart"}}</p>
+    {{/unless}}
+    <p class="fs4e-initiative-help">{{localize "FADING_SUNS.Initiative.RolledSummary"}}</p>
+    <ol class="fs4e-initiative-rolls">
+      {{#each combatants}}
+        <li data-initiative-combatant-id="{{id}}">
+          <span class="fs4e-initiative-roll-name">{{name}}</span>
+          {{#if hasRolledEntry}}
+            <strong class="fs4e-initiative-roll-result">{{roll}}</strong>
+            <small>{{localize "FADING_SUNS.Initiative.DexterityShort"}} {{dexterity}}, {{localize "FADING_SUNS.Initiative.IntuitionShort"}} {{intuition}}</small>
+            {{#if favorable}}
+              <small>{{localize "FADING_SUNS.Initiative.FavorableDice"}}: {{dice}}</small>
+            {{/if}}
+            {{#if tieBreaks}}
+              <small>{{localize "FADING_SUNS.Initiative.TieBreaks"}}: {{tieBreaks}}</small>
+            {{/if}}
+          {{/if}}
+          {{#if ../canConfigureEdge}}
+            <label class="fs4e-initiative-edge">
+              <input type="checkbox" data-action="toggleInitiativeEdge" data-combatant-id="{{id}}" {{checked hasEdge}}>
+              <span>{{localize "FADING_SUNS.Initiative.Advantage"}}</span>
+            </label>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ol>
+    {{#if canReroll}}
+      <button type="button" data-action="rerollInitiativeRound">
+        {{localize "FADING_SUNS.Initiative.RerollRound"}}
+      </button>
+    {{/if}}
+  {{/if}}
+</section>

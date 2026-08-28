@@ -1,0 +1,128 @@
+<div class="resistance-dialog-content fs4e-resolution-dialog">
+  <div class="fs4e-dialog-primary">
+    <label {{#if weaponBound}}hidden{{/if}}>
+      <span>{{localize "FADING_SUNS.Roll.Resistance.Source"}}</span>
+      <select name="mode" {{#if weaponBound}}disabled{{/if}}>
+        <option value="targetBody" {{#if targetBodySelected}}selected{{/if}} {{#unless targetBodyAvailable}}disabled{{/unless}}>
+          {{localize "FADING_SUNS.Roll.Resistance.TargetBody"}}
+        </option>
+        <option value="manual" {{#if manualSelected}}selected{{/if}}>
+          {{localize "FADING_SUNS.Roll.Resistance.Manual"}}
+        </option>
+      </select>
+    </label>
+
+    {{#unless targetBodyAvailable}}
+      <p class="resistance-dialog-notice">{{targetUnavailableMessage}}</p>
+    {{/unless}}
+
+    <div class="fs4e-dialog-key-values">
+      <div class="fs4e-summary-row" data-target-summary {{#unless targetBodySelected}}hidden{{/unless}}>
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.Target"}}</span>
+        <strong class="fs4e-summary-value" data-target-name>{{targetName}}</strong>
+      </div>
+      <div class="fs4e-summary-row resistance-dialog-effective">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.FinalResistance"}}</span>
+        <strong class="fs4e-summary-value" data-final-resistance>{{effectiveResistance}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.AvailableVp"}}</span>
+        <strong class="fs4e-summary-value">{{availableVp}}</strong>
+      </div>
+    </div>
+
+    <div data-manual-resistance-fields {{#if targetBodySelected}}hidden{{/if}}>
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Resistance.Label"}}</span>
+        <input type="number" name="resistance" value="0" min="0" step="1" required>
+      </label>
+    </div>
+
+    <div data-target-body-fields {{#unless targetBodySelected}}hidden{{/unless}}>
+      <div class="resistance-dialog-controls">
+        <label class="resistance-dialog-attack-property">
+          <span>{{localize "FADING_SUNS.Roll.Resistance.AttackProperty"}}</span>
+          <select name="attackProperty" {{#if weaponBound}}disabled{{/if}}>
+            {{selectOptions attackPropertyChoices selected=attackProperty localize=true}}
+          </select>
+        </label>
+        <label class="resistance-dialog-attack-range-band">
+          <span>{{localize "FADING_SUNS.Roll.Resistance.AttackRangeBand"}}</span>
+          <select name="attackRangeBand" {{#if weaponBound}}disabled{{/if}}>
+            {{selectOptions attackRangeBandChoices selected=attackRangeBand localize=true}}
+          </select>
+        </label>
+        <label>
+          <span>{{localize "FADING_SUNS.Roll.Resistance.Adjustment"}}</span>
+          <input type="number" name="adjustment" value="0" step="1" required>
+        </label>
+      </div>
+
+      <details class="fs4e-dialog-details">
+        <summary>{{localize "FADING_SUNS.Roll.Resistance.CalculationDetails"}}</summary>
+        <div class="resistance-dialog-breakdown">
+          <div class="fs4e-summary-row">
+            <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.ManualBodyResistance"}}</span>
+            <strong class="fs4e-summary-value" data-manual-body-resistance>{{manualResistance}}</strong>
+          </div>
+          <section class="resistance-dialog-equipment">
+            <h4>{{localize "FADING_SUNS.Roll.Resistance.Armor"}}</h4>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.Equipment"}}</span><strong data-worn-armor-name>{{wornArmor.name}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.BaseResistance"}}</span><strong data-worn-armor-base>{{wornArmor.baseResistance}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.Proofs"}}</span><strong data-worn-armor-proofs>{{wornArmor.proofs}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.EffectiveResistance"}}</span><strong data-worn-armor-effective>{{wornArmor.effectiveResistance}}</strong></div>
+            <p class="resistance-dialog-proof-status" data-worn-armor-rule hidden></p>
+          </section>
+          <section class="resistance-dialog-equipment">
+            <h4>{{localize "FADING_SUNS.Roll.Resistance.HandShield"}}</h4>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.Equipment"}}</span><strong data-hand-shield-name>{{handShield.name}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.BaseResistance"}}</span><strong data-hand-shield-base>{{handShield.baseResistance}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.Proofs"}}</span><strong data-hand-shield-proofs>{{handShield.proofs}}</strong></div>
+            <div><span>{{localize "FADING_SUNS.Roll.Resistance.EffectiveResistance"}}</span><strong data-hand-shield-effective>{{handShield.effectiveResistance}}</strong></div>
+            <p class="resistance-dialog-proof-status" data-hand-shield-rule hidden></p>
+          </section>
+          <div class="fs4e-summary-row">
+            <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.Distortion"}}</span>
+            <strong class="fs4e-summary-value" data-distortion-resistance>{{distortionResistance}}</strong>
+          </div>
+          <div class="fs4e-summary-row">
+            <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.Adjustment"}}</span>
+            <strong class="fs4e-summary-value" data-adjustment-preview>0</strong>
+          </div>
+          <div class="fs4e-summary-row resistance-dialog-effective">
+            <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.EffectiveBodyResistance"}}</span>
+            <strong class="fs4e-summary-value" data-effective-body-resistance>{{effectiveResistance}}</strong>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="fs4e-dialog-spend">
+    <label>
+      <span>{{localize "FADING_SUNS.Roll.Resistance.CacheSpend"}}</span>
+      <input type="number" name="cacheSpend" value="0" min="0" max="{{cacheVp}}" step="1" required>
+    </label>
+    {{#if bankAvailable}}
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Resistance.BankSpend"}}</span>
+        <input type="number" name="bankSpend" value="0" min="0" max="{{bankVp}}" step="1" required>
+      </label>
+    {{/if}}
+    <div class="resistance-dialog-total fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.TotalSpend"}}</span>
+      <strong class="fs4e-summary-value" data-total-spend>0</strong>
+    </div>
+  </div>
+
+  <details class="fs4e-dialog-details">
+    <summary>{{localize "FADING_SUNS.Chat.Details"}}</summary>
+    <dl class="resistance-dialog-summary">
+      <div><dt>{{localize "FADING_SUNS.Roll.Actor"}}</dt><dd>{{actorName}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Resistance.GoalRollResult"}}</dt><dd>{{selectedResult}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Resistance.VpGenerated"}}</dt><dd>{{vpGenerated}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Resistance.CacheVp"}}</dt><dd>{{cacheVp}}</dd></div>
+      {{#if bankAvailable}}<div><dt>{{localize "FADING_SUNS.Roll.Resistance.BankVp"}}</dt><dd>{{bankVp}}</dd></div>{{/if}}
+    </dl>
+  </details>
+</div>

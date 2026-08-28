@@ -1,0 +1,40 @@
+<article class="fadingsuns4e gm-damage-card fs4e-chat-card">
+  <header class="fs4e-card-header">
+    <div class="fs4e-card-title">
+      <h3>{{localize "FADING_SUNS.Roll.DamageApplication.Damage"}}</h3>
+    </div>
+  </header>
+
+  <section class="fs4e-workflow-block">
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.Target"}}</span>
+      <strong class="fs4e-summary-value">{{targetName}}</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.Damage"}}</span>
+      <strong class="fs4e-summary-value">{{damage}}</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.AttackProperty"}}</span>
+      <strong class="fs4e-summary-value">{{localize attackPropertyLabel}}</strong>
+    </div>
+  </section>
+
+  <details class="fs4e-details">
+    <summary class="fs4e-details-summary">{{localize "FADING_SUNS.Chat.Details"}}</summary>
+    <div class="fs4e-details-content">
+      {{#if attackPropertyDamage}}
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.BaseDamage"}}</span>
+          <strong class="fs4e-summary-value">{{baseDamage}}</strong>
+        </div>
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Resistance.ShockDamageBonus"}}</span>
+          <strong class="fs4e-summary-value">+{{attackPropertyDamage.bonusDamage}}</strong>
+        </div>
+      {{/if}}
+    </div>
+  </details>
+
+  <section class="gm-damage-resolution"></section>
+</article>

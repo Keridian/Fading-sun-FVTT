@@ -1,0 +1,2744 @@
+.fadingsuns4e.character-sheet {
+  --fs4e-border: color-mix(in srgb, currentColor 24%, transparent);
+  --fs4e-panel: color-mix(in srgb, currentColor 7%, transparent);
+  --fs4e-panel-strong: color-mix(in srgb, currentColor 12%, transparent);
+  color: var(--color-text-primary, inherit);
+  min-width: 620px;
+}
+
+.fadingsuns4e.character-sheet .window-content {
+  overflow: hidden;
+  padding: 0;
+}
+
+.fadingsuns4e.character-sheet .sheet-scroll {
+  height: 100%;
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.fadingsuns4e.character-sheet h2,
+.fadingsuns4e.character-sheet h3,
+.fadingsuns4e.character-sheet ol,
+.fadingsuns4e.character-sheet p {
+  margin: 0;
+}
+
+.fadingsuns4e.character-sheet input {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--fs4e-border);
+  color: inherit;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.fadingsuns4e.character-sheet input[readonly] {
+  background: var(--fs4e-panel-strong);
+  cursor: default;
+  opacity: 0.8;
+}
+
+.fadingsuns4e.character-sheet label > span {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.character-sheet .sheet-header {
+  align-items: start;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 112px minmax(0, 1fr);
+  margin-bottom: 0.75rem;
+}
+
+.fadingsuns4e.character-sheet .actor-portrait {
+  aspect-ratio: 1;
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  object-fit: cover;
+  width: 112px;
+}
+
+.fadingsuns4e.character-sheet .actor-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+  width: 100%;
+}
+
+.fadingsuns4e.character-sheet .identity-grid {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fadingsuns4e.character-sheet .sheet-section {
+  background: var(--fs4e-panel);
+  border: 1px solid var(--fs4e-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.character-sheet .sheet-section > h2 {
+  border-bottom: 1px solid var(--fs4e-border);
+  font-size: 1rem;
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.3rem;
+}
+
+.fadingsuns4e.character-sheet .resource-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.fadingsuns4e.character-sheet .resource-card,
+.fadingsuns4e.character-sheet .resistance-list article,
+.fadingsuns4e.character-sheet .item-group {
+  background: var(--fs4e-panel);
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  padding: 0.45rem;
+}
+
+.fadingsuns4e.character-sheet .resource-card h3,
+.fadingsuns4e.character-sheet .item-group > h3 {
+  font-size: 0.84rem;
+  margin-bottom: 0.4rem;
+}
+
+.fadingsuns4e.character-sheet .resource-fields,
+.fadingsuns4e.character-sheet .paired-values {
+  align-items: end;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.fadingsuns4e.character-sheet .resource-fields {
+  flex-wrap: wrap;
+}
+
+.fadingsuns4e.character-sheet .resource-fields label,
+.fadingsuns4e.character-sheet .paired-values label {
+  flex: 1 1 3rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.character-sheet .resource-fields input,
+.fadingsuns4e.character-sheet .paired-values input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.character-sheet .value-separator {
+  padding-bottom: 0.4rem;
+}
+
+.fadingsuns4e.character-sheet .sheet-columns {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+}
+
+.fadingsuns4e.character-sheet .characteristic-groups {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.character-sheet .characteristic-group {
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  margin: 0;
+  padding: 0.35rem 0.45rem 0.45rem;
+}
+
+.fadingsuns4e.character-sheet .characteristic-group legend {
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+
+.fadingsuns4e.character-sheet .characteristic-group label,
+.fadingsuns4e.character-sheet .skills-grid label,
+.fadingsuns4e.character-sheet .occult-grid label {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1fr) 3.3rem;
+  margin-top: 0.3rem;
+}
+
+.fadingsuns4e.character-sheet .characteristic-group label > span,
+.fadingsuns4e.character-sheet .skills-grid label > span,
+.fadingsuns4e.character-sheet .occult-grid label > span {
+  margin: 0;
+}
+
+.fadingsuns4e.character-sheet .characteristic-group input,
+.fadingsuns4e.character-sheet .skills-grid input,
+.fadingsuns4e.character-sheet .occult-grid input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.character-sheet .skills-grid {
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.character-sheet .resistance-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fadingsuns4e.character-sheet .resistance-list h3 {
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+}
+
+.fadingsuns4e.character-sheet .occult-grid {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.character-sheet .item-groups {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.character-sheet .item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.fadingsuns4e.character-sheet .item-row {
+  align-items: center;
+  border-top: 1px solid var(--fs4e-border);
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  padding: 0.4rem 0;
+}
+
+.fadingsuns4e.character-sheet .item-image {
+  border: 1px solid var(--fs4e-border);
+  border-radius: 3px;
+  height: 34px;
+  object-fit: cover;
+  width: 34px;
+}
+
+.fadingsuns4e.character-sheet .item-main,
+.fadingsuns4e.character-sheet .item-details {
+  min-width: 0;
+}
+
+.fadingsuns4e.character-sheet .item-type {
+  font-size: 0.7rem;
+  margin-left: 0.35rem;
+  opacity: 0.7;
+}
+
+.fadingsuns4e.character-sheet .item-details {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  gap: 0.2rem 0.55rem;
+  margin-top: 0.2rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.character-sheet .item-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.fadingsuns4e.character-sheet .item-actions button {
+  font-size: 0.7rem;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.35rem;
+}
+
+.fadingsuns4e.character-sheet .empty-list {
+  border-top: 1px solid var(--fs4e-border);
+  font-size: 0.75rem;
+  opacity: 0.65;
+  padding: 0.45rem 0;
+}
+
+@media (max-width: 700px) {
+  .fadingsuns4e.character-sheet {
+    min-width: 480px;
+  }
+
+  .fadingsuns4e.character-sheet .identity-grid,
+  .fadingsuns4e.character-sheet .resource-grid,
+  .fadingsuns4e.character-sheet .item-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fadingsuns4e.character-sheet .sheet-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fadingsuns4e.creature-sheet {
+  --fs4e-creature-accent: #785d87;
+  --fs4e-creature-border: color-mix(in srgb, currentColor 24%, transparent);
+  --fs4e-creature-panel: color-mix(in srgb, currentColor 7%, transparent);
+  --fs4e-creature-panel-strong: color-mix(in srgb, currentColor 13%, transparent);
+  color: var(--color-text-primary, inherit);
+  min-width: 620px;
+}
+
+.fadingsuns4e.creature-sheet .window-content {
+  overflow: hidden;
+  padding: 0;
+}
+
+.fadingsuns4e.creature-sheet .sheet-scroll {
+  height: 100%;
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.fadingsuns4e.creature-sheet h2,
+.fadingsuns4e.creature-sheet h3,
+.fadingsuns4e.creature-sheet ol,
+.fadingsuns4e.creature-sheet p {
+  margin: 0;
+}
+
+.fadingsuns4e.creature-sheet input,
+.fadingsuns4e.creature-sheet select,
+.fadingsuns4e.creature-sheet textarea {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--fs4e-creature-border);
+  color: inherit;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.fadingsuns4e.creature-sheet input[readonly] {
+  background: var(--fs4e-creature-panel-strong);
+  cursor: default;
+  opacity: 0.8;
+}
+
+.fadingsuns4e.creature-sheet label > span {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.creature-sheet .creature-header {
+  background: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--fs4e-creature-accent) 18%, transparent),
+    transparent 62%
+  );
+  border: 1px solid var(--fs4e-creature-border);
+  border-top: 4px solid var(--fs4e-creature-accent);
+  border-radius: 5px;
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 120px minmax(0, 1fr);
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.creature-sheet .creature-header[data-tier="headliner"] {
+  --fs4e-creature-accent: #9b7838;
+}
+
+.fadingsuns4e.creature-sheet .creature-header[data-tier="agent"] {
+  --fs4e-creature-accent: #6f5a83;
+}
+
+.fadingsuns4e.creature-sheet .creature-header[data-tier="extra"] {
+  --fs4e-creature-accent: #627164;
+}
+
+.fadingsuns4e.creature-sheet .actor-portrait {
+  aspect-ratio: 1;
+  border: 2px solid var(--fs4e-creature-accent);
+  border-radius: 4px;
+  object-fit: cover;
+  width: 120px;
+}
+
+.fadingsuns4e.creature-sheet .creature-name-row {
+  align-items: end;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.35fr);
+  margin-bottom: 0.5rem;
+}
+
+.fadingsuns4e.creature-sheet .actor-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .tier-field select {
+  font-weight: 700;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .creature-type-field {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.fadingsuns4e.creature-sheet .creature-type-field input {
+  border-left: 3px solid var(--fs4e-creature-accent);
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .creature-metadata {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .size-description-field {
+  grid-column: span 2;
+}
+
+.fadingsuns4e.creature-sheet .sheet-section {
+  background: var(--fs4e-creature-panel);
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.creature-sheet .sheet-section > h2,
+.fadingsuns4e.creature-sheet .section-heading {
+  border-bottom: 1px solid var(--fs4e-creature-border);
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.3rem;
+}
+
+.fadingsuns4e.creature-sheet .sheet-section > h2,
+.fadingsuns4e.creature-sheet .section-heading h2 {
+  font-size: 1rem;
+}
+
+.fadingsuns4e.creature-sheet .section-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.creature-sheet .section-heading button,
+.fadingsuns4e.creature-sheet .special-ability-row button,
+.fadingsuns4e.creature-sheet .creature-action-table button,
+.fadingsuns4e.creature-sheet .item-actions button {
+  font-size: 0.7rem;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.fadingsuns4e.creature-sheet .description-section textarea {
+  min-height: 6rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .special-abilities-section {
+  border-left: 4px solid var(--fs4e-creature-accent);
+}
+
+.fadingsuns4e.creature-sheet .special-ability-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fadingsuns4e.creature-sheet .special-ability-row {
+  background: var(--fs4e-creature-panel-strong);
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.creature-sheet .ability-heading {
+  align-items: end;
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-bottom: 0.4rem;
+}
+
+.fadingsuns4e.creature-sheet .ability-heading input,
+.fadingsuns4e.creature-sheet .ability-description textarea {
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .ability-heading input {
+  font-weight: 700;
+}
+
+.fadingsuns4e.creature-sheet .ability-description textarea {
+  min-height: 4rem;
+  resize: vertical;
+}
+
+.fadingsuns4e.creature-sheet .resource-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .resource-card,
+.fadingsuns4e.creature-sheet .resistance-list article,
+.fadingsuns4e.creature-sheet .item-group {
+  background: var(--fs4e-creature-panel);
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 4px;
+  padding: 0.45rem;
+}
+
+.fadingsuns4e.creature-sheet .vitality-card {
+  border-top: 3px solid var(--fs4e-creature-accent);
+  grid-column: span 2;
+}
+
+.fadingsuns4e.creature-sheet .resource-card h3,
+.fadingsuns4e.creature-sheet .item-group > h3 {
+  font-size: 0.84rem;
+  margin-bottom: 0.4rem;
+}
+
+.fadingsuns4e.creature-sheet .resource-fields,
+.fadingsuns4e.creature-sheet .paired-values {
+  align-items: end;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.fadingsuns4e.creature-sheet .resource-fields {
+  flex-wrap: wrap;
+}
+
+.fadingsuns4e.creature-sheet .resource-fields label,
+.fadingsuns4e.creature-sheet .paired-values label {
+  flex: 1 1 3rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.creature-sheet .resource-fields input,
+.fadingsuns4e.creature-sheet .paired-values input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .value-separator {
+  padding-bottom: 0.4rem;
+}
+
+.fadingsuns4e.creature-sheet .special-vitality-field {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.fadingsuns4e.creature-sheet .special-vitality-field textarea {
+  resize: vertical;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .resource-note {
+  font-size: 0.68rem;
+  margin-bottom: 0.35rem;
+  opacity: 0.68;
+}
+
+.fadingsuns4e.creature-sheet .action-table-wrap {
+  overflow-x: auto;
+}
+
+.fadingsuns4e.creature-sheet .creature-action-table {
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .creature-action-table th,
+.fadingsuns4e.creature-sheet .creature-action-table td {
+  border-bottom: 1px solid var(--fs4e-creature-border);
+  padding: 0.3rem;
+  text-align: left;
+}
+
+.fadingsuns4e.creature-sheet .creature-action-table th:nth-child(2) {
+  width: 20%;
+}
+
+.fadingsuns4e.creature-sheet .creature-action-table th:last-child {
+  width: 1%;
+}
+
+.fadingsuns4e.creature-sheet .creature-action-table input {
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .action-delete-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fadingsuns4e.creature-sheet .creature-trait-layout {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+}
+
+.fadingsuns4e.creature-sheet .characteristic-groups {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .characteristic-group {
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 4px;
+  margin: 0;
+  padding: 0.35rem 0.45rem 0.45rem;
+}
+
+.fadingsuns4e.creature-sheet .characteristic-group legend {
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+
+.fadingsuns4e.creature-sheet .characteristic-group label,
+.fadingsuns4e.creature-sheet .skills-grid label,
+.fadingsuns4e.creature-sheet .occult-grid label {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1fr) 3.3rem;
+  margin-top: 0.3rem;
+}
+
+.fadingsuns4e.creature-sheet .characteristic-group label > span,
+.fadingsuns4e.creature-sheet .skills-grid label > span,
+.fadingsuns4e.creature-sheet .occult-grid label > span {
+  margin: 0;
+}
+
+.fadingsuns4e.creature-sheet .characteristic-group input,
+.fadingsuns4e.creature-sheet .skills-grid input,
+.fadingsuns4e.creature-sheet .occult-grid input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.creature-sheet .skills-grid {
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .resistance-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fadingsuns4e.creature-sheet .resistance-list h3 {
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+}
+
+.fadingsuns4e.creature-sheet .extra-resistances .resistance-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .occult-grid {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.creature-sheet .optional-traits {
+  background: var(--fs4e-creature-panel);
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.creature-sheet .optional-traits > summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.fadingsuns4e.creature-sheet .optional-traits-content {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+  padding-top: 0.75rem;
+}
+
+.fadingsuns4e.creature-sheet .optional-traits-content .skills-section {
+  grid-column: 1;
+}
+
+.fadingsuns4e.creature-sheet .optional-traits-content .occult-section {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.fadingsuns4e.creature-sheet .item-groups {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.creature-sheet .item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.fadingsuns4e.creature-sheet .item-row {
+  align-items: center;
+  border-top: 1px solid var(--fs4e-creature-border);
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: 0.4rem 0;
+}
+
+.fadingsuns4e.creature-sheet .item-image {
+  border: 1px solid var(--fs4e-creature-border);
+  border-radius: 3px;
+  height: 34px;
+  object-fit: cover;
+  width: 34px;
+}
+
+.fadingsuns4e.creature-sheet .item-main,
+.fadingsuns4e.creature-sheet .item-details {
+  min-width: 0;
+}
+
+.fadingsuns4e.creature-sheet .item-type {
+  font-size: 0.7rem;
+  margin-left: 0.35rem;
+  opacity: 0.7;
+}
+
+.fadingsuns4e.creature-sheet .item-details {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  gap: 0.2rem 0.55rem;
+  grid-column: 1 / -1;
+  margin-top: 0.2rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.creature-sheet .item-actions {
+  display: flex;
+  gap: 0.25rem;
+  grid-column: 1 / -1;
+  justify-content: end;
+}
+
+.fadingsuns4e.creature-sheet .empty-list {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  padding: 0.45rem 0;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .fadingsuns4e.creature-sheet {
+    min-width: 480px;
+  }
+
+  .fadingsuns4e.creature-sheet .creature-metadata,
+  .fadingsuns4e.creature-sheet .item-groups,
+  .fadingsuns4e.creature-sheet .extra-resistances .resistance-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fadingsuns4e.creature-sheet .creature-trait-layout,
+  .fadingsuns4e.creature-sheet .optional-traits-content {
+    grid-template-columns: 1fr;
+  }
+
+  .fadingsuns4e.creature-sheet .optional-traits-content .skills-section,
+  .fadingsuns4e.creature-sheet .optional-traits-content .occult-section {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+.fadingsuns4e.npc-sheet {
+  --fs4e-border: color-mix(in srgb, currentColor 24%, transparent);
+  --fs4e-panel: color-mix(in srgb, currentColor 7%, transparent);
+  --fs4e-panel-strong: color-mix(in srgb, currentColor 12%, transparent);
+  color: var(--color-text-primary, inherit);
+  min-width: 620px;
+}
+
+.fadingsuns4e.npc-sheet .window-content {
+  overflow: hidden;
+  padding: 0;
+}
+
+.fadingsuns4e.npc-sheet .sheet-scroll {
+  height: 100%;
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.fadingsuns4e.npc-sheet h2,
+.fadingsuns4e.npc-sheet h3,
+.fadingsuns4e.npc-sheet ol,
+.fadingsuns4e.npc-sheet p {
+  margin: 0;
+}
+
+.fadingsuns4e.npc-sheet input,
+.fadingsuns4e.npc-sheet select,
+.fadingsuns4e.npc-sheet textarea {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--fs4e-border);
+  color: inherit;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.fadingsuns4e.npc-sheet input[readonly] {
+  background: var(--fs4e-panel-strong);
+  cursor: default;
+  opacity: 0.8;
+}
+
+.fadingsuns4e.npc-sheet label > span {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.npc-sheet .sheet-header {
+  align-items: start;
+  border-left: 4px solid var(--fs4e-border);
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 112px minmax(0, 1fr);
+  margin-bottom: 0.75rem;
+  padding-left: 0.55rem;
+}
+
+.fadingsuns4e.npc-sheet .sheet-header[data-tier="headliner"] {
+  border-left-color: #9b7838;
+}
+
+.fadingsuns4e.npc-sheet .sheet-header[data-tier="agent"] {
+  border-left-color: #587ca0;
+}
+
+.fadingsuns4e.npc-sheet .sheet-header[data-tier="extra"] {
+  border-left-color: #687168;
+}
+
+.fadingsuns4e.npc-sheet .actor-portrait {
+  aspect-ratio: 1;
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  object-fit: cover;
+  width: 112px;
+}
+
+.fadingsuns4e.npc-sheet .name-tier-row {
+  align-items: end;
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.35fr);
+  margin-bottom: 0.55rem;
+}
+
+.fadingsuns4e.npc-sheet .actor-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .tier-field select {
+  font-weight: 700;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .identity-grid {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fadingsuns4e.npc-sheet .sheet-section {
+  background: var(--fs4e-panel);
+  border: 1px solid var(--fs4e-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.npc-sheet .sheet-section > h2,
+.fadingsuns4e.npc-sheet .section-heading {
+  border-bottom: 1px solid var(--fs4e-border);
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.3rem;
+}
+
+.fadingsuns4e.npc-sheet .sheet-section > h2,
+.fadingsuns4e.npc-sheet .section-heading h2 {
+  font-size: 1rem;
+}
+
+.fadingsuns4e.npc-sheet .section-heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.npc-sheet .section-heading button,
+.fadingsuns4e.npc-sheet .npc-action-table button,
+.fadingsuns4e.npc-sheet .item-actions button {
+  font-size: 0.7rem;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.fadingsuns4e.npc-sheet .description-section textarea {
+  min-height: 6rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .resource-grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+}
+
+.fadingsuns4e.npc-sheet .resource-card,
+.fadingsuns4e.npc-sheet .resistance-list article,
+.fadingsuns4e.npc-sheet .item-group {
+  background: var(--fs4e-panel);
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  padding: 0.45rem;
+}
+
+.fadingsuns4e.npc-sheet .resource-card h3,
+.fadingsuns4e.npc-sheet .item-group > h3 {
+  font-size: 0.84rem;
+  margin-bottom: 0.4rem;
+}
+
+.fadingsuns4e.npc-sheet .resource-fields,
+.fadingsuns4e.npc-sheet .paired-values {
+  align-items: end;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.fadingsuns4e.npc-sheet .resource-fields {
+  flex-wrap: wrap;
+}
+
+.fadingsuns4e.npc-sheet .resource-fields label,
+.fadingsuns4e.npc-sheet .paired-values label {
+  flex: 1 1 3rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.npc-sheet .resource-fields input,
+.fadingsuns4e.npc-sheet .paired-values input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .value-separator {
+  padding-bottom: 0.4rem;
+}
+
+.fadingsuns4e.npc-sheet .action-table-wrap {
+  overflow-x: auto;
+}
+
+.fadingsuns4e.npc-sheet .npc-action-table {
+  border-collapse: collapse;
+  margin: 0;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .npc-action-table th,
+.fadingsuns4e.npc-sheet .npc-action-table td {
+  border-bottom: 1px solid var(--fs4e-border);
+  padding: 0.3rem;
+  text-align: left;
+}
+
+.fadingsuns4e.npc-sheet .npc-action-table th:nth-child(2) {
+  width: 20%;
+}
+
+.fadingsuns4e.npc-sheet .npc-action-table th:last-child {
+  width: 1%;
+}
+
+.fadingsuns4e.npc-sheet .npc-action-table input {
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .action-delete-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fadingsuns4e.npc-sheet .sheet-columns {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+}
+
+.fadingsuns4e.npc-sheet .sheet-columns.extra-summary {
+  grid-template-columns: 1fr;
+}
+
+.fadingsuns4e.npc-sheet .characteristic-groups {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.npc-sheet .characteristic-group {
+  border: 1px solid var(--fs4e-border);
+  border-radius: 4px;
+  margin: 0;
+  padding: 0.35rem 0.45rem 0.45rem;
+}
+
+.fadingsuns4e.npc-sheet .characteristic-group legend {
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+
+.fadingsuns4e.npc-sheet .characteristic-group label,
+.fadingsuns4e.npc-sheet .skills-grid label,
+.fadingsuns4e.npc-sheet .occult-grid label {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1fr) 3.3rem;
+  margin-top: 0.3rem;
+}
+
+.fadingsuns4e.npc-sheet .characteristic-group label > span,
+.fadingsuns4e.npc-sheet .skills-grid label > span,
+.fadingsuns4e.npc-sheet .occult-grid label > span {
+  margin: 0;
+}
+
+.fadingsuns4e.npc-sheet .characteristic-group input,
+.fadingsuns4e.npc-sheet .skills-grid input,
+.fadingsuns4e.npc-sheet .occult-grid input {
+  text-align: center;
+  width: 100%;
+}
+
+.fadingsuns4e.npc-sheet .skills-grid {
+  column-gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.npc-sheet .resistance-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.fadingsuns4e.npc-sheet .resistance-list h3 {
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+}
+
+.fadingsuns4e.npc-sheet .occult-grid {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.npc-sheet .optional-traits {
+  background: var(--fs4e-panel);
+  border: 1px solid var(--fs4e-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.npc-sheet .optional-traits > summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.fadingsuns4e.npc-sheet .optional-traits-content {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr);
+  padding-top: 0.75rem;
+}
+
+.fadingsuns4e.npc-sheet .optional-traits-content .skills-section {
+  grid-column: 1;
+}
+
+.fadingsuns4e.npc-sheet .optional-traits-content .occult-section {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.fadingsuns4e.npc-sheet .item-groups {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.npc-sheet .item-list {
+  list-style: none;
+  padding: 0;
+}
+
+.fadingsuns4e.npc-sheet .item-row {
+  align-items: center;
+  border-top: 1px solid var(--fs4e-border);
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  padding: 0.4rem 0;
+}
+
+.fadingsuns4e.npc-sheet .item-image {
+  border: 1px solid var(--fs4e-border);
+  border-radius: 3px;
+  height: 34px;
+  object-fit: cover;
+  width: 34px;
+}
+
+.fadingsuns4e.npc-sheet .item-main,
+.fadingsuns4e.npc-sheet .item-details {
+  min-width: 0;
+}
+
+.fadingsuns4e.npc-sheet .item-type {
+  font-size: 0.7rem;
+  margin-left: 0.35rem;
+  opacity: 0.7;
+}
+
+.fadingsuns4e.npc-sheet .item-details {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  gap: 0.2rem 0.55rem;
+  margin-top: 0.2rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.npc-sheet .item-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.fadingsuns4e.npc-sheet .empty-list {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  padding: 0.45rem 0;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .fadingsuns4e.npc-sheet {
+    min-width: 480px;
+  }
+
+  .fadingsuns4e.npc-sheet .identity-grid,
+  .fadingsuns4e.npc-sheet .item-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fadingsuns4e.npc-sheet .sheet-columns,
+  .fadingsuns4e.npc-sheet .optional-traits-content {
+    grid-template-columns: 1fr;
+  }
+
+  .fadingsuns4e.npc-sheet .optional-traits-content .skills-section,
+  .fadingsuns4e.npc-sheet .optional-traits-content .occult-section {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+.fadingsuns4e.item-sheet {
+  --fs4e-item-accent: #6b6f8f;
+  --fs4e-item-border: color-mix(in srgb, currentColor 24%, transparent);
+  --fs4e-item-panel: color-mix(in srgb, currentColor 7%, transparent);
+  --fs4e-item-panel-strong: color-mix(in srgb, currentColor 12%, transparent);
+  color: var(--color-text-primary, inherit);
+  min-width: 500px;
+}
+
+.fadingsuns4e.item-sheet .window-content {
+  overflow: hidden;
+  padding: 0;
+}
+
+.fadingsuns4e.item-sheet .sheet-scroll {
+  height: 100%;
+  overflow: auto;
+  padding: 0.75rem;
+}
+
+.fadingsuns4e.item-sheet h2,
+.fadingsuns4e.item-sheet h3,
+.fadingsuns4e.item-sheet ol,
+.fadingsuns4e.item-sheet p {
+  margin: 0;
+}
+
+.fadingsuns4e.item-sheet input:not([type="checkbox"]),
+.fadingsuns4e.item-sheet select,
+.fadingsuns4e.item-sheet textarea {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid var(--fs4e-item-border);
+  color: inherit;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.4rem;
+}
+
+.fadingsuns4e select option,
+.fadingsuns4e select optgroup {
+  background-color: Canvas;
+  color: CanvasText;
+}
+
+.fadingsuns4e.item-sheet label > span {
+  display: block;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.item-sheet .item-header {
+  align-items: center;
+  background: linear-gradient(
+    110deg,
+    color-mix(in srgb, var(--fs4e-item-accent) 18%, transparent),
+    transparent 65%
+  );
+  border: 1px solid var(--fs4e-item-border);
+  border-left: 4px solid var(--fs4e-item-accent);
+  border-radius: 5px;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 88px minmax(0, 1fr);
+  margin-bottom: 0.75rem;
+  padding: 0.6rem;
+}
+
+.fadingsuns4e.item-sheet .item-image {
+  aspect-ratio: 1;
+  border: 1px solid var(--fs4e-item-border);
+  border-radius: 4px;
+  object-fit: cover;
+  width: 88px;
+}
+
+.fadingsuns4e.item-sheet .item-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.fadingsuns4e.item-sheet .item-type {
+  display: block;
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.item-sheet .sheet-section {
+  background: var(--fs4e-item-panel);
+  border: 1px solid var(--fs4e-item-border);
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.item-sheet .sheet-section > h2,
+.fadingsuns4e.item-sheet .section-heading {
+  border-bottom: 1px solid var(--fs4e-item-border);
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.3rem;
+}
+
+.fadingsuns4e.item-sheet .sheet-section > h2,
+.fadingsuns4e.item-sheet .section-heading h2 {
+  font-size: 1rem;
+}
+
+.fadingsuns4e.item-sheet .section-heading,
+.fadingsuns4e.item-sheet .array-subheading,
+.fadingsuns4e.item-sheet .grant-heading {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.item-sheet .section-heading button,
+.fadingsuns4e.item-sheet .array-subheading button,
+.fadingsuns4e.item-sheet .array-row button,
+.fadingsuns4e.item-sheet .movement-mode-row button,
+.fadingsuns4e.item-sheet .grant-heading button {
+  font-size: 0.7rem;
+  min-height: 1.6rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.fadingsuns4e.item-sheet .source-grid {
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1.5fr) 5rem minmax(0, 1fr);
+}
+
+.fadingsuns4e.item-sheet .source-grid input:not([type="checkbox"]),
+.fadingsuns4e.item-sheet .description-section textarea {
+  width: 100%;
+}
+
+.fadingsuns4e.item-sheet .description-section textarea,
+.fadingsuns4e.item-sheet .field-grid textarea {
+  resize: vertical;
+}
+
+.fadingsuns4e.item-sheet .description-section textarea {
+  min-height: 7rem;
+}
+
+.fadingsuns4e.item-sheet .field-grid,
+.fadingsuns4e.item-sheet .technology-grid,
+.fadingsuns4e.item-sheet .grant-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fadingsuns4e.item-sheet .two-columns,
+.fadingsuns4e.item-sheet .grant-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.item-sheet .four-columns,
+.fadingsuns4e.item-sheet .technology-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fadingsuns4e.item-sheet .field-grid input:not([type="checkbox"]),
+.fadingsuns4e.item-sheet .field-grid select,
+.fadingsuns4e.item-sheet .field-grid textarea,
+.fadingsuns4e.item-sheet .technology-grid input:not([type="checkbox"]),
+.fadingsuns4e.item-sheet .grant-grid input:not([type="checkbox"]),
+.fadingsuns4e.item-sheet .grant-grid select {
+  width: 100%;
+}
+
+.fadingsuns4e.item-sheet .full-width {
+  grid-column: 1 / -1;
+}
+
+.fadingsuns4e.item-sheet .checkbox-field {
+  align-items: center;
+  align-self: end;
+  border: 1px solid var(--fs4e-item-border);
+  border-radius: 4px;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-start;
+  justify-self: start;
+  max-width: 100%;
+  min-height: 1.8rem;
+  padding: 0.25rem 0.4rem;
+  width: auto;
+}
+
+.fadingsuns4e.item-sheet .checkbox-field input[type="checkbox"] {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.fadingsuns4e.item-sheet .checkbox-field > span {
+  display: inline;
+  margin: 0;
+}
+
+.fadingsuns4e.item-sheet .armor-proof-options,
+.fadingsuns4e.item-sheet .attack-property-options,
+.fadingsuns4e.item-sheet .energy-shield-compatibility-options {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fadingsuns4e.item-sheet .armor-proof-options .proof-option,
+.fadingsuns4e.item-sheet .attack-property-options .attack-property-option,
+.fadingsuns4e.item-sheet .energy-shield-compatibility-options .compatibility-option {
+  align-self: center;
+}
+
+.fadingsuns4e.item-sheet .array-list {
+  display: grid;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+}
+
+.fadingsuns4e.item-sheet .array-row {
+  align-items: center;
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.fadingsuns4e.item-sheet .array-row input {
+  width: 100%;
+}
+
+.fadingsuns4e.item-sheet .movement-mode-list,
+.fadingsuns4e.item-sheet .grant-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.fadingsuns4e.item-sheet .movement-mode-row {
+  align-items: end;
+  background: var(--fs4e-item-panel-strong);
+  border: 1px solid var(--fs4e-item-border);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr) 6rem minmax(0, 1fr) auto;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.item-sheet .movement-mode-row input {
+  width: 100%;
+}
+
+.fadingsuns4e.item-sheet .grant-card {
+  background: var(--fs4e-item-panel-strong);
+  border: 1px solid var(--fs4e-item-border);
+  border-left: 3px solid var(--fs4e-item-accent);
+  border-radius: 4px;
+  padding: 0.55rem;
+}
+
+.fadingsuns4e.item-sheet .grant-heading {
+  border-bottom: 1px solid var(--fs4e-item-border);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+}
+
+.fadingsuns4e.item-sheet .grant-options {
+  border-top: 1px solid var(--fs4e-item-border);
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+}
+
+.fadingsuns4e.item-sheet .compact-array-list {
+  margin-top: 0.4rem;
+}
+
+.fadingsuns4e.item-sheet .power-section {
+  border-left: 4px solid #745884;
+}
+
+.fadingsuns4e.item-sheet .technology-section {
+  border-left: 4px solid #55747c;
+}
+
+.fadingsuns4e.item-sheet .subsection {
+  border: 1px solid var(--fs4e-item-border);
+  border-radius: 4px;
+  margin: 0.6rem 0 0;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.item-sheet .subsection legend {
+  font-weight: 700;
+  padding: 0 0.3rem;
+}
+
+.fadingsuns4e.item-sheet .empty-list {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  padding: 0.4rem 0;
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .fadingsuns4e.item-sheet {
+    min-width: 440px;
+  }
+
+  .fadingsuns4e.item-sheet .four-columns,
+  .fadingsuns4e.item-sheet .technology-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fadingsuns4e.item-sheet .armor-proof-options,
+  .fadingsuns4e.item-sheet .attack-property-options,
+  .fadingsuns4e.item-sheet .energy-shield-compatibility-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fadingsuns4e.item-sheet .movement-mode-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.fadingsuns4e.character-sheet .skill-row,
+.fadingsuns4e.npc-sheet .skill-row,
+.fadingsuns4e.creature-sheet .skill-row {
+  align-items: center;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: minmax(0, 1fr) 3.3rem;
+  margin-top: 0.3rem;
+}
+
+.fadingsuns4e.character-sheet .skill-roll-button,
+.fadingsuns4e.npc-sheet .skill-roll-button,
+.fadingsuns4e.creature-sheet .skill-roll-button {
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.2;
+  min-height: 1.8rem;
+  overflow: hidden;
+  padding: 0.25rem 0.4rem;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fadingsuns4e.character-sheet .skill-roll-button:not(:disabled):hover,
+.fadingsuns4e.npc-sheet .skill-roll-button:not(:disabled):hover,
+.fadingsuns4e.creature-sheet .skill-roll-button:not(:disabled):hover {
+  border-color: currentColor;
+  box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-dialog-content {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 310px;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-dialog-summary {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-dialog-summary div,
+.fadingsuns4e.trait-pair-roll-dialog label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog dt,
+.fadingsuns4e.trait-pair-roll-dialog label > span {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog dd {
+  margin: 0;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog input,
+.fadingsuns4e.trait-pair-roll-dialog select {
+  width: 100%;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-goal-preview {
+  align-items: baseline;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.2rem 0.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-goal-preview > span,
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-goal-preview > small {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-goal-preview > output {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.fadingsuns4e.trait-pair-roll-dialog .trait-pair-goal-preview > small {
+  grid-column: 1 / -1;
+  text-align: right;
+}
+
+.fadingsuns4e.trait-pair-roll-card {
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 5px;
+  color: inherit;
+  overflow: hidden;
+}
+
+.fadingsuns4e.trait-pair-roll-card > header {
+  align-items: baseline;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card h3,
+.fadingsuns4e.trait-pair-roll-card p {
+  margin: 0;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-summary {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-summary .full-width {
+  grid-column: 1 / -1;
+}
+
+.fadingsuns4e.trait-pair-roll-card dt,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-results span {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.trait-pair-roll-card dd {
+  margin: 0;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-results,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-outcome {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0.5rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-results div,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-outcome {
+  align-items: baseline;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-results div {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-outcome {
+  background: color-mix(in srgb, currentColor 6%, transparent);
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-rule-note {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding: 0.45rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-native-roll {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding: 0.4rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-native-heading {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-native-note {
+  font-size: 0.7rem;
+  margin-bottom: 0.35rem;
+  opacity: 0.7;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-native-roll .dice-total {
+  background: transparent;
+  border-color: color-mix(in srgb, currentColor 14%, transparent);
+  box-shadow: none;
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.55;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-results div:last-child strong {
+  font-size: 1.15rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance:empty {
+  display: none;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-heading,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-note,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-pending {
+  margin: 0;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-heading {
+  font-size: 0.82rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-result {
+  border-left: 3px solid currentColor;
+  padding: 0.3rem 0.45rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-result.is-victory {
+  background: color-mix(in srgb, #56815b 18%, transparent);
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-result.is-failure {
+  background: color-mix(in srgb, #8a5555 18%, transparent);
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-note,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-pending {
+  font-size: 0.76rem;
+  opacity: 0.78;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-row {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-label {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-resistance-button {
+  width: 100%;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-content {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 320px;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-summary {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-summary div,
+.fadingsuns4e.resistance-dialog label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.resistance-dialog dt,
+.fadingsuns4e.resistance-dialog label > span,
+.fadingsuns4e.resistance-dialog .resistance-dialog-total span,
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown span {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.fadingsuns4e.resistance-dialog dd {
+  margin: 0;
+}
+
+.fadingsuns4e.resistance-dialog input,
+.fadingsuns4e.resistance-dialog select {
+  width: 100%;
+}
+
+.fadingsuns4e.resistance-dialog [data-manual-resistance-fields],
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.fadingsuns4e.resistance-dialog [data-manual-resistance-fields][hidden],
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown[hidden] {
+  display: none;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown > div {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-equipment {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.45rem;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-equipment h4,
+.fadingsuns4e.resistance-dialog .resistance-dialog-proof-status {
+  margin: 0;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-equipment > div {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-proof-status {
+  font-size: 0.72rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-proof-status[hidden] {
+  display: none;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-effective {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding-top: 0.45rem;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-notice {
+  font-size: 0.76rem;
+  margin: 0;
+  opacity: 0.78;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-total {
+  align-items: baseline;
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact:empty {
+  display: none;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-heading,
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-pending {
+  margin: 0;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-heading {
+  font-size: 0.82rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-pending {
+  font-size: 0.76rem;
+  opacity: 0.78;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-row {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-label {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-impact-button {
+  width: 100%;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-content {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-summary,
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-calculation {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-summary > div,
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-calculation > div,
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-source-summary > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.fadingsuns4e.weapon-attack-dialog dt,
+.fadingsuns4e.weapon-attack-dialog dd {
+  margin: 0;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-trait,
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-source-summary {
+  border: 1px solid var(--color-border-light-primary, #777);
+  border-radius: 4px;
+  padding: 0.65rem;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-trait h3,
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-trait p {
+  margin: 0 0 0.5rem;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-final-goal {
+  border-top: 1px solid var(--color-border-light-primary, #777);
+  margin-top: 0.25rem;
+  padding-top: 0.4rem;
+  font-size: 1.1em;
+}
+
+.fadingsuns4e.weapon-attack-dialog .weapon-attack-source-summary {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .fs4e-weapon-attack-summary {
+  display: grid;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--color-border-light-primary, #777);
+  padding: 0.6rem 0.75rem;
+}
+
+.fadingsuns4e.trait-pair-roll-card .trait-pair-energy-shield-heading {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  margin-top: 0.2rem;
+  padding-top: 0.45rem;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-content {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 320px;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0.55rem;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary dt {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary dd {
+  margin: 0;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-trigger {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-trigger span,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview dt {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-trigger select {
+  width: 100%;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-help,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-notice {
+  font-size: 0.76rem;
+  margin: 0;
+  opacity: 0.78;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0.55rem;
+}
+
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview dd {
+  margin: 0;
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-content {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 320px;
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-summary {
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-summary div,
+.fadingsuns4e.impact-dialog label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.fadingsuns4e.impact-dialog [data-impact-result-fields],
+.fadingsuns4e.impact-dialog [data-impact-damage-fields] {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.fadingsuns4e.impact-dialog [data-impact-result-fields][hidden],
+.fadingsuns4e.impact-dialog [data-impact-damage-fields][hidden] {
+  display: none;
+}
+
+.fadingsuns4e.impact-dialog dt,
+.fadingsuns4e.impact-dialog label > span,
+.fadingsuns4e.impact-dialog .impact-dialog-required span,
+.fadingsuns4e.impact-dialog .impact-dialog-total span,
+.fadingsuns4e.impact-dialog .impact-dialog-total small {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+.fadingsuns4e.impact-dialog dd {
+  margin: 0;
+}
+
+.fadingsuns4e.impact-dialog input,
+.fadingsuns4e.impact-dialog select {
+  width: 100%;
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-required,
+.fadingsuns4e.impact-dialog .impact-dialog-total,
+.fadingsuns4e.impact-dialog .impact-dialog-damage-total div {
+  align-items: baseline;
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-damage-total {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.impact-dialog .impact-dialog-total small {
+  flex-basis: 100%;
+  margin-top: 0.2rem;
+  text-align: right;
+}
+
+.fadingsuns4e.impact-dialog [data-impact-cost-status][data-matches-required="true"] {
+  opacity: 0.9;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-content {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.25rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-section {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 5px;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.7rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-section h2,
+.fadingsuns4e.gm-tools .gm-tools-section h3,
+.fadingsuns4e.gm-tools .gm-tools-section p {
+  margin: 0;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-section h2 {
+  font-size: 1.05rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-section h3 {
+  font-size: 0.9rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-section p,
+.fadingsuns4e.gm-tools .gm-tools-notice {
+  font-size: 0.76rem;
+  opacity: 0.8;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-grid,
+.fadingsuns4e.gm-tools .gm-tools-damage-modes,
+.fadingsuns4e.gm-tools .gm-tools-forced-results {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fadingsuns4e.gm-tools .gm-tools-forced-results[hidden],
+.fadingsuns4e.gm-tools [data-second-result][hidden] {
+  display: none;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-wide {
+  grid-column: 1 / -1;
+}
+
+.fadingsuns4e.gm-tools label {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.gm-tools label > span,
+.fadingsuns4e.gm-tools .gm-tools-diagnostic dt {
+  font-size: 0.72rem;
+  opacity: 0.76;
+}
+
+.fadingsuns4e.gm-tools input:not([type="checkbox"]),
+.fadingsuns4e.gm-tools select {
+  width: 100%;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-checkbox {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-checkbox input[type="checkbox"] {
+  flex: 0 0 auto;
+  height: auto;
+  margin: 0;
+  width: auto;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-damage-modes > section {
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  border-radius: 4px;
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.6rem;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-direct-damage {
+  background: color-mix(in srgb, var(--color-level-warning, #a15c00) 10%, transparent);
+}
+
+.fadingsuns4e.gm-tools .gm-tools-diagnostic header {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-diagnostic header button {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-diagnostic dl,
+.fadingsuns4e.gm-damage-card .gm-tools-chat-summary,
+.fadingsuns4e.gm-direct-damage-card .gm-tools-chat-summary {
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-diagnostic dl div,
+.fadingsuns4e.gm-damage-card .gm-tools-chat-summary div,
+.fadingsuns4e.gm-direct-damage-card .gm-tools-chat-summary div {
+  align-items: baseline;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: space-between;
+}
+
+.fadingsuns4e.gm-tools .gm-tools-diagnostic dd,
+.fadingsuns4e.gm-damage-card .gm-tools-chat-summary dd,
+.fadingsuns4e.gm-direct-damage-card .gm-tools-chat-summary dd {
+  margin: 0;
+  text-align: right;
+}
+
+.fadingsuns4e.gm-damage-card > header,
+.fadingsuns4e.gm-direct-damage-card > header {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  padding: 0.5rem 0.6rem;
+}
+
+.fadingsuns4e.gm-damage-card,
+.fadingsuns4e.gm-direct-damage-card {
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 5px;
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+}
+
+.fadingsuns4e.gm-damage-card h3,
+.fadingsuns4e.gm-direct-damage-card h3 {
+  margin: 0;
+}
+
+.fadingsuns4e.gm-damage-card .gm-tools-chat-summary,
+.fadingsuns4e.gm-direct-damage-card .gm-tools-chat-summary,
+.fadingsuns4e.gm-direct-damage-card > p {
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.gm-damage-card .gm-damage-resolution {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.fadingsuns4e.gm-damage-card .gm-tools-chat-notice {
+  font-size: 0.76rem;
+  margin: 0;
+  opacity: 0.78;
+}
+
+@media (max-width: 600px) {
+  .fadingsuns4e.gm-tools .gm-tools-grid,
+  .fadingsuns4e.gm-tools .gm-tools-damage-modes,
+  .fadingsuns4e.gm-tools .gm-tools-forced-results,
+  .fadingsuns4e.gm-tools .gm-tools-diagnostic dl,
+  .fadingsuns4e.gm-damage-card .gm-tools-chat-summary,
+  .fadingsuns4e.gm-direct-damage-card .gm-tools-chat-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Compact chat presentation shared by Trait Pair and Damage workflows. */
+.fadingsuns4e.fs4e-chat-card {
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 5px;
+  color: inherit;
+  display: grid;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-card-header {
+  align-items: start;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-card-title {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-card-title h3,
+.fadingsuns4e.fs4e-chat-card .fs4e-workflow-title,
+.fadingsuns4e.fs4e-chat-card .fs4e-card-title span,
+.fadingsuns4e.fs4e-chat-card .fs4e-workflow-block p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-card-title span {
+  font-size: 0.72rem;
+  opacity: 0.72;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-goal {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 4px;
+  padding: 0.25rem 0.4rem;
+  white-space: nowrap;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-primary-result {
+  align-items: center;
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  padding: 0.7rem 0.6rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-context-badge {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 0.15rem 0.45rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-roll-result {
+  font-size: 2rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-outcome,
+.fadingsuns4e.fs4e-chat-card .fs4e-resource-result {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-resource-result {
+  font-size: 0.76rem;
+  opacity: 0.82;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-workflow-block {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.fadingsuns4e.gm-damage-card > .fs4e-workflow-block,
+.fadingsuns4e.gm-direct-damage-card > .fs4e-workflow-block {
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-workflow-title {
+  font-size: 0.88rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-summary-row,
+.fadingsuns4e .fs4e-details-content .fs4e-summary-row,
+.fadingsuns4e .fs4e-resolution-dialog .fs4e-summary-row,
+.fadingsuns4e .fs4e-dialog-key-values .fs4e-summary-row,
+.fadingsuns4e .fs4e-dialog-spend .fs4e-summary-row {
+  align-items: baseline;
+  display: grid;
+  gap: 0.25rem 0.7rem;
+  grid-template-columns: minmax(0, 1fr) minmax(min-content, auto);
+  min-width: 0;
+}
+
+.fadingsuns4e .fs4e-summary-label {
+  font-size: 0.74rem;
+  min-width: 0;
+  opacity: 0.75;
+  overflow-wrap: anywhere;
+}
+
+.fadingsuns4e .fs4e-summary-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-summary-row {
+  align-items: start;
+  grid-template-columns: minmax(min-content, 2fr) minmax(0, 3fr);
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-summary-label,
+.fadingsuns4e.fs4e-chat-card .fs4e-summary-value {
+  overflow-wrap: break-word;
+  white-space: normal;
+  word-break: normal;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-result {
+  border-left: 3px solid currentColor;
+  overflow-wrap: anywhere;
+  padding: 0.3rem 0.45rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-result.is-victory {
+  background: color-mix(in srgb, #56815b 18%, transparent);
+}
+
+.fadingsuns4e.fs4e-chat-card .fs4e-result.is-failure {
+  background: color-mix(in srgb, #8a5555 18%, transparent);
+}
+
+.fadingsuns4e.fs4e-chat-card .trait-pair-resistance,
+.fadingsuns4e.fs4e-chat-card .trait-pair-impact,
+.fadingsuns4e.fs4e-chat-card .gm-damage-resolution {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+  padding: 0.55rem 0.6rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .trait-pair-resistance:empty,
+.fadingsuns4e.fs4e-chat-card .trait-pair-impact:empty,
+.fadingsuns4e.fs4e-chat-card .gm-damage-resolution:empty {
+  display: none;
+}
+
+.fadingsuns4e.fs4e-chat-card .trait-pair-impact > .fs4e-workflow-block + .fs4e-workflow-block,
+.fadingsuns4e.fs4e-chat-card .gm-damage-resolution > .fs4e-workflow-block + .fs4e-workflow-block {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  padding-top: 0.5rem;
+}
+
+.fadingsuns4e .fs4e-details,
+.fadingsuns4e .fs4e-dialog-details {
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  min-width: 0;
+}
+
+.fadingsuns4e.fs4e-chat-card > .fs4e-details {
+  padding: 0.5rem 0.6rem;
+}
+
+.fadingsuns4e .fs4e-details-summary,
+.fadingsuns4e .fs4e-dialog-details > summary {
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  padding: 0.25rem 0;
+}
+
+.fadingsuns4e .fs4e-details-summary:focus-visible,
+.fadingsuns4e .fs4e-dialog-details > summary:focus-visible {
+  outline: 2px solid var(--color-border-highlight, currentColor);
+  outline-offset: 2px;
+}
+
+.fadingsuns4e .fs4e-details-content,
+.fadingsuns4e .fs4e-dialog-details > :not(summary) {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.45rem 0 0.2rem;
+}
+
+.fadingsuns4e.fs4e-chat-card .trait-pair-native-roll {
+  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
+  margin-top: 0.25rem;
+  min-width: 0;
+  padding: 0.45rem 0 0;
+}
+
+.fadingsuns4e.fs4e-chat-card button[data-action] {
+  width: 100%;
+}
+
+/* Shared compact hierarchy for resolution dialogs. */
+.fadingsuns4e .fs4e-resolution-dialog,
+.fadingsuns4e .fs4e-dialog-primary,
+.fadingsuns4e .fs4e-dialog-spend,
+.fadingsuns4e .resistance-dialog-controls {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.fadingsuns4e .fs4e-dialog-primary,
+.fadingsuns4e .fs4e-dialog-spend {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border-radius: 4px;
+  padding: 0.6rem;
+}
+
+.fadingsuns4e .fs4e-dialog-key-values {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.fadingsuns4e .fs4e-dialog-details {
+  padding-top: 0.3rem;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown,
+.fadingsuns4e.resistance-dialog .resistance-dialog-summary,
+.fadingsuns4e.impact-dialog .impact-dialog-summary,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-breakdown > div,
+.fadingsuns4e.resistance-dialog .resistance-dialog-equipment > div,
+.fadingsuns4e.resistance-dialog .resistance-dialog-summary > div,
+.fadingsuns4e.impact-dialog .impact-dialog-summary > div,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary > div,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview > div {
+  align-items: baseline;
+  display: grid;
+  gap: 0.25rem 0.7rem;
+  grid-template-columns: minmax(0, 1fr) minmax(min-content, auto);
+  min-width: 0;
+}
+
+.fadingsuns4e.resistance-dialog .resistance-dialog-summary dd,
+.fadingsuns4e.impact-dialog .impact-dialog-summary dd,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary dd,
+.fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+@media (max-width: 360px) {
+  .fadingsuns4e.fs4e-chat-card .fs4e-card-header,
+  .fadingsuns4e.fs4e-chat-card .fs4e-primary-result,
+  .fadingsuns4e.fs4e-chat-card .fs4e-summary-row,
+  .fadingsuns4e .fs4e-details-content .fs4e-summary-row,
+  .fadingsuns4e .fs4e-resolution-dialog .fs4e-summary-row,
+  .fadingsuns4e .fs4e-dialog-key-values .fs4e-summary-row,
+  .fadingsuns4e .fs4e-dialog-spend .fs4e-summary-row,
+  .fadingsuns4e.resistance-dialog .resistance-dialog-breakdown > div,
+  .fadingsuns4e.resistance-dialog .resistance-dialog-equipment > div,
+  .fadingsuns4e.resistance-dialog .resistance-dialog-summary > div,
+  .fadingsuns4e.impact-dialog .impact-dialog-summary > div,
+  .fadingsuns4e.energy-shield-dialog .energy-shield-dialog-summary > div,
+  .fadingsuns4e.energy-shield-dialog .energy-shield-dialog-burnout-preview > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fadingsuns4e.fs4e-chat-card .fs4e-goal,
+  .fadingsuns4e .fs4e-summary-value,
+  .fadingsuns4e.resistance-dialog dd,
+  .fadingsuns4e.impact-dialog dd,
+  .fadingsuns4e.energy-shield-dialog dd {
+    justify-self: start;
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+/* Initiative controls extend the native V14 Combat Tracker without numeric
+   placeholder scores in the interactive mode. */
+.combat-tracker .fs4e-initiative-panel {
+  background: color-mix(in srgb, var(--color-bg-option, Canvas) 88%, transparent);
+  border: 1px solid var(--color-border-light-primary, currentColor);
+  border-radius: 4px;
+  color: var(--color-text-primary, CanvasText);
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.4rem;
+  min-width: 0;
+  padding: 0.55rem;
+}
+
+.combat-tracker .fs4e-initiative-panel p {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.combat-tracker .fs4e-initiative-header,
+.combat-tracker .fs4e-initiative-leader,
+.combat-tracker .fs4e-initiative-edge {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.combat-tracker .fs4e-initiative-leader select {
+  min-width: 0;
+  width: min(12rem, 58%);
+}
+
+.combat-tracker .fs4e-initiative-notice {
+  border-inline-start: 3px solid var(--color-border-highlight, currentColor);
+  font-size: var(--font-size-12, 0.75rem);
+  padding-inline-start: 0.45rem;
+}
+
+.combat-tracker .fs4e-initiative-roster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.45rem;
+}
+
+.combat-tracker .fs4e-initiative-roster span:not(:last-child)::after {
+  content: ",";
+}
+
+.combat-tracker .fs4e-initiative-choices {
+  display: grid;
+  gap: 0.3rem;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  min-width: 0;
+}
+
+.combat-tracker .fs4e-initiative-choices strong {
+  grid-column: 1 / -1;
+}
+
+.combat-tracker .fs4e-initiative-rolls {
+  display: grid;
+  gap: 0.3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.combat-tracker .fs4e-initiative-rolls > li {
+  align-items: center;
+  border-top: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  display: grid;
+  gap: 0.2rem 0.45rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-width: 0;
+  padding-top: 0.3rem;
+}
+
+.combat-tracker .fs4e-initiative-roll-name,
+.combat-tracker .fs4e-initiative-rolls small {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.combat-tracker .fs4e-initiative-edge {
+  font-size: var(--font-size-11, 0.6875rem);
+  grid-column: 1 / -1;
+  justify-content: start;
+}
+
+.combat-tracker .fs4e-initiative-edge input[type="checkbox"] {
+  flex: 0 0 auto;
+  height: auto;
+  width: auto;
+}
+
+.combat-tracker.fs4e-initiative-mode-interactive .token-initiative,
+.combat-tracker.fs4e-initiative-mode-interactive [data-action="rollInitiative"],
+.combat-tracker.fs4e-initiative-mode-rolled [data-action="rollInitiative"] {
+  display: none;
+}
+
+.combat-tracker .combatant.fs4e-initiative-current {
+  box-shadow: inset 3px 0 0 var(--color-border-highlight, currentColor);
+}
+
+.combat-tracker .combatant.fs4e-initiative-acted {
+  filter: saturate(0.4);
+  opacity: 0.58;
+}
+
+.combat-tracker .combatant.fs4e-initiative-remaining {
+  opacity: 1;
+}

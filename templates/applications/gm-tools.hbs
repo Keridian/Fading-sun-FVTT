@@ -1,0 +1,139 @@
+<div class="gm-tools-content">
+  {{#unless hasActors}}
+    <p class="gm-tools-notice">{{localize "FADING_SUNS.GmTools.NoActors"}}</p>
+  {{/unless}}
+
+  <section class="gm-tools-section">
+    <h2>{{localize "FADING_SUNS.GmTools.ControlledRoll"}}</h2>
+    <div class="gm-tools-grid">
+      <label class="gm-tools-wide">
+        <span>{{localize "FADING_SUNS.GmTools.Actor"}}</span>
+        <select name="sourceActorUuid" required>
+          {{selectOptions actorChoices selected=sourceActorUuid}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.GmTools.Characteristic"}}</span>
+        <select name="characteristicKey">
+          {{selectOptions characteristicChoices selected="strength" localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.GmTools.Skill"}}</span>
+        <select name="skillKey">
+          {{selectOptions skillChoices selected="academia" localize=true}}
+        </select>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.GmTools.GoalModifier"}}</span>
+        <input type="number" name="goalModifier" value="0" step="1" required>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.GmTools.Favorability"}}</span>
+        <select name="favorability">
+          <option value="normal">{{localize "FADING_SUNS.Roll.Favorability.normal"}}</option>
+          <option value="favorable">{{localize "FADING_SUNS.Roll.Favorability.favorable"}}</option>
+          <option value="unfavorable">{{localize "FADING_SUNS.Roll.Favorability.unfavorable"}}</option>
+        </select>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.GmTools.ResultMode"}}</span>
+        <select name="resultMode">
+          <option value="random">{{localize "FADING_SUNS.GmTools.RandomResult"}}</option>
+          <option value="forced">{{localize "FADING_SUNS.GmTools.ForcedResult"}}</option>
+        </select>
+      </label>
+      <div class="gm-tools-forced-results gm-tools-wide" data-forced-results hidden>
+        <label>
+          <span>{{localize "FADING_SUNS.GmTools.D20Result1"}}</span>
+          <input type="number" name="result1" value="1" min="1" max="20" step="1" required>
+        </label>
+        <label data-second-result hidden>
+          <span>{{localize "FADING_SUNS.GmTools.D20Result2"}}</span>
+          <input type="number" name="result2" value="1" min="1" max="20" step="1" required>
+        </label>
+      </div>
+      <label class="gm-tools-checkbox gm-tools-wide">
+        <input type="checkbox" name="resourcesApplied" checked>
+        <span>{{localize "FADING_SUNS.GmTools.ApplyGeneratedResources"}}</span>
+      </label>
+      <p class="gm-tools-wide">{{localize "FADING_SUNS.GmTools.ResourcesNotAppliedHelp"}}</p>
+    </div>
+    <button type="button" data-action="controlledRoll" {{#unless hasActors}}disabled{{/unless}}>
+      <i class="fa-solid fa-dice-d20" aria-hidden="true"></i>
+      {{localize "FADING_SUNS.GmTools.Roll"}}
+    </button>
+  </section>
+
+  <section class="gm-tools-section">
+    <h2>{{localize "FADING_SUNS.GmTools.Damage"}}</h2>
+    <label>
+      <span>{{localize "FADING_SUNS.GmTools.Target"}}</span>
+      <select name="targetActorUuid" required>
+        {{selectOptions actorChoices selected=targetActorUuid}}
+      </select>
+    </label>
+    <div class="gm-tools-damage-modes">
+      <section>
+        <h3>{{localize "FADING_SUNS.GmTools.DamageToResolve"}}</h3>
+        <p>{{localize "FADING_SUNS.GmTools.DamageToResolveHelp"}}</p>
+        <label>
+          <span>{{localize "FADING_SUNS.GmTools.Damage"}}</span>
+          <input type="number" name="gmDamage" value="0" min="0" step="1" required>
+        </label>
+        <label>
+          <span>{{localize "FADING_SUNS.GmTools.AttackProperty"}}</span>
+          <select name="attackProperty">
+            {{selectOptions attackPropertyChoices selected="none" localize=true}}
+          </select>
+        </label>
+        <button type="button" data-action="createDamage" {{#unless hasActors}}disabled{{/unless}}>
+          {{localize "FADING_SUNS.GmTools.CreateDamage"}}
+        </button>
+      </section>
+      <section class="gm-tools-direct-damage">
+        <h3>{{localize "FADING_SUNS.GmTools.DirectVitalityDamage"}}</h3>
+        <p>{{localize "FADING_SUNS.GmTools.IgnoreDefenses"}}</p>
+        <label>
+          <span>{{localize "FADING_SUNS.GmTools.Damage"}}</span>
+          <input type="number" name="directDamage" value="0" min="0" step="1" required>
+        </label>
+        <button type="button" data-action="directDamage" {{#unless hasActors}}disabled{{/unless}}>
+          {{localize "FADING_SUNS.GmTools.Apply"}}
+        </button>
+      </section>
+    </div>
+  </section>
+
+  <section class="gm-tools-section gm-tools-diagnostic">
+    <header>
+      <h2>{{localize "FADING_SUNS.GmTools.Diagnostic"}}</h2>
+      <button type="button" data-action="refresh">
+        <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+        {{localize "FADING_SUNS.GmTools.Refresh"}}
+      </button>
+    </header>
+    {{#if diagnostic}}
+      <dl>
+        <div><dt>{{localize "FADING_SUNS.GmTools.Actor"}}</dt><dd>{{diagnostic.name}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.GmTools.Vitality"}}</dt><dd>{{diagnostic.vitalityValue}} / {{diagnostic.vitalityMax}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.GmTools.CacheVp"}}</dt><dd>{{diagnostic.cacheVp}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.GmTools.CacheWp"}}</dt><dd>{{diagnostic.cacheWp}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.GmTools.BankVp"}}</dt><dd>{{diagnostic.bankVp}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.GmTools.BankWp"}}</dt><dd>{{diagnostic.bankWp}}</dd></div>
+      </dl>
+      {{#if diagnostic.shield}}
+        <h3>{{localize "FADING_SUNS.GmTools.EnergyShield"}}</h3>
+        <dl>
+          <div><dt>{{localize "FADING_SUNS.GmTools.Name"}}</dt><dd>{{diagnostic.shield.name}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.Active"}}</dt><dd>{{#if diagnostic.shield.active}}{{localize "FADING_SUNS.GmTools.Yes"}}{{else}}{{localize "FADING_SUNS.GmTools.No"}}{{/if}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.Hits"}}</dt><dd>{{diagnostic.shield.hitsValue}} / {{diagnostic.shield.hitsMax}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.Threshold"}}</dt><dd>{{diagnostic.shield.thresholdMin}} / {{diagnostic.shield.thresholdMax}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.BurnoutActive"}}</dt><dd>{{#if diagnostic.shield.burnoutActive}}{{localize "FADING_SUNS.GmTools.Yes"}}{{else}}{{localize "FADING_SUNS.GmTools.No"}}{{/if}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.ActivationsThisRound"}}</dt><dd>{{diagnostic.shield.activationsThisRound}}</dd></div>
+          <div><dt>{{localize "FADING_SUNS.GmTools.DistortionRound"}}</dt><dd>{{diagnostic.shield.distortionRound}}</dd></div>
+        </dl>
+      {{/if}}
+    {{/if}}
+  </section>
+</div>

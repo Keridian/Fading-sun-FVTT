@@ -1,0 +1,54 @@
+<div class="weapon-attack-content">
+  <dl class="weapon-attack-summary">
+    <div><dt>{{localize "FADING_SUNS.Roll.Weapon.Weapon"}}</dt><dd>{{weaponName}}</dd></div>
+    <div><dt>{{localize "FADING_SUNS.Roll.Weapon.Target"}}</dt><dd>{{targetName}}</dd></div>
+  </dl>
+
+  <label>
+    <span>{{localize "FADING_SUNS.Roll.Weapon.Range"}}</span>
+    <select name="rangeBand">
+      {{selectOptions rangeChoices selected=rangeBand localize=true}}
+    </select>
+  </label>
+
+  <label>
+    <span>{{localize "FADING_SUNS.Roll.Weapon.FireMode"}}</span>
+    <select name="fireMode">
+      {{#each fireModeChoices}}
+        <option value="{{key}}" {{#if selected}}selected{{/if}} {{#if disabled}}disabled{{/if}}>{{label}}</option>
+      {{/each}}
+    </select>
+  </label>
+
+  <section class="weapon-attack-trait">
+    <h3>{{localize "FADING_SUNS.Roll.Weapon.TraitPair"}}</h3>
+    <p><strong>{{characteristicLabel}} {{characteristicValue}} + {{skillLabel}} {{skillValue}}</strong></p>
+    <dl class="weapon-attack-calculation">
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.BaseGoal"}}</dt><dd>{{baseGoal}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.RangeModifier"}}</dt><dd>{{rangeModifier}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.WeaponModifier"}}</dt><dd>{{weaponModifier}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.StrengthModifier"}}</dt><dd>{{strengthModifier}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.FireModeGoalModifier"}}</dt><dd>{{fireModeGoalModifier}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Weapon.MinimumStrength"}}</dt><dd>{{actorStrength}} / {{minimumStrength}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Favorability.Label"}}</dt><dd>{{favorabilityLabel}}</dd></div>
+      <div class="weapon-attack-final-goal"><dt>{{localize "FADING_SUNS.Roll.Weapon.FinalGoal"}}</dt><dd>{{finalGoal}}</dd></div>
+    </dl>
+  </section>
+
+  <section class="weapon-attack-source-summary">
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.FireMode"}}</span><strong>{{fireModeLabel}}</strong></div>
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.AmmoCost"}}</span><strong>{{fireModeAmmoCost}}</strong></div>
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.DamageModifier"}}</span><strong>{{fireModeDamageModifier}}</strong></div>
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.TargetCount"}}</span><strong>{{fireModeTargetCount}}</strong></div>
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.BaseDamage"}}</span><strong>{{baseDamage}}</strong></div>
+    <div><span>{{localize "FADING_SUNS.Roll.Weapon.Ammo"}}</span><strong>{{ammoModeLabel}}{{#if ammo.consumesAmmo}}: {{ammo.ammoBefore}} / {{ammo.ammoMax}}{{/if}}</strong></div>
+    {{#if attackPropertyLabels.length}}
+      <div><span>{{localize "FADING_SUNS.Roll.Weapon.AttackProperties"}}</span><strong>{{#each attackPropertyLabels}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</strong></div>
+    {{/if}}
+  </section>
+
+  <button type="button" data-action="fire" {{#unless canFire}}disabled{{/unless}}>
+    <i class="fa-solid fa-crosshairs" aria-hidden="true"></i>
+    {{localize "FADING_SUNS.Roll.Weapon.Fire"}}
+  </button>
+</div>

@@ -1,0 +1,59 @@
+<article class="fadingsuns4e gm-direct-damage-card fs4e-chat-card">
+  <header class="fs4e-card-header">
+    <div class="fs4e-card-title">
+      {{#if resolved}}
+        <h3>{{localize "FADING_SUNS.Roll.DamageApplication.DamageApplied"}}</h3>
+      {{else}}
+        <h3>{{localize "FADING_SUNS.Roll.DamageApplication.Damage"}}</h3>
+      {{/if}}
+    </div>
+  </header>
+
+  <section class="fs4e-workflow-block">
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.Target"}}</span>
+      <strong class="fs4e-summary-value">{{targetName}}</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.Damage"}}</span>
+      <strong class="fs4e-summary-value">{{damage}}</strong>
+    </div>
+    {{#if resolved}}
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.Vitality"}}</span>
+        <strong class="fs4e-summary-value">{{vitalityBefore}} {{localize "FADING_SUNS.Chat.Transition"}} {{vitalityAfter}}</strong>
+      </div>
+      {{#if unconsciousTriggered}}
+        <strong class="fs4e-result is-failure">{{localize "FADING_SUNS.Roll.DamageApplication.Unconscious"}}</strong>
+      {{else}}
+        {{#if dyingTriggered}}
+          <strong class="fs4e-result is-failure">{{localize "FADING_SUNS.Roll.DamageApplication.Dying"}}</strong>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  </section>
+
+  {{#if resolved}}
+    <details class="fs4e-details">
+      <summary class="fs4e-details-summary">{{localize "FADING_SUNS.Chat.Details"}}</summary>
+      <div class="fs4e-details-content">
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.VitalityBefore"}}</span>
+          <strong class="fs4e-summary-value">{{vitalityBefore}}</strong>
+        </div>
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.VitalityLost"}}</span>
+          <strong class="fs4e-summary-value">{{vitalityLost}}</strong>
+        </div>
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.VitalityAfter"}}</span>
+          <strong class="fs4e-summary-value">{{vitalityAfter}}</strong>
+        </div>
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DamageApplication.SourceDamage"}}</span>
+          <strong class="fs4e-summary-value">{{damage}}</strong>
+        </div>
+      </div>
+    </details>
+  {{/if}}
+</article>

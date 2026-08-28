@@ -1,0 +1,90 @@
+<div class="impact-dialog-content fs4e-resolution-dialog">
+  <div class="fs4e-dialog-primary">
+    <label>
+      <span>{{localize "FADING_SUNS.Roll.Impact.Type"}}</span>
+      <select name="type">
+        <option value="result">{{localize "FADING_SUNS.Roll.Impact.Result"}}</option>
+        <option value="damage">{{localize "FADING_SUNS.Roll.Impact.Damage"}}</option>
+      </select>
+    </label>
+
+    <div data-impact-result-fields>
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Impact.Level"}}</span>
+        <select name="level">
+          {{#each levels}}
+            <option value="{{level}}" data-required-vp="{{requiredVp}}">{{label}}</option>
+          {{/each}}
+        </select>
+      </label>
+      <div class="impact-dialog-required fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.RequiredVp"}}</span>
+        <strong class="fs4e-summary-value" data-required-vp-output>0</strong>
+      </div>
+    </div>
+
+    <div data-impact-damage-fields hidden>
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Impact.BaseDamage"}}</span>
+        <input type="number" name="baseDamage" value="{{baseDamage}}" min="0" step="1" required {{#if weaponBound}}readonly{{/if}}>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Impact.RestraintVpSpent"}}</span>
+        <input type="number" name="restraintVpSpent" value="0" min="0" step="2" required>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Impact.DamageVpSpent"}}</span>
+        <input type="number" name="damageVpSpent" value="0" min="0" step="2" required>
+      </label>
+    </div>
+  </div>
+
+  <div class="fs4e-dialog-spend">
+    <label>
+      <span>{{localize "FADING_SUNS.Roll.Impact.CacheSpend"}}</span>
+      <input type="number" name="cacheSpend" value="0" min="0" max="{{cacheVp}}" step="1" required>
+    </label>
+    {{#if bankAvailable}}
+      <label>
+        <span>{{localize "FADING_SUNS.Roll.Impact.BankSpend"}}</span>
+        <input type="number" name="bankSpend" value="0" min="0" max="{{bankVp}}" step="1" required>
+      </label>
+    {{/if}}
+    <div class="impact-dialog-total">
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.TotalSpend"}}</span>
+        <strong class="fs4e-summary-value" data-total-spend>0</strong>
+      </div>
+      <small data-impact-cost-status data-matches-required="true">{{localize "FADING_SUNS.Roll.Impact.MatchesRequired"}}</small>
+    </div>
+  </div>
+
+  <div class="impact-dialog-damage-total" data-impact-damage-fields hidden>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.Restraint"}}</span>
+      <strong class="fs4e-summary-value" data-restraint-reduction>-0</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.BaseDamageAfterRestraint"}}</span>
+      <strong class="fs4e-summary-value" data-base-damage-after-restraint>0</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.BonusDamage"}}</span>
+      <strong class="fs4e-summary-value" data-bonus-damage>+0</strong>
+    </div>
+    <div class="fs4e-summary-row">
+      <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Impact.TotalDamage"}}</span>
+      <strong class="fs4e-summary-value" data-total-damage>0</strong>
+    </div>
+  </div>
+
+  <details class="fs4e-dialog-details">
+    <summary>{{localize "FADING_SUNS.Chat.Details"}}</summary>
+    <dl class="impact-dialog-summary">
+      <div><dt>{{localize "FADING_SUNS.Roll.Actor"}}</dt><dd>{{actorName}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Impact.Victory"}}</dt><dd>{{localize "FADING_SUNS.Roll.Impact.Confirmed"}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.Impact.CacheVp"}}</dt><dd>{{cacheVp}}</dd></div>
+      {{#if bankAvailable}}<div><dt>{{localize "FADING_SUNS.Roll.Impact.BankVp"}}</dt><dd>{{bankVp}}</dd></div>{{/if}}
+    </dl>
+  </details>
+</div>

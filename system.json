@@ -1,0 +1,81 @@
+{
+  "type": "system",
+  "id": "fadingsuns4e",
+  "title": "Fading Suns 4e",
+  "description": "Technical foundation for the Fading Suns 4e game system.",
+  "version": "0.19.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.367"
+  },
+  "authors": [
+    {
+      "name": "Fading Suns 4e System Contributors"
+    }
+  ],
+  "esmodules": [
+    "scripts/fadingsuns4e.mjs"
+  ],
+  "styles": [
+    "styles/fadingsuns4e.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "npc": {},
+      "creature": {}
+    },
+    "Item": {
+      "species": {
+        "htmlFields": ["description"]
+      },
+      "class": {
+        "htmlFields": ["description"]
+      },
+      "faction": {
+        "htmlFields": ["description"]
+      },
+      "calling": {
+        "htmlFields": ["description"]
+      },
+      "capability": {
+        "htmlFields": ["description"]
+      },
+      "perk": {
+        "htmlFields": ["description"]
+      },
+      "affliction": {
+        "htmlFields": ["description"]
+      },
+      "maneuver": {
+        "htmlFields": ["description"]
+      },
+      "weapon": {
+        "htmlFields": ["description"]
+      },
+      "armor": {
+        "htmlFields": ["description"]
+      },
+      "energyShield": {
+        "htmlFields": ["description"]
+      },
+      "equipment": {
+        "htmlFields": ["description"]
+      }
+    }
+  },
+  "primaryTokenAttribute": "resources.vitality",
+  "socket": true
+}

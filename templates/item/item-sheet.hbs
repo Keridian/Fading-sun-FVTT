@@ -1,0 +1,438 @@
+<div class="sheet-scroll">
+  <header class="item-header">
+    <img class="item-image" src="{{item.img}}" alt="{{item.name}}">
+    <div class="item-heading">
+      <input
+        class="item-name"
+        type="text"
+        name="name"
+        value="{{item.name}}"
+        {{#unless editable}}disabled{{/unless}}
+      >
+      <span class="item-type">{{typeLabel}}</span>
+    </div>
+  </header>
+
+  <section class="sheet-section source-section">
+    <h2>{{localize "FADING_SUNS.Sheet.Item.Source"}}</h2>
+    <div class="source-grid">
+      <label>
+        <span>{{localize "FADING_SUNS.Sheet.Item.Book"}}</span>
+        <input type="text" name="system.source.book" value="{{system.source.book}}" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.Sheet.Item.Page"}}</span>
+        <input type="number" name="system.source.page" value="{{system.source.page}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+      </label>
+      <label>
+        <span>{{localize "FADING_SUNS.Sheet.Item.Reference"}}</span>
+        <input type="text" name="system.source.reference" value="{{system.source.reference}}" {{#unless editable}}disabled{{/unless}}>
+      </label>
+    </div>
+  </section>
+
+  <section class="sheet-section description-section">
+    <h2>{{localize "FADING_SUNS.Sheet.Item.Description"}}</h2>
+    <textarea name="system.description" rows="6" {{#unless editable}}disabled{{/unless}}>{{system.description}}</textarea>
+  </section>
+
+  <section class="sheet-section array-section tags-section" data-array-path="system.tags">
+    <div class="section-heading">
+      <h2>{{localize tagArray.label}}</h2>
+      {{#if editable}}
+        <button type="button" data-action="addArrayEntry" data-array-path="system.tags">{{localize "FADING_SUNS.Sheet.Item.Add"}}</button>
+      {{/if}}
+    </div>
+    <ol class="array-list">
+      {{#each tagArray.entries}}
+        <li class="array-row" data-array-path="{{path}}" data-array-index="{{index}}">
+          <input type="text" name="{{path}}.{{index}}" value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>
+          {{#if @root.editable}}
+            <button type="button" data-action="deleteArrayEntry" data-array-path="{{path}}" data-array-index="{{index}}">{{localize "FADING_SUNS.Sheet.Item.Delete"}}</button>
+          {{/if}}
+        </li>
+      {{else}}
+        <li class="empty-list">{{localize "FADING_SUNS.Sheet.Item.None"}}</li>
+      {{/each}}
+    </ol>
+  </section>
+
+  {{#if isSpecies}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.species"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Size"}}</span><input type="number" name="system.size" value="{{system.size}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Speed"}}</span><input type="number" name="system.speed" value="{{system.speed}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.CallingNotes"}}</span><textarea name="system.callingNotes" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.callingNotes}}</textarea></label>
+      </div>
+    </section>
+
+    <section class="sheet-section movement-modes-section" data-array-path="system.movementModes">
+      <div class="section-heading">
+        <h2>{{localize "FADING_SUNS.Sheet.Item.MovementModes"}}</h2>
+        {{#if editable}}
+          <button type="button" data-action="addArrayEntry" data-array-path="system.movementModes">{{localize "FADING_SUNS.Sheet.Item.AddMovementMode"}}</button>
+        {{/if}}
+      </div>
+      <div class="movement-mode-list">
+        {{#each movementModes}}
+          <article class="movement-mode-row" data-array-path="system.movementModes" data-array-index="{{index}}">
+            <label><span>{{localize "FADING_SUNS.Sheet.Item.Mode"}}</span><input type="text" name="system.movementModes.{{index}}.mode" value="{{mode}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Item.Speed"}}</span><input type="number" name="system.movementModes.{{index}}.speed" value="{{speed}}" min="0" step="any" {{#unless @root.editable}}disabled{{/unless}}></label>
+            <label><span>{{localize "FADING_SUNS.Sheet.Item.Note"}}</span><input type="text" name="system.movementModes.{{index}}.note" value="{{note}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+            {{#if @root.editable}}
+              <button type="button" data-action="deleteArrayEntry" data-array-path="system.movementModes" data-array-index="{{index}}">{{localize "FADING_SUNS.Sheet.Item.Delete"}}</button>
+            {{/if}}
+          </article>
+        {{else}}
+          <p class="empty-list">{{localize "FADING_SUNS.Sheet.Item.None"}}</p>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isClass}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.class"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Level"}}</span><input type="number" name="system.level" value="{{system.level}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.current" {{checked system.current}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Current"}}</span></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isFaction}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.faction"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.ParentClass"}}</span><input type="text" name="system.parentClass" value="{{system.parentClass}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Rank"}}</span><input type="text" name="system.rank" value="{{system.rank}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.FavoredCalling"}}</span><input type="text" name="system.favoredCalling" value="{{system.favoredCalling}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.current" {{checked system.current}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Current"}}</span></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Blessing"}}</span><textarea name="system.blessing" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.blessing}}</textarea></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Curse"}}</span><textarea name="system.curse" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.curse}}</textarea></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.MaterialAward"}}</span><textarea name="system.materialAward" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.materialAward}}</textarea></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isCalling}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.calling"}}</h2>
+      <div class="field-grid two-columns">
+        <label class="checkbox-field"><input type="checkbox" name="system.open" {{checked system.open}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Open"}}</span></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.current" {{checked system.current}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Current"}}</span></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isCapability}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.capability"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.CapabilityKey"}}</span><input type="text" name="system.key" value="{{system.key}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Category"}}</span><input type="text" name="system.category" value="{{system.category}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Specialization"}}</span><input type="text" name="system.specialization" value="{{system.specialization}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.restricted" {{checked system.restricted}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Restricted"}}</span></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Precondition"}}</span><textarea name="system.precondition" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.precondition}}</textarea></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isPerk}}
+    <section class="sheet-section perk-section">
+      <h2>{{localize "TYPES.Item.perk"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.PerkType"}}</span><select name="system.perkType" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.perkTypes selected=system.perkType localize=true}}</select></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Access"}}</span><input type="text" name="system.access" value="{{system.access}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Rank"}}</span><input type="number" name="system.rank" value="{{system.rank}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.MaximumRanks"}}</span><input type="number" name="system.maxRanks" value="{{system.maxRanks}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.TechLevel"}}</span><input type="number" name="system.techLevel" value="{{system.techLevel}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.repeatable" {{checked system.repeatable}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Repeatable"}}</span></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Precondition"}}</span><textarea name="system.precondition" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.precondition}}</textarea></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Benefit"}}</span><textarea name="system.benefice" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.benefice}}</textarea></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.TechCompulsion"}}</span><textarea name="system.techCompulsion" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.techCompulsion}}</textarea></label>
+      </div>
+    </section>
+
+    {{#if isPower}}
+      <section class="sheet-section power-section">
+        <h2>{{localize "FADING_SUNS.Sheet.Item.Power"}}</h2>
+        <div class="field-grid two-columns">
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Tradition"}}</span><select name="system.power.tradition" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.powerTraditions selected=system.power.tradition localize=true}}</select></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Path"}}</span><input type="text" name="system.power.path" value="{{system.power.path}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.RequiredRating"}}</span><input type="number" name="system.power.requiredRating" value="{{system.power.requiredRating}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.CostVP"}}</span><input type="number" name="system.power.costVP" value="{{system.power.costVP}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          <label class="checkbox-field"><input type="checkbox" name="system.power.elemental" {{checked system.power.elemental}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Elemental"}}</span></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Time"}}</span><input type="text" name="system.power.time" value="{{system.power.time}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.CostDescription"}}</span><input type="text" name="system.power.costText" value="{{system.power.costText}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Components"}}</span><textarea name="system.power.components" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.power.components}}</textarea></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Range"}}</span><input type="text" name="system.power.range" value="{{system.power.range}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Resistance"}}</span><input type="text" name="system.power.resistance" value="{{system.power.resistance}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Impact"}}</span><textarea name="system.power.impact" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.power.impact}}</textarea></label>
+        </div>
+      </section>
+    {{/if}}
+  {{/if}}
+
+  {{#if isAffliction}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.affliction"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Precondition"}}</span><textarea name="system.precondition" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.precondition}}</textarea></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Effect"}}</span><textarea name="system.effect" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.effect}}</textarea></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Resolution"}}</span><textarea name="system.resolution" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.resolution}}</textarea></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.BonusPerk"}}</span><input type="text" name="system.bonusPerk" value="{{system.bonusPerk}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.resolved" {{checked system.resolved}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Resolved"}}</span></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isManeuver}}
+    <section class="sheet-section">
+      <h2>{{localize "TYPES.Item.maneuver"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Category"}}</span><select name="system.category" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.maneuverCategories selected=system.category localize=true}}</select></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.InfluenceType"}}</span><select name="system.influenceType" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.influenceTypes selected=system.influenceType localize=true}}</select></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Time"}}</span><input type="text" name="system.time" value="{{system.time}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Capability"}}</span><input type="text" name="system.capability" value="{{system.capability}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Resistance"}}</span><input type="text" name="system.resistance" value="{{system.resistance}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.CostVP"}}</span><input type="number" name="system.vpCost" value="{{system.vpCost}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Impact"}}</span><textarea name="system.impact" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.impact}}</textarea></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isTechnology}}
+    <section class="sheet-section technology-section">
+      <h2>{{localize "FADING_SUNS.Sheet.Item.Technology"}}</h2>
+      <div class="technology-grid">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.TechLevel"}}</span><input type="number" name="system.techLevel" value="{{system.techLevel}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Size"}}</span><input type="text" name="system.size" value="{{system.size}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Agora"}}</span><input type="text" name="system.agora" value="{{system.agora}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Cost"}}</span><input type="number" name="system.costFb" value="{{system.costFb}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Quality"}}</span><input type="number" name="system.quality" value="{{system.quality}}" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Quantity"}}</span><input type="number" name="system.quantity" value="{{system.quantity}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.carried" {{checked system.carried}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Carried"}}</span></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.equipped" {{checked system.equipped}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Equipped"}}</span></label>
+        <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.TechCompulsion"}}</span><textarea name="system.techCompulsion" rows="3" {{#unless editable}}disabled{{/unless}}>{{system.techCompulsion}}</textarea></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if isWeapon}}
+    <section class="sheet-section weapon-section">
+      <h2>{{localize "TYPES.Item.weapon"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.WeaponType"}}</span><select name="system.weaponType" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.weaponTypes selected=system.weaponType localize=true}}</select></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.RequiredCapabilityKey"}}</span><input type="text" name="system.capabilityKey" value="{{system.capabilityKey}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.CapabilityLegacy"}}</span><input type="text" name="system.capability" value="{{system.capability}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.GoalModifier"}}</span><input type="number" name="system.goalModifier" value="{{system.goalModifier}}" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.GoalDescription"}}</span><input type="text" name="system.goalText" value="{{system.goalText}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Damage"}}</span><input type="number" name="system.damage" value="{{system.damage}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.DamageDescription"}}</span><input type="text" name="system.damageText" value="{{system.damageText}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.MinimumStrength"}}</span><input type="number" name="system.strength" value="{{system.strength}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label>
+          <span>{{localize "FADING_SUNS.Sheet.Item.RateOfFire"}}</span>
+          <input type="hidden" name="system.rateOfFireConfig.configured" value="true">
+          <input type="number" name="system.rateOfFireConfig.value" value="{{weaponRateOfFire.value}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}>
+        </label>
+        <label class="checkbox-field">
+          <input type="checkbox" name="system.rateOfFireConfig.burstCapable" {{checked weaponRateOfFire.burstCapable}} {{#unless editable}}disabled{{/unless}}>
+          <span>{{localize "FADING_SUNS.Sheet.Item.BurstCapable"}}</span>
+        </label>
+      </div>
+      <fieldset class="subsection attack-property-fields">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.AttackProperties"}}</legend>
+        <input type="hidden" name="weaponAttackPropertySelections.present" value="true">
+        <div class="attack-property-options">
+          {{#each attackPropertyOptions}}
+            <label class="checkbox-field attack-property-option">
+              <input type="checkbox" name="weaponAttackPropertySelections.{{key}}" {{checked checked}} {{#unless @root.editable}}disabled{{/unless}}>
+              <span>{{label}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </fieldset>
+      <fieldset class="subsection range-fields">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.Range"}}</legend>
+        <div class="field-grid four-columns">
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Short"}}</span><input type="number" name="system.range.short" value="{{system.range.short}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Long"}}</span><input type="number" name="system.range.long" value="{{system.range.long}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Extreme"}}</span><input type="number" name="system.range.extreme" value="{{system.range.extreme}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Description"}}</span><input type="text" name="system.range.text" value="{{system.range.text}}" {{#unless editable}}disabled{{/unless}}></label>
+        </div>
+      </fieldset>
+      <fieldset class="subsection ammo-fields">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.Ammo"}}</legend>
+        <div class="field-grid four-columns">
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.AmmoMode"}}</span><select name="system.ammo.mode" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.weaponAmmoModes selected=system.ammo.mode localize=true}}</select></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Value"}}</span><input type="number" name="system.ammo.value" value="{{system.ammo.value}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Maximum"}}</span><input type="number" name="system.ammo.max" value="{{system.ammo.max}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Type"}}</span><input type="text" name="system.ammo.type" value="{{system.ammo.type}}" {{#unless editable}}disabled{{/unless}}></label>
+          <label class="checkbox-field"><input type="checkbox" name="system.ammo.unlimited" {{checked system.ammo.unlimited}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.LegacyUnlimited"}}</span></label>
+          <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Description"}}</span><input type="text" name="system.ammo.text" value="{{system.ammo.text}}" {{#unless editable}}disabled{{/unless}}></label>
+        </div>
+      </fieldset>
+    </section>
+  {{/if}}
+
+  {{#if isArmor}}
+    <section class="sheet-section armor-section">
+      <h2>{{localize "TYPES.Item.armor"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.ArmorKind"}}</span><select name="system.armorKind" {{#unless editable}}disabled{{/unless}}>{{selectOptions choiceSets.armorKinds selected=system.armorKind localize=true}}</select></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Resistance"}}</span><input type="number" name="system.resistance" value="{{system.resistance}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Grade"}}</span><input type="text" name="system.grade" value="{{system.grade}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.DexModifier"}}</span><input type="number" name="system.dexModifier" value="{{system.dexModifier}}" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.VigorModifier"}}</span><input type="number" name="system.vigorModifier" value="{{system.vigorModifier}}" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.metallic" {{checked system.metallic}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Metallic"}}</span></label>
+      </div>
+      <fieldset class="subsection hand-shield-fields">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.HandShield"}}</legend>
+        <div class="field-grid two-columns">
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Damage"}}</span><input type="number" name="system.handShield.damage" value="{{system.handShield.damage}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+          <label><span>{{localize "FADING_SUNS.Sheet.Item.Strength"}}</span><input type="number" name="system.handShield.strength" value="{{system.handShield.strength}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        </div>
+      </fieldset>
+      <fieldset class="subsection armor-proofs">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.Proofs"}}</legend>
+        <input type="hidden" name="armorProofSelections.present" value="true">
+        <div class="armor-proof-options">
+          {{#each proofOptions}}
+            <label class="checkbox-field proof-option">
+              <input type="checkbox" name="armorProofSelections.{{key}}" {{checked checked}} {{#unless @root.editable}}disabled{{/unless}}>
+              <span>{{label}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </fieldset>
+      <fieldset class="subsection energy-shield-compatibility">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.EnergyShieldCompatibility"}}</legend>
+        <input type="hidden" name="armorEnergyShieldCompatibilitySelections.present" value="true">
+        <div class="energy-shield-compatibility-options">
+          {{#each energyShieldCompatibilityOptions}}
+            <label class="checkbox-field compatibility-option">
+              <input type="checkbox" name="armorEnergyShieldCompatibilitySelections.{{key}}" {{checked checked}} {{#unless @root.editable}}disabled{{/unless}}>
+              <span>{{label}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </fieldset>
+    </section>
+  {{/if}}
+
+  {{#if isEnergyShield}}
+    <section class="sheet-section energy-shield-section">
+      <h2>{{localize "TYPES.Item.energyShield"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.ThresholdMinimum"}}</span><input type="number" name="system.threshold.min" value="{{system.threshold.min}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.ThresholdMaximum"}}</span><input type="number" name="system.threshold.max" value="{{system.threshold.max}}" min="0" step="any" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.HitsValue"}}</span><input type="number" name="system.hits.value" value="{{system.hits.value}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.HitsMaximum"}}</span><input type="number" name="system.hits.max" value="{{system.hits.max}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.BurnoutGoal"}}</span><input type="number" name="system.burnoutGoal" value="{{system.burnoutGoal}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Distortion"}}</span><input type="number" name="system.distortion" value="{{system.distortion}}" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.active" {{checked system.active}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Active"}}</span></label>
+      </div>
+      <fieldset class="subsection energy-shield-compatibility">
+        <legend>{{localize "FADING_SUNS.Sheet.Item.CompatibleArmor"}}</legend>
+        <input type="hidden" name="energyShieldCompatibleArmorSelections.present" value="true">
+        <div class="energy-shield-compatibility-options">
+          {{#each compatibleArmorOptions}}
+            <label class="checkbox-field compatibility-option">
+              <input type="checkbox" name="energyShieldCompatibleArmorSelections.{{key}}" {{checked checked}} {{#unless @root.editable}}disabled{{/unless}}>
+              <span>{{label}}</span>
+            </label>
+          {{/each}}
+        </div>
+      </fieldset>
+    </section>
+  {{/if}}
+
+  {{#if isEquipment}}
+    <section class="sheet-section equipment-section">
+      <h2>{{localize "TYPES.Item.equipment"}}</h2>
+      <div class="field-grid two-columns">
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.Category"}}</span><input type="text" name="system.category" value="{{system.category}}" {{#unless editable}}disabled{{/unless}}></label>
+        <label class="checkbox-field"><input type="checkbox" name="system.consumable" {{checked system.consumable}} {{#unless editable}}disabled{{/unless}}><span>{{localize "FADING_SUNS.Sheet.Item.Consumable"}}</span></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.UsesValue"}}</span><input type="number" name="system.uses.value" value="{{system.uses.value}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+        <label><span>{{localize "FADING_SUNS.Sheet.Item.UsesMaximum"}}</span><input type="number" name="system.uses.max" value="{{system.uses.max}}" min="0" step="1" {{#unless editable}}disabled{{/unless}}></label>
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if hasGrants}}
+    <section class="sheet-section grants-section" data-array-path="system.grants">
+      <div class="section-heading">
+        <h2>{{localize "FADING_SUNS.Sheet.Item.Grants"}}</h2>
+        {{#if editable}}
+          <button type="button" data-action="addArrayEntry" data-array-path="system.grants">{{localize "FADING_SUNS.Sheet.Item.AddGrant"}}</button>
+        {{/if}}
+      </div>
+      <div class="grant-list">
+        {{#each grants}}
+          <article class="grant-card" data-array-path="system.grants" data-array-index="{{index}}">
+            <div class="grant-heading">
+              <strong>{{localize "FADING_SUNS.Sheet.Item.Grant"}} {{index}}</strong>
+              {{#if @root.editable}}
+                <button type="button" data-action="deleteArrayEntry" data-array-path="system.grants" data-array-index="{{index}}">{{localize "FADING_SUNS.Sheet.Item.Delete"}}</button>
+              {{/if}}
+            </div>
+            <div class="grant-grid">
+              <label><span>{{localize "FADING_SUNS.Sheet.Item.Kind"}}</span><select name="system.grants.{{index}}.kind" {{#unless @root.editable}}disabled{{/unless}}>{{selectOptions @root.choiceSets.grantKinds selected=kind localize=true}}</select></label>
+              <label><span>{{localize "FADING_SUNS.Sheet.Item.Key"}}</span><input type="text" name="system.grants.{{index}}.key" value="{{key}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+              <label><span>{{localize "FADING_SUNS.Sheet.Item.Amount"}}</span><input type="number" name="system.grants.{{index}}.amount" value="{{amount}}" step="1" {{#unless @root.editable}}disabled{{/unless}}></label>
+              <label><span>{{localize "FADING_SUNS.Sheet.Item.Choose"}}</span><input type="number" name="system.grants.{{index}}.choose" value="{{choose}}" min="0" step="1" {{#unless @root.editable}}disabled{{/unless}}></label>
+              <label class="full-width"><span>{{localize "FADING_SUNS.Sheet.Item.Note"}}</span><input type="text" name="system.grants.{{index}}.note" value="{{note}}" {{#unless @root.editable}}disabled{{/unless}}></label>
+            </div>
+            <div class="grant-options" data-array-path="{{optionsPath}}">
+              <div class="array-subheading">
+                <strong>{{localize "FADING_SUNS.Sheet.Item.Options"}}</strong>
+                {{#if @root.editable}}
+                  <button type="button" data-action="addArrayEntry" data-array-path="{{optionsPath}}">{{localize "FADING_SUNS.Sheet.Item.AddOption"}}</button>
+                {{/if}}
+              </div>
+              <ol class="array-list compact-array-list">
+                {{#each options}}
+                  <li class="array-row" data-array-path="{{path}}" data-array-index="{{index}}">
+                    <input type="text" name="system.grants.{{grantIndex}}.options.{{index}}" value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>
+                    {{#if @root.editable}}
+                      <button type="button" data-action="deleteArrayEntry" data-array-path="{{path}}" data-array-index="{{index}}">{{localize "FADING_SUNS.Sheet.Item.Delete"}}</button>
+                    {{/if}}
+                  </li>
+                {{else}}
+                  <li class="empty-list">{{localize "FADING_SUNS.Sheet.Item.None"}}</li>
+                {{/each}}
+              </ol>
+            </div>
+          </article>
+        {{else}}
+          <p class="empty-list">{{localize "FADING_SUNS.Sheet.Item.None"}}</p>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
+
+  {{#each stringArrays}}
+    <section class="sheet-section array-section" data-array-path="{{path}}">
+      <div class="section-heading">
+        <h2>{{localize label}}</h2>
+        {{#if @root.editable}}
+          <button type="button" data-action="addArrayEntry" data-array-path="{{path}}">{{localize "FADING_SUNS.Sheet.Item.Add"}}</button>
+        {{/if}}
+      </div>
+      <ol class="array-list">
+        {{#each entries}}
+          <li class="array-row" data-array-path="{{path}}" data-array-index="{{index}}">
+            <input type="text" name="{{path}}.{{index}}" value="{{value}}" {{#unless @root.editable}}disabled{{/unless}}>
+            {{#if @root.editable}}
+              <button type="button" data-action="deleteArrayEntry" data-array-path="{{path}}" data-array-index="{{index}}">{{localize "FADING_SUNS.Sheet.Item.Delete"}}</button>
+            {{/if}}
+          </li>
+        {{else}}
+          <li class="empty-list">{{localize "FADING_SUNS.Sheet.Item.None"}}</li>
+        {{/each}}
+      </ol>
+    </section>
+  {{/each}}
+</div>

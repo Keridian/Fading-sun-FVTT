@@ -1,0 +1,131 @@
+<article class="fadingsuns4e trait-pair-roll-card fs4e-chat-card">
+  <header class="fs4e-card-header">
+    <div class="fs4e-card-title">
+      <h3>{{skillLabel}} + {{characteristicLabel}}</h3>
+      <span>{{actorName}}</span>
+    </div>
+    <strong class="fs4e-goal">{{localize "FADING_SUNS.Roll.Goal"}} {{goal}}</strong>
+  </header>
+
+  {{#if weaponAttack}}
+    <section class="fs4e-weapon-attack-summary">
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.Weapon"}}</span>
+        <strong class="fs4e-summary-value">{{weaponAttack.weaponName}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.Target"}}</span>
+        <strong class="fs4e-summary-value">{{weaponAttack.targetName}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.Range"}}</span>
+        <strong class="fs4e-summary-value">{{weaponAttack.rangeLabel}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.FireMode"}}</span>
+        <strong class="fs4e-summary-value">{{weaponAttack.fireModeLabel}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.BaseDamage"}}</span>
+        <strong class="fs4e-summary-value">{{weaponAttack.baseDamage}}</strong>
+      </div>
+      {{#if weaponAttack.attackPropertyLabels.length}}
+        <div class="fs4e-summary-row">
+          <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Weapon.AttackProperties"}}</span>
+          <strong class="fs4e-summary-value">{{#each weaponAttack.attackPropertyLabels}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</strong>
+        </div>
+      {{/if}}
+    </section>
+  {{/if}}
+
+  <section class="fs4e-primary-result">
+    {{#if showFavorability}}
+      <span class="fs4e-context-badge">{{localize favorabilityLabel}}</span>
+    {{/if}}
+    <strong class="fs4e-roll-result">{{selectedResult}}</strong>
+    <div class="fs4e-outcome">
+      <strong>{{localize outcomeLabel}}</strong>
+      <span class="fs4e-resource-result">
+        {{#if vpGenerated}}
+          <span>{{vpGenerated}} {{localize "FADING_SUNS.Chat.VP"}}</span>
+        {{/if}}
+        {{#if wpGenerated}}
+          <span>{{wpGenerated}} {{localize "FADING_SUNS.Chat.WP"}}</span>
+        {{/if}}
+      </span>
+    </div>
+  </section>
+
+  <section class="trait-pair-resistance">
+    {{#if ignoresResistance}}
+      <section class="fs4e-workflow-block fs4e-resistance-block">
+        <h4 class="fs4e-workflow-title">{{localize "FADING_SUNS.Roll.Resistance.Label"}}</h4>
+        <div class="fs4e-summary-row trait-pair-resistance-row">
+          <span class="fs4e-summary-label trait-pair-resistance-label">{{localize "FADING_SUNS.Roll.Resistance.VpSpent"}}</span>
+          <strong class="fs4e-summary-value trait-pair-resistance-value">0</strong>
+        </div>
+        <strong class="fs4e-result trait-pair-resistance-result is-victory">{{localize "FADING_SUNS.Roll.Resistance.Victory"}}</strong>
+        <details class="fs4e-details">
+          <summary class="fs4e-details-summary">{{localize "FADING_SUNS.Chat.Details"}}</summary>
+          <div class="fs4e-details-content">
+            <p class="trait-pair-resistance-note">{{localize "FADING_SUNS.Roll.Resistance.Ignored"}}</p>
+          </div>
+        </details>
+      </section>
+    {{else}}
+      {{#if success}}
+        <button type="button" class="trait-pair-resistance-button" data-action="resolve-resistance">
+          {{localize "FADING_SUNS.Roll.Resistance.Resolve"}}
+        </button>
+      {{/if}}
+    {{/if}}
+  </section>
+
+  <section class="trait-pair-impact"></section>
+
+  <details class="fs4e-details trait-pair-roll-details">
+    <summary class="fs4e-details-summary">{{localize "FADING_SUNS.Chat.Details"}}</summary>
+    <div class="fs4e-details-content">
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Characteristic"}}</span>
+        <strong class="fs4e-summary-value">{{characteristicLabel}} {{characteristicValue}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Skill"}}</span>
+        <strong class="fs4e-summary-value">{{skillLabel}} {{skillValue}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.GoalModifier"}}</span>
+        <strong class="fs4e-summary-value">{{goalModifierDisplay}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Goal"}}</span>
+        <strong class="fs4e-summary-value">{{goal}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.Favorability.Label"}}</span>
+        <strong class="fs4e-summary-value">{{localize favorabilityLabel}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.DiceResults"}}</span>
+        <strong class="fs4e-summary-value">{{#each results}}{{#unless @first}}, {{/unless}}{{this}}{{/each}}</strong>
+      </div>
+      <div class="fs4e-summary-row">
+        <span class="fs4e-summary-label">{{localize "FADING_SUNS.Roll.SelectedResult"}}</span>
+        <strong class="fs4e-summary-value">{{selectedResult}}</strong>
+      </div>
+
+      {{#if criticalMiss}}
+        <p class="trait-pair-rule-note">{{localize "FADING_SUNS.Roll.GmWyrdAward"}}</p>
+      {{/if}}
+
+      {{#if hasNativeRoll}}
+        <div class="trait-pair-native-roll">
+          <strong class="trait-pair-native-heading">{{localize "FADING_SUNS.Roll.NativeDice"}}</strong>
+          <p class="trait-pair-native-note">{{localize "FADING_SUNS.Roll.SelectedResultNotice"}}</p>
+          {{{rollHTML}}}
+        </div>
+      {{/if}}
+    </div>
+  </details>
+</article>

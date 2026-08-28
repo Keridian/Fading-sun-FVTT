@@ -1,0 +1,53 @@
+<div class="energy-shield-dialog-content fs4e-resolution-dialog">
+  <dl class="energy-shield-dialog-summary fs4e-dialog-primary">
+    <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Target"}}</dt><dd>{{targetName}}</dd></div>
+    <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Shield"}}</dt><dd>{{shieldName}}</dd></div>
+    <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.IncomingDamage"}}</dt><dd>{{incomingDamage}}</dd></div>
+  </dl>
+
+  <label class="energy-shield-dialog-trigger">
+    <span>{{localize "FADING_SUNS.Roll.EnergyShield.SpecialBurnoutTrigger"}}</span>
+    <select name="burnoutTrigger">
+      {{selectOptions burnoutTriggerChoices selected=burnoutTrigger localize=true}}
+    </select>
+  </label>
+  <p class="energy-shield-dialog-help">
+    {{localize "FADING_SUNS.Roll.EnergyShield.SpecialBurnoutTriggerHelp"}}
+  </p>
+
+  <dl class="energy-shield-dialog-burnout-preview">
+    <div>
+      <dt>{{localize "FADING_SUNS.Roll.EnergyShield.BurnoutTestRequired"}}</dt>
+      <dd data-burnout-required>{{#if burnoutRequired}}{{localize "FADING_SUNS.Roll.EnergyShield.Yes"}}{{else}}{{localize "FADING_SUNS.Roll.EnergyShield.No"}}{{/if}}</dd>
+    </div>
+    <div>
+      <dt>{{localize "FADING_SUNS.Roll.EnergyShield.BurnoutReason"}}</dt>
+      <dd data-burnout-reason>{{burnoutReason}}</dd>
+    </div>
+  </dl>
+
+  {{#unless combatAvailable}}
+    <p class="energy-shield-dialog-notice">{{localize "FADING_SUNS.Roll.EnergyShield.RoundTrackingUnavailable"}}</p>
+  {{/unless}}
+
+  <details class="fs4e-dialog-details">
+    <summary>{{localize "FADING_SUNS.Roll.EnergyShield.CalculationDetails"}}</summary>
+    <dl class="energy-shield-dialog-summary">
+      <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Threshold"}}</dt><dd>{{thresholdMin}} {{localize "FADING_SUNS.Roll.EnergyShield.RangeSeparator"}} {{thresholdMax}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Hits"}}</dt><dd>{{hitsBefore}} / {{hitsMax}}</dd></div>
+      <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.ShieldCompatibility"}}</dt><dd>{{shieldCompatibility}}</dd></div>
+      {{#if wornArmorName}}
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.WornArmor"}}</dt><dd>{{wornArmorName}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.ArmorCompatibility"}}</dt><dd>{{armorCompatibility}}</dd></div>
+      {{/if}}
+      <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Compatible"}}</dt><dd>{{#if compatible}}{{localize "FADING_SUNS.Roll.EnergyShield.Yes"}}{{else}}{{localize "FADING_SUNS.Roll.EnergyShield.No"}}{{/if}}</dd></div>
+      {{#if combatAvailable}}
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Combat"}}</dt><dd>{{combatName}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.Round"}}</dt><dd>{{combatRound}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.ActivationsThisRound"}}</dt><dd>{{activationsThisRound}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.ActivationLimit"}}</dt><dd>{{lowerThreshold}}</dd></div>
+        <div><dt>{{localize "FADING_SUNS.Roll.EnergyShield.NextActivation"}}</dt><dd>{{nextActivation}}</dd></div>
+      {{/if}}
+    </dl>
+  </details>
+</div>
