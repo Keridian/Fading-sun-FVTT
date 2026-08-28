@@ -250,4 +250,3 @@ Ce projet n'implique aucune affiliation ou approbation officielle de la part des
 La licence du code source n'est pas encore définie.
 
 Avant toute publication publique ou distribution officielle du système, la licence du projet ainsi que les conditions applicables aux marques, textes, terminologies et autres contenus liés à Fading Suns devront être déterminées.
-```
