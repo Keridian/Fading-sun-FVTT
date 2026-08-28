@@ -1025,24 +1025,4 @@ Principes :
 - les transactions critiques utilisent flags, `operationId` et états `pending/resolved` ;
 - l'autorité transactionnelle reste actuellement locale au client.
 
----
 
-# Déploiement Pterodactyl / SFTP
-
-Après transfert SFTP, vérifier les permissions Linux.
-
-Répertoires :
-
-```bash
-find /home/container/data/Data/systems/fadingsuns4e -type d -exec chmod 755 {} \;
-```
-
-Fichiers :
-
-```bash
-find /home/container/data/Data/systems/fadingsuns4e -type f -exec chmod 644 {} \;
-```
-
-Ne pas utiliser `777`.
-
-Les nouveaux dossiers SFTP ont déjà provoqué des erreurs `EACCES` lorsqu'ils ne possédaient pas le droit de traversée `x`.
