@@ -1,4 +1,4 @@
-```markdown
+
 # Fading Suns 4e pour Foundry VTT
 
 Système non officiel en cours de développement pour jouer à **Fading Suns 4e** avec **Foundry Virtual Tabletop**.
