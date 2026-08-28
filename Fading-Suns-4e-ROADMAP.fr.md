@@ -1095,17 +1095,3 @@ La 1.0 devrait idéalement proposer :
 Le Starship Actor peut arriver avant ou après 1.0 selon la disponibilité et la maturité des règles spatiales officielles.
 
 ---
-
-# Principes directeurs
-
-1. Ne jamais inventer une règle absente ou ambiguë.
-2. Valider les versions dans Foundry réel, pas uniquement par tests automatisés.
-3. Préserver les données avant toute migration risquée.
-4. Garder les règles hors des Sheets autant que possible.
-5. Réutiliser les mêmes moteurs pour joueurs, MJ et macros.
-6. Interface simple côté joueur, diagnostic complet côté MJ.
-7. Une mécanique à la fois lorsque le risque de régression est élevé.
-8. Mesurer les performances avant d'augmenter CPU ou RAM.
-9. Traiter compatibilité Foundry et localisation comme des contraintes majeures.
-10. Garder le code maintenable par un humain sans dépendre de l'historique du développement.
-11. Maintenir une identité visuelle et ergonomique cohérente entre Sheets, Chat, dialogues, Tracker et outils MJ.

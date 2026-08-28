@@ -1095,17 +1095,3 @@ Version 1.0 should ideally provide:
 The Starship Actor may arrive before or after 1.0 depending on the availability and maturity of the official space rules.
 
 ---
-
-# Guiding Principles
-
-1. Never invent an absent or ambiguous rule.
-2. Validate versions in a real Foundry instance, not only through automated tests.
-3. Preserve data before any risky migration.
-4. Keep rules out of Sheets whenever possible.
-5. Reuse the same engines for players, GMs, and macros.
-6. Keep the interface simple for players and diagnostics complete for the GM.
-7. Implement one mechanic at a time when regression risk is high.
-8. Measure performance before increasing CPU or RAM.
-9. Treat Foundry compatibility and localization as major constraints.
-10. Keep the code maintainable by a human without depending on development history.
-11. Maintain a consistent visual and ergonomic identity across Sheets, Chat, dialogs, Tracker, and GM Tools.
