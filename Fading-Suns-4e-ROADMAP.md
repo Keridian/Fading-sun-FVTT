@@ -1,403 +1,405 @@
-# Fading Suns 4e pour Foundry VTT
+# Fading Suns 4e for Foundry VTT
 
-## Roadmap révisée
+English | [Français](Fading-Suns-4e-ROADMAP.fr.md)
 
-> État de référence : version **0.19.0**, validée par tests automatisés et en cours de validation runtime sous **Foundry VTT 14.367**.
+## Revised roadmap
+
+> Reference status: version **0.19.0**, validated by automated tests and undergoing runtime validation under **Foundry VTT 14.367**.
 >
-> L'Initiative interactive a déjà passé son cycle fonctionnel principal en runtime. Les cas de concurrence/permissions et l'Initiative au jet restent à valider.
+> Interactive initiative has already passed its main functional runtime cycle. Concurrency and permission cases and Rolled initiative still require validation.
 >
-> L'ordre pourra évoluer si les règles officielles, les tests runtime ou les contraintes Foundry imposent une autre priorité.
+> Priorities may change if official rules, runtime tests, or Foundry constraints require a different order.
 
-# État actuel
+# Current status
 
-## Base déjà disponible
+## Existing foundation
 
-- Character, NPC et Creature.
-- 12 types d'Item.
-- Fiches Actor et Item.
+- Character, NPC, and Creature.
+- 12 Item types.
+- Actor and Item sheets.
 - Trait Pair.
-- Favorabilité.
-- Réussite critique / Échec critique.
-- PV / PW.
-- Cache et Banque.
-- Résistance et Victoire.
-- Incidence de résultat.
-- Incidence de dégâts.
-- Vitalité.
-- Armure.
-- Protections d'armure.
-- Propriétés d'attaque.
-- Liaison de cible.
-- Boucliers énergétiques.
-- Épuisement.
-- Distorsion.
-- Outils MJ.
-- UX joueur simplifiée avec sections `Détails` repliables.
-- Terminologie française officielle et glossaire EN / FR.
-- Valeurs ciblées supérieures ou égales à 20.
-- Retenue.
-- Pénétration Blaster et Feu des boucliers énergétiques.
-- Bonus Choc contre une défense métallique non Anti-choc.
-- Stockage et transport de plusieurs Propriétés d'attaque.
-- Refus contrôlé des combinaisons de Propriétés non définies.
-- Workflow Weapon à distance sur une cible.
-- Portées Courte, Longue, Extrême et Au-delà.
-- Aptitudes Weapon par clé canonique.
-- Munitions `legacy`, `finite`, `unlimited` et `none`.
-- Triple-tir.
-- Cadence de tir structurée avec rétrocompatibilité historique.
-- Initiative interactive officielle.
-- Initiative alternative au d20.
-- Combat Tracker adapté aux deux méthodes.
-- Localisation EN / FR en développement.
-- **547 tests automatisés réussis**.
+- Favorability.
+- Critical Hit / Critical Miss.
+- VP / WP.
+- Cache and Bank.
+- Resistance and Victory.
+- Result Impact.
+- Damage Impact.
+- Vitality.
+- Armor.
+- Armor Proofs.
+- Attack Properties.
+- Target binding.
+- Energy Shields.
+- Burn-Out.
+- Distortion.
+- GM Tools.
+- Simplified player UX with collapsible `Details` sections.
+- Official French terminology and EN / FR glossary.
+- Goals greater than or equal to 20.
+- Restraint.
+- Blaster and Flame Energy Shield Bleedthrough.
+- Shock bonus against metallic non-Shockproof defense.
+- Storage and transport of multiple Attack Properties.
+- Controlled rejection of undefined Attack Property combinations.
+- Single-target ranged Weapon workflow.
+- Short, Long, Extreme, and Beyond ranges.
+- Weapon Capabilities through canonical keys.
+- `legacy`, `finite`, `unlimited`, and `none` ammunition.
+- Three-round Burst.
+- Structured Rate of Fire with legacy compatibility.
+- Official interactive initiative.
+- Alternative d20 initiative.
+- Combat Tracker adapted to both methods.
+- EN / FR localization under development.
+- **547 automated tests passed**.
 
-## Dernière version en validation
+## Latest version undergoing validation
 
 ### 0.19.0 - Initiative
 
-Deux modes sont disponibles :
+Two modes are available:
 
-- Initiative interactive officielle ;
-- Initiative alternative au d20.
+- official interactive initiative;
+- alternative d20 initiative.
 
-### Initiative interactive
+### Interactive initiative
 
-Déjà validé en runtime :
+Already validated at runtime:
 
-- désignation explicite du chef de troupe ;
-- choix du premier protagoniste ;
-- choix successif des protagonistes ;
-- progression complète d'un round ;
-- reconstruction de l'ordre au round suivant ;
-- Actor de monde / Token lié ;
-- Token synthétique non lié ;
-- isolation de l'état temporaire par rapport à l'Actor source.
+- explicit troupe-leader designation;
+- selection of the first protagonist;
+- successive selection of protagonists;
+- full progression through a round;
+- order reconstruction at the next round;
+- World Actor / linked Token;
+- unlinked synthetic Token;
+- isolation of temporary state from the source Actor.
 
-Reste à valider :
+Still to validate:
 
-- concurrence entre plusieurs propriétaires ;
-- refus des requêtes obsolètes ou doubles ;
-- changement de mode pendant un Combat.
+- concurrency between multiple owners;
+- rejection of stale or duplicate requests;
+- changing modes during a Combat.
 
-### Initiative au jet
+### Rolled initiative
 
-Implémentée et couverte par les tests automatisés :
+Implemented and covered by automated tests:
 
-- d20 à chaque round ;
-- ordre décroissant ;
-- avantage ;
-- départage Dextérité ;
-- départage Intuition ;
-- relances ;
-- partage des jets selon les propriétaires ;
-- partage du jet MJ pour les PNJ concernés.
+- d20 every round;
+- descending order;
+- edge;
+- Dexterity tiebreaker;
+- Intuition tiebreaker;
+- rerolls;
+- shared rolls based on owners;
+- shared GM roll for relevant NPCs.
 
-La validation runtime de cette méthode reste à effectuer.
+Runtime validation of this method remains to be completed.
 
 ### Tests
 
-- **547 tests automatisés réussis** ;
-- **41 tests Initiative** ;
-- **506 tests historiques conservés**.
+- **547 automated tests passed**;
+- **41 Initiative tests**;
+- **506 historical tests preserved**.
 
-## Dernière version validée en runtime
+## Latest runtime-validated version
 
-### 0.18.0 - Triple-tir et Cadence de tir structurée
+### 0.18.0 - Three-round Burst and structured Rate of Fire
 
-Livré :
+Delivered:
 
-- Triple-tir sur les Weapons capables de tirer en rafale ;
-- coût de 3 munitions ;
-- valeur ciblée inchangée ;
-- bonus de 1 dégât ;
-- une seule cible ;
-- munitions finies, insuffisantes et illimitées gérées ;
-- configuration de Cadence de tir par valeur numérique et case dédiée ;
-- anciennes notations `3 (r)` et `3 (b)` conservées sans migration destructive ;
-- workflow complet validé jusqu'à la Vitalité ;
-- 506 tests automatisés réussis.
+- Three-round Burst on burst-capable Weapons;
+- cost of 3 ammunition;
+- unchanged Goal;
+- bonus of 1 damage;
+- one target;
+- finite, insufficient, and unlimited ammunition handled;
+- Rate of Fire configured through a numeric value and dedicated checkbox;
+- legacy `3 (r)` and `3 (b)` notations preserved without destructive migration;
+- full workflow validated through Vitality;
+- 506 automated tests passed.
 
-Différé faute de règles ou d'architecture suffisantes :
+Deferred because rules or architecture remain insufficient:
 
-- rechargement ;
-- Rafale ;
-- Chargeur vidé ;
-- Balayer ;
-- attaques de zone ;
-- multiciblage.
+- reloading;
+- Burst;
+- Empty clip;
+- Spread;
+- area attacks;
+- multi-targeting.
 
-## Jalons validés depuis la rédaction initiale
+## Validated milestones
 
-1. **0.13.0** : simplification UX joueur.
-2. **0.14.0** : audit des règles, terminologie française et valeurs ciblées élevées.
-3. **0.15.0** : Retenue et Pénétration Blaster / Feu.
-4. **0.16.0** : audit des Propriétés d'attaque et correction Choc / métal.
-5. **0.16.1** : Propriétés d'attaque multiples, avec refus mécanique contrôlé.
-6. **0.17.0** : workflow Weapon à distance et gestion structurée des munitions.
-7. **0.18.0** : Triple-tir et Cadence de tir structurée.
-8. **0.19.0** : Initiative interactive et alternative au d20, en validation runtime.
-
----
-
-# Phase 1 - UX et stabilisation immédiate
-
-## 0.13.0 - UX joueur simplifiée
-
-**Statut : terminée et validée en runtime**
-
-Chat :
-
-- Trait Pair compact.
-- Resistance compacte.
-- Impact compact.
-- Damage compact.
-- Energy Shield compact.
-- Apply Damage compact.
-- sections `Détails` repliables.
-- meilleure mise en page dans la sidebar Foundry.
-
-Dialogues :
-
-- simplification du dialogue Resistance ;
-- meilleure hiérarchie entre résultat, options et détail du calcul.
-
-Contraintes :
-
-- aucune nouvelle règle ;
-- aucun changement de DataModel ;
-- aucune perte d'information ;
-- résultats GM Tools visuellement identiques aux résolutions normales.
-
-Cette phase est terminée. Les cartes compactes, les sections `Détails`, la sidebar et le dialogue Resistance ont été validés sous Foundry VTT 14.367.
+1. **0.13.0**: player UX simplification.
+2. **0.14.0**: rules audit, French terminology, and high Goals.
+3. **0.15.0**: Restraint and Blaster / Flame Bleedthrough.
+4. **0.16.0**: Attack Properties audit and Shock / metal correction.
+5. **0.16.1**: multiple Attack Properties with controlled mechanical rejection.
+6. **0.17.0**: ranged Weapon workflow and structured ammunition management.
+7. **0.18.0**: Three-round Burst and structured Rate of Fire.
+8. **0.19.0**: interactive and alternative d20 initiative, undergoing runtime validation.
 
 ---
 
-# Phase 2 - Finalisation des boucliers énergétiques
+# Phase 1 - UX and immediate stabilization
 
-## Validation runtime complète Épuisement / Distorsion
+## 0.13.0 - Simplified player UX
 
-**Statut : terminée**
+**Status: completed and runtime validated**
 
-Validé dans Foundry réel :
+Chat:
 
-- les cinq premières activations ;
-- la sixième activation ;
-- réussite d'Épuisement ;
-- échec d'Épuisement ;
-- déclencheur spécial ;
-- reset du compteur au changement de round ;
-- Distorsion à portée Courte, Longue et Extrême ;
-- expiration de Distorsion ;
-- durée réelle de l'Épuisement.
+- compact Trait Pair.
+- compact Resistance.
+- compact Impact.
+- compact Damage.
+- compact Energy Shield.
+- compact Apply Damage.
+- collapsible `Details` sections.
+- improved layout in the Foundry sidebar.
 
-La 0.12.1 est maintenant considérée comme validée en runtime réel.
+Dialogs:
 
-## Pénétration Blaster / Feu
+- simplified Resistance dialog;
+- better hierarchy between the result, options, and calculation details.
 
-**Statut : terminée en 0.15.0**
+Constraints:
 
-Livré :
+- no new rule;
+- no DataModel change;
+- no loss of information;
+- GM Tools results visually identical to normal resolutions.
 
-- Pénétration Blaster ;
-- Pénétration Feu ;
-- interaction avec les seuils, les Coups, l'Armure et les dégâts pénétrants.
-
-Les jets Foundry natifs, le dépassement du seuil maximum et les interactions avec Épuisement et Distorsion ont été validés.
-
-## Retenue
-
-**Statut : terminée en 0.15.0 sous le nom Retenue**
-
-- dépense paire de PV ;
-- réduction de 1 dégât par tranche de 2 PV ;
-- intégration à l'Incidence avant le bonus de dégâts ;
-- transaction Cache et Banque partagée avec les dépenses existantes.
-
-## Plus tard
-
-- déclencheurs d'Épuisement automatiques issus des workflows Weapon et Manœuvre ;
-- Shield Dampers si les règles disponibles le permettent ;
-- autres propriétés officielles d'Energy Shield.
+This phase is complete. Compact cards, `Details` sections, the sidebar, and the Resistance dialog have been validated under Foundry VTT 14.367.
 
 ---
 
-# Chantier transversal - Refonte UI et Design System Fading Suns
+# Phase 2 - Energy Shield completion
 
-**Priorité : haute**
+## Complete Burn-Out / Distortion runtime validation
 
-L'interface actuelle est fonctionnelle, mais reste issue du développement progressif des différentes mécaniques.
+**Status: completed**
 
-Avant la bêta publique, le système doit disposer d'une identité visuelle et ergonomique cohérente inspirée des fiches officielles Fading Suns 4e françaises et anglaises, sans reproduire les contraintes d'une feuille papier.
+Validated in a real Foundry runtime:
 
-Ce chantier est transversal : il pourra progresser parallèlement aux phases fonctionnelles suivantes.
+- the first five activations;
+- the sixth activation;
+- successful Burn-Out;
+- failed Burn-Out;
+- special trigger;
+- counter reset when the round changes;
+- Distortion at Short, Long, and Extreme range;
+- Distortion expiration;
+- actual Burn-Out duration.
 
-## Objectifs
+Version 0.12.1 is now considered validated in a real runtime.
 
-Créer une grammaire visuelle commune pour :
+## Blaster / Flame Bleedthrough
 
-- Character Sheet ;
-- NPC Sheet ;
-- Creature Sheet ;
-- Item Sheets ;
-- Weapon ;
-- Armor ;
-- Energy Shield ;
-- dialogues ;
-- ChatMessages ;
-- Combat Tracker ;
-- Initiative ;
-- Outils MJ ;
-- futures ressources de table ;
-- futurs Compendiums et workflows de création.
+**Status: completed in 0.15.0**
 
-## Direction visuelle
+Delivered:
 
-Conserver l'identité Fading Suns :
+- Blaster Bleedthrough;
+- Flame Bleedthrough;
+- interaction with thresholds, Hits, Armor, and penetrating damage.
 
-- opposition entre univers médiéval et technologie ;
-- surfaces inspirées du parchemin ;
-- géométrie et motifs techniques discrets ;
-- séparateurs et ornements inspirés des fiches officielles ;
-- hiérarchie typographique forte ;
-- identité Corps / Mental / Esprit clairement reconnaissable.
+Native Foundry Rolls, maximum-threshold overflow, and interactions with Burn-Out and Distortion have been validated.
 
-Éviter :
+## Restraint
 
-- reproduction littérale de la feuille A4 ;
-- ornements réduisant fortement l'espace utile ;
-- typographies décoratives sur les valeurs ou contrôles nécessitant une lecture rapide ;
-- multiplication de styles propres à chaque fenêtre.
+**Status: completed in 0.15.0 as Restraint**
+
+- even VP expenditure;
+- reduction of 1 damage per 2 VP;
+- integration into Impact before the damage bonus;
+- Cache and Bank transaction shared with existing expenditures.
+
+## Later
+
+- automatic Burn-Out triggers from Weapon and Maneuver workflows;
+- Shield Dampers if the available rules support them;
+- other official Energy Shield properties.
+
+---
+
+# Cross-cutting workstream - UI redesign and Fading Suns Design System
+
+**Priority: high**
+
+The current interface is functional, but it reflects the incremental development of individual mechanics.
+
+Before public beta, the system needs a consistent visual and ergonomic identity inspired by the official French and English Fading Suns 4e sheets, without reproducing the constraints of a paper sheet.
+
+This is a cross-cutting workstream that can progress alongside the functional phases below.
+
+## Objectives
+
+Create a shared visual language for:
+
+- Character Sheet;
+- NPC Sheet;
+- Creature Sheet;
+- Item Sheets;
+- Weapon;
+- Armor;
+- Energy Shield;
+- dialogs;
+- ChatMessages;
+- Combat Tracker;
+- Initiative;
+- GM Tools;
+- future table resources;
+- future Compendiums and creation workflows.
+
+## Visual direction
+
+Preserve the Fading Suns identity:
+
+- tension between medieval imagery and technology;
+- parchment-inspired surfaces;
+- restrained technical geometry and patterns;
+- separators and ornaments inspired by the official sheets;
+- strong typographic hierarchy;
+- clearly recognizable Body / Mind / Spirit identity.
+
+Avoid:
+
+- literal reproduction of the A4 sheet;
+- ornamentation that significantly reduces usable space;
+- decorative typefaces for values or controls that require quick reading;
+- separate visual styles for every window.
 
 ## Character Sheet
 
-Architecture envisagée :
+Planned architecture:
 
 ```text
-Bandeau permanent
+Persistent header
 ├── Portrait
-├── Identité
-├── Rang / Espèce / Classe / Faction / Vocation
-└── Ressources essentielles
+├── Identity
+├── Rank / Species / Class / Faction / Calling
+└── Essential resources
 
 Navigation
-├── Personnage
+├── Character
 ├── Combat
-├── Occulte
+├── Occult
 ├── Possessions
-└── Biographie
+└── Biography
 ```
 
-Le bandeau supérieur doit conserver les informations et ressources essentielles accessibles quel que soit l'onglet.
+The top header must keep essential information and resources available regardless of the active tab.
 
-### Personnage
+### Character
 
-- Corps ;
-- Mental ;
-- Esprit ;
-- Caractéristiques ;
-- Compétences ;
-- Résistances ;
-- éléments centraux nécessaires aux Paires de traits.
+- Body;
+- Mind;
+- Spirit;
+- Characteristics;
+- Skills;
+- Resistances;
+- core elements required for Trait Pairs.
 
 ### Combat
 
-- Actions ;
-- Weapons ;
-- Armor ;
-- Energy Shield ;
-- Vitalité ;
-- Seconds souffles ;
-- munitions ;
-- propriétés et actions directement utilisables.
+- Actions;
+- Weapons;
+- Armor;
+- Energy Shield;
+- Vitality;
+- Revivals;
+- ammunition;
+- directly usable properties and actions.
 
-Les opérations fréquentes doivent être accessibles sans ouvrir systématiquement la fiche complète d'un Item.
+Frequent operations must be available without systematically opening the full Item sheet.
 
-### Occulte
+### Occult
 
-- Psi ;
-- Urge ;
-- Théurgie ;
-- Hubris ;
-- Powers et autres capacités occultes lorsque leurs workflows seront développés.
+- Psi;
+- Urge;
+- Theurgy;
+- Hubris;
+- Powers and other occult abilities when their workflows are developed.
 
 ### Possessions
 
-- Weapons ;
-- Armor ;
-- Equipment ;
-- autres possessions ;
-- argent et ressources matérielles définies par les règles.
+- Weapons;
+- Armor;
+- Equipment;
+- other possessions;
+- money and material resources defined by the rules.
 
-### Biographie
+### Biography
 
-- identité détaillée ;
-- historique ;
-- notes ;
-- informations narratives.
+- detailed identity;
+- background;
+- notes;
+- narrative information.
 
-## Ressources globales
+## Global resources
 
-L'UI doit rendre immédiatement compréhensible la différence entre :
+The UI must make the distinction between these resources immediately clear:
 
 ```text
-PERSONNAGE
-Cache / Banque / Adrénaline / autres ressources individuelles
+CHARACTER
+Cache / Bank / Surge / other individual resources
 
 TABLE
-Puits commun
+Shared Well
 
-MJ
-Coffret des adversaires
+GM
+Adversary coffer
 ```
 
-Le Puits ne doit pas être présenté comme une ressource personnelle du MJ.
+The Well must not be presented as a personal GM resource.
 
-## Responsive et densité
+## Responsive behavior and density
 
-Les fiches doivent rester utilisables :
+Sheets must remain usable:
 
-- dans une grande fenêtre ;
-- à côté de la Scene ;
-- avec le Chat ouvert ;
-- sur différentes résolutions raisonnables.
+- in a large window;
+- beside the Scene;
+- with Chat open;
+- at a range of reasonable resolutions.
 
-Les informations secondaires doivent pouvoir être repliées ou déplacées dans des onglets plutôt que d'allonger indéfiniment les Sheets.
+Secondary information must be collapsible or moved into tabs instead of extending Sheets indefinitely.
 
 ## Design System
 
-Créer progressivement des composants communs :
+Progressively create shared components:
 
-- panneaux ;
-- cartes ;
-- titres ;
-- séparateurs ;
-- onglets ;
-- boutons ;
-- champs ;
-- selects ;
-- checkboxes ;
-- jauges ;
-- badges ;
-- ressources ;
-- états ;
-- tooltips ;
-- sections repliables ;
-- messages d'erreur et avertissements.
+- panels;
+- cards;
+- headings;
+- separators;
+- tabs;
+- buttons;
+- fields;
+- selects;
+- checkboxes;
+- gauges;
+- badges;
+- resources;
+- states;
+- tooltips;
+- collapsible sections;
+- error messages and warnings.
 
-Les composants doivent utiliser les mêmes conventions dans les Sheets, dialogues, Chat et outils MJ.
+Components must use the same conventions in Sheets, dialogs, Chat, and GM Tools.
 
-## Contraintes
+## Constraints
 
-La refonte UI ne doit pas :
+The UI redesign must not:
 
-- déplacer les règles métier dans les Sheets ;
-- modifier silencieusement les DataModels ;
-- casser les API publiques ;
-- supprimer les informations de diagnostic nécessaires ;
-- rendre les workflows dépendants d'une présentation particulière.
+- move business rules into Sheets;
+- silently modify DataModels;
+- break public APIs;
+- remove required diagnostic information;
+- make workflows depend on a specific presentation.
 
-L'architecture reste :
+The architecture remains:
 
 ```text
 DataModel
@@ -407,341 +409,341 @@ DataModel
 → UI
 ```
 
-La refonte doit principalement remplacer et unifier la dernière couche.
+The redesign must mainly replace and unify the final layer.
 
 ---
 
-# Phase 3 - States et conséquences
+# Phase 3 - States and Consequences
 
-## États physiques, mentaux et sociaux
+## Physical, Mental, and Social States
 
-**Priorité : haute**
+**Priority: high**
 
-L'audit préparatoire a été réalisé, mais aucun État n'a été automatisé faute de définitions normatives suffisantes sur les effets, durées et cumuls. Cette phase reste donc entièrement à développer.
+The preparatory audit is complete, but no State has been implemented because the normative definitions for effects, durations, and stacking remain insufficient. This phase therefore remains entirely to be developed.
 
-Architecture prévue :
+Planned architecture:
 
-- Physical States ;
-- Mental States ;
+- Physical States;
+- Mental States;
 - Social States.
 
-Persistance prévue :
+Planned persistence:
 
-- Temporary ;
-- Enduring ;
+- Temporary;
+- Enduring;
 - Chronic.
 
-Travail nécessaire :
+Required work:
 
-- modèle de données ;
-- application et retrait ;
-- durée ;
-- stacking si prévu par les règles ;
-- affichage Actor ;
-- affichage Token si pertinent ;
-- intégration Chat ;
-- API de règles.
+- data model;
+- application and removal;
+- duration;
+- stacking when provided by the rules;
+- Actor display;
+- Token display where relevant;
+- Chat integration;
+- rules API.
 
-Les détails doivent être dérivés des livres officiels.
+Details must be derived from the official books.
 
 ---
 
-# Phase 4 - Combat personnel avancé
+# Phase 4 - Advanced Personal Combat
 
 ## Weapons
 
-**Statut : socle à distance terminé en 0.17.0**
+**Status: ranged foundation completed in 0.17.0**
 
-Workflow livré :
+Delivered workflow:
 
 ```text
 Weapon
 → Trait Pair
-→ Portée
-→ Résistance
-→ Victoire
-→ Incidence
-→ Dégâts
-→ Bouclier énergétique
-→ Vitalité
+→ Range
+→ Resistance
+→ Victory
+→ Impact
+→ Damage
+→ Energy Shield
+→ Vitality
 ```
 
-Fonctionnel :
+Functional:
 
-- action Tirer depuis les feuilles Actor ;
-- dialogue Weapon dédié ;
-- portée choisie manuellement ;
-- Dextérité ou Perception avec Tir selon la portée ;
-- modificateur de Weapon et Force minimale ;
-- Aptitude canonique et Favorabilité ;
-- munitions finies, illimitées, non applicables et historiques ;
-- cible persistante par UUID ;
-- Actors de monde, Tokens liés et Tokens synthétiques ;
-- dégâts Weapon transmis à l'Incidence ;
-- Propriétés d'attaque, Armor, Bouclier énergétique et Damage réutilisés sans second moteur.
+- Shoot action from Actor Sheets;
+- dedicated Weapon dialog;
+- manually selected range;
+- Dexterity or Perception with Shoot depending on range;
+- Weapon modifier and minimum Strength;
+- canonical Capability and Favorability;
+- finite, unlimited, not applicable, and legacy ammunition;
+- persistent target by UUID;
+- World Actors, linked Tokens, and Synthetic Actors;
+- Weapon damage passed to Impact;
+- existing Attack Properties, Armor, Energy Shield, and Damage engines reused without a second rules engine.
 
-Reste à développer :
+Still to be developed:
 
-- calcul automatique de distance si une règle fiable le justifie ;
-- attaques de mêlée ;
-- armes de jet ;
-- grenades et explosifs ;
-- rechargement ;
-- particularités de Weapon non encore automatisées ;
-- transactions distribuées entre plusieurs clients si elles deviennent nécessaires.
+- automatic distance calculation if a reliable rule justifies it;
+- melee attacks;
+- thrown weapons;
+- grenades and explosives;
+- reloading;
+- Weapon features not yet implemented;
+- distributed transactions across multiple clients if they become necessary.
 
 ## Maneuvers
 
-**Priorité : haute**
+**Priority: high**
 
-- connecter les Maneuvers au moteur ;
-- coûts ;
-- conditions ;
-- impacts ;
-- Broad Area ;
-- autres effets officiels.
+- connect Maneuvers to the rules engine;
+- costs;
+- conditions;
+- impacts;
+- Broad Area;
+- other official effects.
 
-## Modes de tir
+## Firing Modes
 
-**Statut : première tranche terminée en 0.18.0**
+**Status: first tranche completed in 0.18.0**
 
-Livré :
+Delivered:
 
-- Tir simple ;
-- Triple-tir ;
-- coût de 3 munitions ;
-- valeur ciblée inchangée ;
-- bonus de 1 dégât ;
-- une cible ;
-- configuration structurée de la Cadence de tir ;
-- compatibilité avec les notations historiques `(r)` et `(b)`.
+- Single Shot;
+- Three-round Burst;
+- cost of 3 rounds;
+- unchanged Goal Number;
+- +1 damage bonus;
+- one target;
+- structured Rate of Fire configuration;
+- compatibility with legacy `(r)` and `(b)` notation.
 
-Différé tant que les règles ou l'architecture nécessaires restent incomplètes :
+Deferred while the required rules or architecture remain incomplete:
 
-- Rafale ;
-- Chargeur vidé ;
-- Balayer ;
-- attaques de zone ;
-- multiciblage ;
-- remplacement des déclencheurs manuels d'Épuisement associés à ces modes.
+- Burst;
+- Empty Clip;
+- Spread;
+- area attacks;
+- multiple targets;
+- replacement of the manual Burn-Out triggers associated with these modes.
 
 ---
 
-# Phase 5 - Powers, Occult et capacités
+# Phase 5 - Powers, Occult, and Capabilities
 
 ## Perks / Powers
 
-**Priorité : moyenne à haute**
+**Priority: medium to high**
 
-Le modèle Item existe déjà.
+The Item model already exists.
 
-À développer :
+To be developed:
 
-- pouvoirs comme Perks spécialisés ;
-- traditions ;
-- coûts ;
-- Trait Pairs ;
-- effets ;
-- durées ;
-- Resistance ;
-- automation uniquement lorsque la règle est suffisamment explicite.
+- powers as specialized Perks;
+- traditions;
+- costs;
+- Trait Pairs;
+- effects;
+- durations;
+- Resistance;
+- implementation only when the rule is sufficiently explicit.
 
 ## Psi / Urge
 
-**Priorité : moyenne**
+**Priority: medium**
 
-- workflows Psi ;
-- gestion de l'Urge ;
-- effets et risques associés.
+- Psi workflows;
+- Urge management;
+- associated effects and risks.
 
 ## Theurgy / Hubris
 
-**Priorité : moyenne**
+**Priority: medium**
 
-- workflows Theurgy ;
-- Hubris ;
-- conditions et conséquences.
+- Theurgy workflows;
+- Hubris;
+- conditions and consequences.
 
 ## Capabilities
 
-**Priorité : moyenne**
+**Priority: medium**
 
-- effets actifs ;
-- bonus ;
-- modifications contextuelles ;
-- intégration avec création et progression.
+- active effects;
+- bonuses;
+- contextual changes;
+- integration with creation and advancement.
 
 ---
 
-# Phase 6 - Création et progression des personnages
+# Phase 6 - Character Creation and Advancement
 
-## Création de personnage
+## Character Creation
 
-**Priorité : haute avant bêta publique**
+**Priority: high before public beta**
 
-Objectif :
+Objective:
 
-- workflow guidé ;
-- Species ;
-- Class ;
-- Faction ;
-- Calling ;
-- Characteristics ;
-- Skills ;
-- Capabilities ;
-- Perks ;
-- Equipment ;
-- ressources initiales.
+- guided workflow;
+- Species;
+- Class;
+- Faction;
+- Calling;
+- Characteristics;
+- Skills;
+- Capabilities;
+- Perks;
+- Equipment;
+- starting resources.
 
-La création doit s'appuyer sur les Items et Compendiums comme source de données.
+Creation must use Items and Compendiums as its data source.
 
 ## Advancement
 
-**Priorité : haute avant bêta publique**
+**Priority: high before public beta**
 
-- expérience ;
-- coûts ;
-- augmentations de Characteristics ;
-- Skills ;
-- Perks / Capabilities ;
-- autres éléments officiels.
+- experience;
+- costs;
+- Characteristic increases;
+- Skills;
+- Perks / Capabilities;
+- other official elements.
 
-Prévoir une traçabilité claire des dépenses.
+Provide clear tracking of expenditures.
 
 ---
 
-# Phase 7 - Outils MJ avancés
+# Phase 7 - Advanced GM Tools
 
-## Ressources de table et Coffret des adversaires
+## Table Resources and the Adversary Coffer
 
-**Priorité : haute**
+**Priority: high**
 
-L'audit des ressources MJ a clarifié qu'il ne faut pas créer de pool global de PV propre au MJ.
+The audit of GM resources established that a global VP pool belonging to the GM must not be created.
 
-L'architecture future doit distinguer explicitement trois niveaux :
+The future architecture must explicitly distinguish three levels:
 
-### Ressources individuelles
+### Individual Resources
 
-Les Actors conservent leurs ressources propres selon leur type et leur tier :
+Actors retain their own resources according to their type and tier:
 
-- Cache ;
-- Banque lorsqu'elle existe ;
-- Adrénaline lorsqu'elle existe ;
-- Seconds souffles lorsqu'ils existent ;
-- autres ressources individuelles définies par les règles.
+- Cache;
+- Bank when available;
+- Surge when available;
+- Revivals when available;
+- other individual resources defined by the rules.
 
-### Ressources de table
+### Table Resources
 
-Le puits constitue une réserve commune à la table.
+The Well is a shared reserve for the table.
 
-Il devra disposer d'une représentation persistante au niveau du World ou d'un document approprié, sans être artificiellement rattaché à un Actor MJ.
+It must have a persistent representation at the World level or in an appropriate document, without being artificially attached to a GM Actor.
 
-Fonctions envisagées :
+Planned functions:
 
-- consulter le contenu du puits ;
-- effectuer les transactions explicitement définies par les règles ;
-- journaliser les mouvements importants ;
-- servir de source aux transferts liés à l'interruption MJ ;
-- servir de source ou destination aux interactions avec le Coffret des adversaires.
+- view the contents of the Well;
+- perform transactions explicitly defined by the rules;
+- log important movements;
+- serve as the source for transfers related to GM interruption;
+- serve as a source or destination for interactions with the Adversary Coffer.
 
-La visibilité exacte du montant du puits n'étant pas prescrite par les sources actuellement auditées, aucune politique joueur/MJ ne doit être inventée sans décision UX explicite.
+The sources currently audited do not prescribe the exact visibility of the Well's amount, so no player/GM policy should be invented without an explicit UX decision.
 
-### Coffret des adversaires
+### Adversary Coffer
 
-Le Coffret des adversaires est la ressource globale réellement associée au MJ.
+The Adversary Coffer is the global resource actually associated with the GM.
 
-Il contient des PW.
+It contains WP.
 
-Mécaniques suffisamment établies :
+Sufficiently established mechanics:
 
-- un Échec critique d'un joueur ajoute 1 PW au Coffret des adversaires, pris au puits ;
-- le contenu du Coffret retourne au puits à la fin de la tragédie.
+- a player's Critical Miss adds 1 WP to the Adversary Coffer, taken from the Well;
+- the contents of the Coffer return to the Well at the end of the drama.
 
-À développer :
+To be developed:
 
-- stockage persistant ;
-- interface MJ dédiée ;
-- affichage du nombre de PW ;
-- transaction atomique Puits → Coffret ;
-- transaction de fin de tragédie Coffret → Puits ;
-- historique des mouvements ;
-- intégration automatique avec les Échecs critiques lorsque l'architecture du puits est disponible.
+- persistent storage;
+- dedicated GM interface;
+- WP count display;
+- atomic Well → Coffer transaction;
+- end-of-drama Coffer → Well transaction;
+- movement history;
+- automatic integration with Critical Misses once the Well architecture is available.
 
-Différé :
+Deferred:
 
-- dépense du Coffret pour aider un PNJ tant que l'effet mécanique exact n'est pas suffisamment établi ;
-- ressources PW individuelles de PNJ insuffisamment définies ;
-- ressources partagées de groupes de PNJ non établies.
+- spending from the Coffer to help an NPC while the exact mechanical effect remains insufficiently established;
+- insufficiently defined individual NPC WP resources;
+- unestablished shared resources for NPC groups.
 
-### Interruption MJ
+### GM Interruption
 
-Règles établies :
+Established rules:
 
-- maximum une interruption MJ par round ;
-- coût normal de 1 PV depuis le puits ;
-- le PV est donné au joueur interrompu ;
-- le protagoniste choisi par le MJ doit encore pouvoir agir.
+- no more than one GM interruption per round;
+- normal cost of 1 VP from the Well;
+- the VP is given to the interrupted player;
+- the protagonist selected by the GM must still be able to act.
 
-Architecture future :
+Future architecture:
 
 ```text
 Combat / Initiative
-→ demande d'interruption MJ
-→ validation du round
-→ validation du protagoniste
-→ transaction du Puits
-→ transfert de 1 PV au bénéficiaire
-→ action du protagoniste forcé
-→ reprise de l'Initiative
+→ GM interruption request
+→ round validation
+→ protagonist validation
+→ Well transaction
+→ transfer 1 VP to the beneficiary
+→ forced protagonist action
+→ Initiative resumes
 ```
 
-La reprise exacte de la chaîne après l'action forcée reste insuffisamment définie dans les sources actuellement auditées.
+The exact continuation of the sequence after the forced action remains insufficiently defined in the sources currently audited.
 
-L'automatisation complète de l'interruption reste donc différée afin de ne pas inventer cette transition.
+Complete implementation of GM interruption therefore remains deferred so that this transition is not invented.
 
-Les Outils MJ 0.12.2 servent déjà de socle.
+GM Tools 0.12.2 already provide the foundation.
 
-## État et diagnostic modifiable
+## Editable State and Diagnostics
 
-**Priorité : moyenne**
+**Priority: medium**
 
-Ajouter de manière contrôlée :
+Add in a controlled manner:
 
-- restaurer Vitality ;
-- modifier Cache ;
-- modifier Bank ;
-- restaurer Hits d'Energy Shield ;
-- lire ou reset les états runtime temporaires si nécessaire.
+- restore Vitality;
+- modify Cache;
+- modify Bank;
+- restore Energy Shield Hits;
+- read or reset temporary runtime states when necessary.
 
-Toutes les modifications doivent rester explicites et transactionnelles.
+All changes must remain explicit and transactional.
 
-## Générateurs de test
+## Test Generators
 
-**Priorité : moyenne**
+**Priority: medium**
 
-- scénarios de Damage rapides ;
-- Burn-Out forcé ;
-- propriétés d'attaque ;
-- autres outils de QA.
+- quick Damage scenarios;
+- forced Burn-Out;
+- Attack Properties;
+- other QA tools.
 
-Strictement réservés au MJ.
+Strictly restricted to the GM.
 
-## Outils de préparation
+## Preparation Tools
 
-**Priorité : moyenne**
+**Priority: medium**
 
-Selon les besoins réels :
+According to actual needs:
 
-- aides aux NPC ;
-- duplication contrôlée ;
-- génération à partir de modèles ;
-- outils de conversion/import.
+- NPC aids;
+- controlled duplication;
+- generation from templates;
+- conversion/import tools.
 
 ---
 
 # Phase 8 - Compendiums
 
-## Packs envisagés
+## Planned Packs
 
 - Species
 - Classes
@@ -758,118 +760,118 @@ Selon les besoins réels :
 - Creatures
 - Starships
 
-## Licence et distribution
+## Licence and Distribution
 
-Avant toute publication de contenu issu des livres :
+Before publishing any content from the books:
 
-- vérifier ce qui peut légalement être redistribué ;
-- distinguer code système et contenu protégé ;
-- éviter de publier textes, illustrations ou données non autorisées.
+- verify what may legally be redistributed;
+- distinguish system code from protected content;
+- avoid publishing unauthorized text, illustrations, or data.
 
-## Localisation des contenus
+## Content Localization
 
-Lorsque les PDF français officiels seront disponibles :
+When the official French PDFs become available:
 
-- établir un glossaire EN ↔ FR canonique ;
-- remplacer les traductions provisoires ;
-- uniformiser les termes du système et des Compendiums.
-
----
-
-# Phase 9 - Import / Export et migrations
-
-## Import / Export Actor
-
-**Priorité : moyenne**
-
-Objectifs :
-
-- créer personnages et NPC hors Foundry ;
-- importer proprement leurs données ;
-- exporter vers un format documenté et versionné.
-
-## Import / Export Compendium
-
-**Priorité : moyenne**
-
-- extraction et reconstruction ;
-- préservation des références nécessaires ;
-- validation des schémas.
-
-## Migrations de données
-
-**Priorité : haute avant 1.0**
-
-Mettre en place un système de migrations lorsque les DataModels évoluent.
-
-Exigences :
-
-- migrations versionnées ;
-- sauvegarde recommandée ;
-- aucune mutation destructive silencieuse ;
-- logs clairs ;
-- diagnostic possible.
+- establish a canonical EN → FR glossary;
+- replace provisional translations;
+- standardize terminology across the system and Compendiums.
 
 ---
 
-# Phase 10 - Vehicles et Starships
+# Phase 9 - Import / Export and Migrations
+
+## Actor Import / Export
+
+**Priority: medium**
+
+Objectives:
+
+- create characters and NPCs outside Foundry;
+- import their data cleanly;
+- export to a documented and versioned format.
+
+## Compendium Import / Export
+
+**Priority: medium**
+
+- extraction and reconstruction;
+- preservation of required references;
+- schema validation.
+
+## Data Migrations
+
+**Priority: high before 1.0**
+
+Establish a migration system when DataModels evolve.
+
+Requirements:
+
+- versioned migrations;
+- backup recommended;
+- no silent destructive mutation;
+- clear logs;
+- diagnostics available.
+
+---
+
+# Phase 10 - Vehicles and Starships
 
 ## Starship Actor
 
-**Priorité : importante après stabilisation du combat personnel**
+**Priority: important after personal combat is stabilized**
 
-Créer un type :
+Create a type:
 
 ```text
 starship
 ```
 
-Objectifs :
+Objectives:
 
-- vaisseau utilisable comme Token sur une Scene ;
-- fiche dédiée ;
-- ressources ;
-- armes ;
-- systèmes ;
-- équipements ;
-- positions d'équipage ;
-- intégration aux combats spatiaux.
+- a starship usable as a Token on a Scene;
+- dedicated Sheet;
+- resources;
+- weapons;
+- systems;
+- equipment;
+- crew positions;
+- integration with space combat.
 
-Architecture initiale :
+Initial architecture:
 
-- Starship Actor ;
-- Starship Sheet ;
-- Items embarqués ;
-- Token sur Scene ;
-- crew positions ;
-- API dédiée.
+- Starship Actor;
+- Starship Sheet;
+- embedded Items;
+- Token on Scene;
+- crew positions;
+- dedicated API.
 
-Les règles spatiales détaillées ne doivent pas être inventées. L'automatisation dépendra des règles 4e réellement disponibles dans les suppléments officiels.
+Detailed space rules must not be invented. Implementation will depend on the 4e rules actually available in official supplements.
 
 ## Vehicle Actor
 
-À évaluer séparément selon les sources disponibles :
+To be evaluated separately according to available sources:
 
-- type Actor `vehicle` ;
-- ou architecture partagée avec Starship si les règles le justifient.
+- `vehicle` Actor type;
+- or an architecture shared with Starship if justified by the rules.
 
-La décision doit être prise après étude des règles, pas uniquement pour simplifier le code.
+The decision must follow a study of the rules, not be made only to simplify the code.
 
 ---
 
-# Phase 11 - Qualité du code et API
+# Phase 11 - Code Quality and API
 
-## Audit complet
+## Complete Audit
 
-**Priorité : haute avant bêta publique**
+**Priority: high before public beta**
 
-Objectifs :
+Objectives:
 
-- supprimer le code mort ;
-- retirer les expérimentations obsolètes ;
-- consolider les helpers dupliqués ;
-- clarifier les responsabilités ;
-- maintenir la séparation :
+- remove dead code;
+- remove obsolete experiments;
+- consolidate duplicated helpers;
+- clarify responsibilities;
+- maintain the separation:
 
 ```text
 DataModel
@@ -879,9 +881,9 @@ DataModel
 → UI
 ```
 
-## API publique
+## Public API
 
-Documenter notamment :
+Document in particular:
 
 ```text
 game.fadingsuns4e.rules
@@ -889,18 +891,18 @@ game.fadingsuns4e.rolls
 game.fadingsuns4e.gm
 ```
 
-Pour :
+For:
 
-- macros ;
-- modules ;
-- intégrations externes ;
-- outils de test.
+- macros;
+- modules;
+- external integrations;
+- test tools.
 
-## Transactions multi-clients
+## Multi-client Transactions
 
-Initiative 0.19.0 utilise désormais l'active GM et le socket du système pour les décisions de tour réellement concurrentes.
+Initiative 0.19.0 now uses the active GM and the system socket for genuinely concurrent turn decisions.
 
-Les autres workflows conservent leurs stratégies actuelles. Leur migration éventuelle doit rester ciblée et justifiée par un besoin multi-client réel.
+Other workflows retain their current strategies. Any migration must remain targeted and justified by an actual multi-client need.
 
 ---
 
@@ -908,29 +910,29 @@ Les autres workflows conservent leurs stratégies actuelles. Leur migration éve
 
 ## README.md
 
-**Priorité : haute avant publication**
+**Priority: high before publication**
 
-Contenu :
+Contents:
 
-- présentation ;
-- versions Foundry compatibles ;
-- installation ;
-- mise à jour ;
-- sauvegarde ;
-- limitations ;
+- overview;
+- compatible Foundry versions;
+- installation;
+- update;
+- backup;
+- limitations;
 - support.
 
 ## CONTRIBUTING.md
 
-- environnement de développement ;
-- conventions ;
-- tests ;
-- pull requests ;
-- localisation.
+- development environment;
+- conventions;
+- tests;
+- pull requests;
+- localization.
 
-## Documentation architecture
+## Architecture Documentation
 
-Structure possible :
+Possible structure:
 
 ```text
 docs/
@@ -942,155 +944,154 @@ docs/
   public-api.md
 ```
 
-Documenter les décisions structurantes, pas chaque ligne.
+Document structural decisions, not every line.
 
 ---
 
-# Phase 13 - Localisation finale
+# Phase 13 - Final Localization
 
 ## EN / FR
 
-Objectif 1.0 :
+1.0 objective:
 
-- aucun texte métier principal hardcodé ;
-- toutes les chaînes importantes passent par i18n ;
-- terminologie cohérente.
+- no main business text hardcoded;
+- all important strings use i18n;
+- consistent terminology.
 
-## Glossaire officiel
+## Official Glossary
 
-Lorsque les PDF français officiels seront disponibles :
+When the official French PDFs become available:
 
-- relever les termes canoniques ;
-- créer un glossaire ;
-- remplacer les traductions provisoires ;
-- conserver si possible les clés internes anglaises stables pour la maintenance.
+- identify canonical terms;
+- create a glossary;
+- replace provisional translations;
+- keep stable internal English keys where possible for maintenance.
 
 ---
 
-# Phase 14 - Performance et exploitation
+# Phase 14 - Performance and Operations
 
 ## Profiling
 
-Avant d'augmenter les ressources serveur :
+Before increasing server resources:
 
-- mesurer CPU ;
-- RAM ;
-- I/O ;
-- taille des assets ;
-- nombre de Hooks ;
-- temps de rendu ;
-- coût réel des modules.
+- measure CPU;
+- RAM;
+- I/O;
+- asset size;
+- number of Hooks;
+- render time;
+- actual module cost.
 
 ## Chat
 
-Surveiller :
+Monitor:
 
-- complexité des renderers ;
-- nombre de re-renders ;
-- poids des flags ;
-- historiques de Chat très longs.
+- renderer complexity;
+- number of re-renders;
+- flag size;
+- very long Chat histories.
 
 ## Scenes
 
-Optimiser selon l'usage réel :
+Optimize according to actual use:
 
-- Tokens ;
-- Walls ;
-- Lights ;
-- assets ;
+- Tokens;
+- Walls;
+- Lights;
+- assets;
 - animations.
 
 ## Pterodactyl / Docker
 
-Maintenir :
+Maintain:
 
-- permissions propres ;
-- stockage persistant ;
-- sauvegardes ;
-- version Node compatible ;
-- procédure de déploiement reproductible.
-
----
-
-# Phase 15 - Sauvegardes, maintenance et sécurité
-
-Avant une bêta publique :
-
-- procédure de sauvegarde complète ;
-- restauration testée ;
-- migration serveur documentée ;
-- recommandations reverse proxy / HTTPS ;
-- permissions minimales ;
-- ports documentés ;
-- procédure de rollback du système.
+- proper permissions;
+- persistent storage;
+- backups;
+- compatible Node version;
+- reproducible deployment procedure.
 
 ---
 
-# Phase 16 - Bêta
+# Phase 15 - Backups, Maintenance, and Security
 
-## Alpha interne
+Before a public beta:
 
-Conditions :
-
-- règles principales stables ;
-- UX joueur simplifiée ;
-- création de personnage utilisable ;
-- combat de base jouable ;
-- migrations maîtrisées ;
-- aucun bug destructif connu.
-
-## Bêta fermée
-
-Tester :
-
-- plusieurs MJ ;
-- plusieurs navigateurs ;
-- Synthetic Actors ;
-- combats longs ;
-- nombreuses Scenes ;
-- plusieurs joueurs ;
-- conflits avec modules courants.
-
-## Bêta publique
-
-Avant publication :
-
-- licence clarifiée ;
-- README complet ;
-- installation simple ;
-- compatibilité Foundry définie ;
-- changelog ;
-- roadmap ;
-- issues GitHub structurées.
+- complete backup procedure;
+- tested restoration;
+- documented server migration;
+- reverse proxy / HTTPS recommendations;
+- minimum permissions;
+- documented ports;
+- system rollback procedure.
 
 ---
 
-# Objectifs 1.0
+# Phase 16 - Beta
 
-La 1.0 devrait idéalement proposer :
+## Internal Alpha
 
-- Character, NPC et Creature complets ;
-- combat personnel principal ;
-- Trait Pair complet ;
-- Resistance / Victory / Impact ;
-- Armor / Proofs ;
-- Damage / Vitality ;
-- Energy Shields suffisamment complets ;
-- States principaux ;
-- Weapons et Maneuvers utilisables ;
-- Powers principaux ;
-- création et progression de personnage ;
-- Outils MJ ;
-- ressources de table et Coffret des adversaires pour les règles suffisamment établies ;
-- Compendiums distribuables légalement ;
-- localisation EN / FR stabilisée ;
-- import/export minimal ;
-- migrations ;
-- documentation utilisateur et développeur ;
-- tests automatisés et runtime solides ;
-- identité visuelle cohérente basée sur le Design System Fading Suns.
+Conditions:
 
-Le Starship Actor peut arriver avant ou après 1.0 selon la disponibilité et la maturité des règles spatiales officielles.
+- stable main rules;
+- simplified player UX;
+- usable character creation;
+- playable basic combat;
+- controlled migrations;
+- no known destructive bug.
+
+## Closed Beta
+
+Test:
+
+- multiple GMs;
+- multiple browsers;
+- Synthetic Actors;
+- long combats;
+- many Scenes;
+- multiple players;
+- conflicts with common modules.
+
+## Public Beta
+
+Before publication:
+
+- licence clarified;
+- complete README;
+- simple installation;
+- Foundry compatibility defined;
+- changelog;
+- roadmap;
+- structured GitHub issues.
 
 ---
 
+# 1.0 Objectives
+
+Version 1.0 should ideally provide:
+
+- complete Character, NPC, and Creature Actors;
+- main personal combat;
+- complete Trait Pair;
+- Resistance / Victory / Impact;
+- Armor / Proofs;
+- Damage / Vitality;
+- sufficiently complete Energy Shields;
+- main States;
+- usable Weapons and Maneuvers;
+- main Powers;
+- character creation and advancement;
+- GM Tools;
+- table resources and the Adversary Coffer for sufficiently established rules;
+- legally distributable Compendiums;
+- stabilized EN / FR localization;
+- minimum import/export;
+- migrations;
+- user and developer documentation;
+- solid automated and runtime tests;
+- consistent visual identity based on the Fading Suns Design System.
+
+The Starship Actor may arrive before or after 1.0 depending on the availability and maturity of the official space rules.
+
+---

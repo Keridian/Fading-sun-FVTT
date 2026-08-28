@@ -1,131 +1,133 @@
 
-# Fading Suns 4e pour Foundry VTT
+# Fading Suns 4e for Foundry VTT
 
-Système non officiel en cours de développement pour jouer à **Fading Suns 4e** avec **Foundry Virtual Tabletop**.
+English | [Français](README.fr.md)
 
-Le développement cible actuellement **Foundry VTT 14.367**.
+Unofficial system under development for playing **Fading Suns 4e** with **Foundry Virtual Tabletop**.
 
-> Ce système est en développement actif. Certaines fonctionnalités sont entièrement validées dans Foundry VTT, tandis que d'autres sont encore en cours d'implémentation ou de validation runtime.
+Development currently targets **Foundry VTT 14.367**.
 
-## État du développement
+> This system is under active development. Some features have been fully validated in Foundry VTT, while others are still being implemented or undergoing runtime validation.
 
-**Version de développement actuelle : 0.19.0**
+## Development status
 
-**Dernière version entièrement validée en conditions réelles : 0.18.0**
+**Current development version: 0.19.0**
 
-La branche `main` contient actuellement le développement de la version 0.19.0, consacrée notamment au système d'initiative.
+**Latest version fully validated under real runtime conditions: 0.18.0**
 
-## Fonctionnalités déjà implémentées
+The `main` branch currently contains development for version 0.19.0, notably the initiative system.
 
-Le système comprend actuellement :
+## Implemented features
 
-- Actors :
-  - Personnage
-  - PNJ
-  - Créature
-- Items :
-  - Espèce
-  - Classe
+The system currently includes:
+
+- Actors:
+  - Character
+  - NPC
+  - Creature
+- Items:
+  - Species
+  - Class
   - Faction
-  - Vocation
-  - Aptitude
-  - Avantage
+  - Calling
+  - Capability
+  - Perk
   - Affliction
-  - Manœuvre
-  - Arme
-  - Armure
-  - Bouclier énergétique
-  - Équipement
-- caractéristiques, compétences et traits occultes
-- jets de Trait Pair
-- Valeur ciblée
-- génération de PV et PW
-- Cache et Banque
-- Résistance
-- Incidence
-- dégâts et Vitalité
-- armures
-- propriétés d'attaque
-- boucliers énergétiques
-- outils MJ
-- workflow d'attaque avec les armes
-- gestion des munitions
-- Triple-tir
-- initiative interactive
-- initiative par jets
+  - Maneuver
+  - Weapon
+  - Armor
+  - Energy Shield
+  - Equipment
+- characteristics, skills, and occult traits
+- Trait Pair rolls
+- Goal
+- VP and WP generation
+- Cache and Bank
+- Resistance
+- Impact
+- damage and Vitality
+- armor
+- attack properties
+- Energy Shields
+- GM tools
+- weapon attack workflow
+- ammunition management
+- Three-round Burst
+- interactive initiative
+- rolled initiative
 
-Le détail des évolutions est disponible dans :
+Detailed changes are available in:
 
 - [Patch Notes](Fading-Suns-4e-PATCH-NOTES.md)
 - [Roadmap](Fading-Suns-4e-ROADMAP.md)
 
-La documentation technique et les audits sont disponibles dans le dossier [docs/](docs/).
+Technical documentation and audits are available in the [docs/](docs/) directory.
 
 ## Initiative 0.19.0
 
-Le système d'initiative de la version 0.19.0 est actuellement en cours de validation runtime.
+The version 0.19.0 initiative system is currently undergoing runtime validation.
 
-### Initiative interactive
+### Interactive initiative
 
-Le mode interactif implémente notamment :
+Interactive mode implements:
 
-- la désignation d'un chef de troupe par le MJ ;
-- le choix dynamique du premier protagoniste ;
-- le choix successif du prochain protagoniste ;
-- la reconstruction de l'ordre à chaque nouveau round ;
-- la prise en charge des Actors liés ;
-- la prise en charge des Tokens synthétiques non liés.
+- designation of a troupe leader by the GM;
+- dynamic selection of the first protagonist;
+- successive selection of the next protagonist;
+- rebuilding the order at every new round;
+- support for linked Actors;
+- support for unlinked synthetic Tokens.
 
-Le cycle principal du mode interactif a été validé dans Foundry VTT.
+The main interactive-mode cycle has been validated in Foundry VTT.
 
-Certaines situations particulières doivent encore être vérifiées, notamment :
+Some specific situations still require validation, including:
 
-- plusieurs propriétaires actifs simultanément ;
-- requêtes obsolètes ou envoyées en double ;
-- changement de mode pendant un Combat actif.
+- multiple active owners at the same time;
+- stale or duplicate requests;
+- changing modes during an active Combat.
 
-### Initiative par jets
+### Rolled initiative
 
-Le mode d'initiative par jets est implémenté et couvert par les tests automatisés.
+Rolled initiative is implemented and covered by automated tests.
 
-Sa validation runtime dans Foundry VTT reste à terminer.
+Its Foundry VTT runtime validation remains to be completed.
 
 ## Tests
 
-Le projet possède une suite de tests automatisés couvrant les principales mécaniques.
+The project has an automated test suite covering the main mechanics.
 
-État actuel :
+Current status:
 
 ```text
 547 tests
-547 réussis
+547 passed
 ```
 
-Les tests sont disponibles dans :
+The tests are available in:
 
 ```text
 tests/
 ```
 
-La réussite des tests automatisés ne remplace pas la validation dans Foundry VTT.
+Passing automated tests does not replace validation in Foundry VTT.
 
-Les mécaniques importantes sont également vérifiées manuellement en conditions réelles.
+Important mechanics are also checked manually under real runtime conditions.
 
-## Structure du projet
+## Project structure
 
 ```text
-docs/          Documentation technique et audits
-lang/          Traductions française et anglaise
-scripts/       DataModels, règles, rolls, documents et applications
-styles/        Feuilles de style
-templates/     Templates Handlebars
-tests/         Tests automatisés
-system.json    Manifeste du système Foundry VTT
+docs/          Technical documentation and audits
+lang/          French and English localizations
+scripts/       DataModels, rules, rolls, documents, and applications
+styles/        Stylesheets
+templates/     Handlebars templates
+tests/         Automated tests
+system.json    Foundry VTT system manifest
 ```
 
 ## Architecture
 
-L'architecture générale suit autant que possible la séparation :
+The general architecture follows this separation whenever possible:
 
 ```text
 DataModel
@@ -136,117 +138,117 @@ Rules Engine
     ↓
 Orchestration
     ↓
-Interface utilisateur
+User interface
 ```
 
-Les feuilles d'Actor, les feuilles d'Item et les autres interfaces utilisateur ne doivent pas constituer la source de vérité des règles de jeu.
+Actor sheets, Item sheets, and other user interfaces must not become the source of truth for the game rules.
 
-Les règles sont autant que possible isolées dans des composants réutilisables et testables.
+Rules are isolated in reusable and testable components whenever possible.
 
-## Installation de développement
+## Development installation
 
-Ce projet n'est pas encore distribué sous forme de release publique.
+This project is not yet distributed as a public release.
 
-Pour une installation de développement, le système doit être placé dans le répertoire des systèmes de Foundry VTT.
+For a development installation, place the system in the Foundry VTT systems directory.
 
-Exemple :
+Example:
 
 ```text
 Data/systems/fadingsuns4e/
 ```
 
-Le manifeste doit alors se trouver ici :
+The manifest must then be located here:
 
 ```text
 Data/systems/fadingsuns4e/system.json
 ```
 
-Redémarrer Foundry VTT après l'installation ou une mise à jour nécessitant le rechargement du système.
+Restart Foundry VTT after installation or after an update that requires the system to be reloaded.
 
-## Compatibilité
+## Compatibility
 
-Version de développement principale :
+Primary development version:
 
 ```text
 Foundry VTT 14.367
 ```
 
-La compatibilité avec d'autres versions de Foundry VTT n'est pas garantie.
+Compatibility with other Foundry VTT versions is not guaranteed.
 
-Le projet étant encore en développement, les migrations de données entre versions du système ne sont pas encore considérées comme stabilisées.
+Because the project is still under development, data migrations between system versions are not yet considered stable.
 
-## Méthode de développement
+## Development method
 
-Le projet suit un développement incrémental.
+The project follows an incremental development process.
 
-Une mécanique est normalement traitée selon le cycle suivant :
+A mechanic normally follows this cycle:
 
 ```text
-analyse des règles
-→ conception
-→ implémentation
-→ tests automatisés
-→ déploiement
-→ validation runtime dans Foundry VTT
+rule analysis
+→ design
+→ implementation
+→ automated tests
+→ deployment
+→ runtime validation in Foundry VTT
 → correction
-→ validation finale
+→ final validation
 ```
 
-Une fonctionnalité n'est considérée comme entièrement validée qu'après vérification dans une véritable instance Foundry VTT.
+A feature is considered fully validated only after it has been checked in a real Foundry VTT instance.
 
 ## Roadmap
 
-Parmi les chantiers prévus ou encore incomplets :
+Planned or incomplete work includes:
 
-- finalisation de l'initiative 0.19.0 ;
-- ressources de table ;
-- Puits commun ;
-- Coffret des adversaires ;
-- États ;
-- pouvoirs occultes ;
-- création de personnage ;
-- progression ;
-- outils avancés pour les PNJ ;
-- amélioration générale de l'interface ;
-- Design System Fading Suns ;
-- Compendiums ;
-- Actor Vaisseau spatial ;
-- migrations de données ;
-- packaging et distribution du système.
+- completion of initiative 0.19.0;
+- table resources;
+- shared Well;
+- adversary coffer;
+- States;
+- occult powers;
+- character creation;
+- advancement;
+- advanced NPC tools;
+- general interface improvements;
+- Fading Suns Design System;
+- Compendiums;
+- Starship Actor;
+- data migrations;
+- system packaging and distribution.
 
-Voir la [Roadmap](Fading-Suns-4e-ROADMAP.md) pour le suivi détaillé.
+See the [Roadmap](Fading-Suns-4e-ROADMAP.md) for detailed tracking.
 
-## Langues
+## Languages
 
-Le système possède actuellement :
+The system currently includes:
 
-- une localisation française ;
-- une localisation anglaise.
+- French localization;
+- English localization.
 
-La version française utilise autant que possible la terminologie de l'édition française de Fading Suns 4e.
+The French localization follows the terminology of the French edition of Fading Suns 4e whenever possible.
 
-## Contenu protégé
+## Protected content
 
-Ce dépôt est destiné au développement du système Foundry VTT.
+This repository is intended for development of the Foundry VTT system.
 
-Il ne doit pas contenir de copies des livres, PDF ou autres contenus commerciaux utilisés comme références de développement.
+It must not contain copies of books, PDFs, or other commercial content used as development references.
 
-Les documents de référence protégés ne doivent pas être ajoutés au dépôt Git.
+Protected reference documents must not be added to the Git repository.
 
-Le fichier `.gitignore` exclut notamment les fichiers PDF et plusieurs formats d'archives.
+The `.gitignore` file excludes PDF files and several archive formats.
 
-## Statut du projet
+## Project status
 
-Ce projet est un système non officiel développé indépendamment.
+This project is an unofficial system developed independently.
 
-Fading Suns, ses marques, son univers et ses contenus appartiennent à leurs ayants droit respectifs.
+Fading Suns, its trademarks, setting, and content belong to their respective rightsholders.
 
-Foundry Virtual Tabletop est un produit distinct.
+Foundry Virtual Tabletop is a separate product.
 
-Ce projet n'implique aucune affiliation ou approbation officielle de la part des ayants droit de Fading Suns ou de Foundry Virtual Tabletop.
+This project implies no official affiliation with or endorsement by the Fading Suns or Foundry Virtual Tabletop rightsholders.
 
 ## Licence
 
-La licence du code source n'est pas encore définie.
+The source-code licence has not yet been defined.
 
-Avant toute publication publique ou distribution officielle du système, la licence du projet ainsi que les conditions applicables aux marques, textes, terminologies et autres contenus liés à Fading Suns devront être déterminées.
+Before any public release or official distribution of the system, the project licence and the terms applying to trademarks, texts, terminology, and other Fading Suns-related content must be determined.
